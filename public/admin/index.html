@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Admin Surat Batak</title>
+<link rel="icon" type="image/png" href="/icons/icon-192.png">
+</head>
+<body>
+<script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+<script src="/admin/batak.js"></script>
+<script>
+  // Tampilan pratinjau memakai gaya halaman artikel
+  CMS.registerPreviewStyle('/assets/artikel.css');
+  // Tombol "Aksara Batak" di editor: tulis huruf Latin, tampil sebagai aksara
+  var esc = function(s){ return String(s || '').replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  CMS.registerEditorComponent({
+    id: 'aksara',
+    label: 'Aksara Batak',
+    fields: [{ name: 'teks', label: 'Kalimat dalam huruf Latin', widget: 'string' }],
+    pattern: /^\{\{\s*aksara:\s*([\s\S]+?)\s*\}\}$/m,
+    fromBlock: function(m){ return { teks: m[1] }; },
+    toBlock: function(d){ return '{{aksara: ' + (d.teks || '') + '}}'; },
+    toPreview: function(d){ return '<figure class="aksara"><span class="bt" lang="bbc">' + esc(BT.latinToBatak(d.teks || '').uni) + '</span><figcaption>' + esc(d.teks) + '</figcaption></figure>'; }
+  });
+</script>
+</body>
+</html>

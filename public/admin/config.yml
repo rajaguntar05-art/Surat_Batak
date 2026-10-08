@@ -1,0 +1,66 @@
+# Pengaturan halaman admin Surat Batak (Decap CMS)
+backend:
+  name: github
+  repo: rajaguntar05-art/Surat_Batak
+  branch: main
+  commit_messages:
+    create: "Artikel baru: {{slug}}"
+    update: "Ubah: {{slug}}"
+    delete: "Hapus: {{slug}}"
+    uploadMedia: "Unggah gambar: {{path}}"
+    deleteMedia: "Hapus gambar: {{path}}"
+
+# Untuk mencoba di komputer sendiri dengan: npx decap-server
+local_backend: true
+
+site_url: /
+display_url: /
+logo_url: /icons/icon-192.png
+media_folder: public/img/unggahan
+public_folder: /img/unggahan
+
+collections:
+  - name: artikel
+    label: Artikel
+    label_singular: Artikel
+    description: Tulisan untuk bagian Artikel di situs Surat Batak.
+    folder: content/artikel
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} ({{kategori}})"
+    sortable_fields: [date, title, kategori]
+    view_filters:
+      - {label: Draf, field: draft, pattern: true}
+    fields:
+      - {label: Judul, name: title, widget: string}
+      - {label: Tanggal terbit, name: date, widget: datetime}
+      - label: Kategori
+        name: kategori
+        widget: select
+        default: Kabar
+        options: [Aksara, Adat & Budaya, Umpasa & Umpama, Bibel, Kabar]
+      - {label: Ringkasan, name: ringkasan, widget: text, required: false, hint: "Satu atau dua kalimat. Tampil di daftar artikel dan saat tautan dibagikan."}
+      - {label: Gambar utama, name: gambar, widget: image, required: false}
+      - {label: Keterangan gambar, name: keterangan_gambar, widget: string, required: false}
+      - {label: Simpan sebagai draf (belum tayang), name: draft, widget: boolean, default: false, required: false}
+      - {label: Isi artikel, name: body, widget: markdown, hint: "Pakai tombol + lalu pilih 'Aksara Batak' untuk menyisipkan kalimat beraksara."}
+
+  - name: halaman
+    label: Profil penulis
+    files:
+      - name: profil
+        label: Profil penulis
+        file: content/profil.json
+        fields:
+          - {label: Nama lengkap, name: nama, widget: string}
+          - {label: Peran, name: peran, widget: string, required: false, hint: "Satu baris, misalnya: Penyusun aplikasi Surat Batak"}
+          - {label: Foto, name: foto, widget: image, required: false}
+          - {label: Biografi, name: bio, widget: text, required: false, hint: "Pisahkan paragraf dengan satu baris kosong."}
+          - label: Media sosial
+            name: sosmed
+            widget: list
+            required: false
+            summary: "{{fields.label}}"
+            fields:
+              - {label: Nama tautan, name: label, widget: string, hint: "Misalnya Instagram, Facebook, YouTube, Email"}
+              - {label: Alamat, name: url, widget: string, hint: "Contoh: https://instagram.com/akunanda atau mailto:nama@email.com"}

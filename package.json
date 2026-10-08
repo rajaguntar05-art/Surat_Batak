@@ -1,0 +1,16 @@
+{
+  "name": "surat-batak",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^18.0.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

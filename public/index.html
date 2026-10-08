@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Surat Batak — belajar dan alih aksara Batak Toba</title>
+<meta name="description" content="Belajar aksara Batak Toba dan alih aksara dua arah: huruf Latin ke Surat Batak dan sebaliknya, dari teks, Word, PDF, atau foto.">
+<meta name="theme-color" content="#141010">
+<meta property="og:title" content="Surat Batak">
+<meta property="og:description" content="Belajar dan alih aksara Batak Toba di HP, tablet, dan komputer.">
+<meta property="og:image" content="icons/icon-512.png">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Surat Batak">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..800,100;1,9..144,400,100&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Noto Sans Batak";src:url("fonts/NotoSansBatak-Regular.ttf") format("truetype");font-display:swap}
+
+:root{
+  --merah:#A3171C; --hitam:#141010; --putih:#F5F0E6;
+  --page:#F3EDE2; --paper:#FFFBF4; --paper-2:#EFE6D6; --ink:#141010; --muted:#655548;
+  --ulos:#A3171C; --ulos-ink:#FFF8EE; --indigo:#1F3A6B; --line:#D9CBB4; --ok:#1F7A3A; --bad:#A3171C;
+  --hero-bg:#141010; --hero-ink:#F5F0E6; --shadow:0 1px 0 rgba(20,16,16,.06),0 10px 30px -18px rgba(20,16,16,.45);
+  --pat:none;
+  --serif:"Fraunces", Georgia, "Times New Roman", serif;
+  --sans:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --batak:"Noto Sans Batak", "Batak-Unicode", sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --page:#120E0D; --paper:#1D1716; --paper-2:#28201E; --ink:#F5F0E6; --muted:#BFAE9C;
+    --ulos:#E0443F; --ulos-ink:#120E0D; --indigo:#9DB6E8; --line:#3A2F2B; --ok:#6FCB86; --bad:#F07A73;
+    --hero-bg:#0B0808; --shadow:0 10px 30px -18px rgba(0,0,0,.8); --pat:none;
+  }
+}
+:root[data-theme="dark"]{
+  --page:#120E0D; --paper:#1D1716; --paper-2:#28201E; --ink:#F5F0E6; --muted:#BFAE9C;
+  --ulos:#E0443F; --ulos-ink:#120E0D; --indigo:#9DB6E8; --line:#3A2F2B; --ok:#6FCB86; --bad:#F07A73;
+  --hero-bg:#0B0808; --shadow:0 10px 30px -18px rgba(0,0,0,.8); --pat:none;
+}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none !important}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+html,body{margin:0}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;
+  background-image:var(--pat);background-size:220px 220px;background-attachment:fixed}
+button,select,textarea,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* ===== HERO: hitam-merah-putih, motif simeol-eol ===== */
+header.hero{position:relative;background:var(--hero-bg);color:var(--hero-ink);overflow:hidden;isolation:isolate}
+.hero-pat{position:absolute;inset:-60px;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23F5F0E6%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M10%2060%20C10%2030%2040%2020%2055%2035%20C68%2048%2050%2066%2038%2056%20C30%2049%2038%2040%2045%2044%22/%3E%3Cpath%20d%3D%22M110%2060%20C110%2090%2080%20100%2065%2085%20C52%2072%2070%2054%2082%2064%20C90%2071%2082%2080%2075%2076%22/%3E%3Cpath%20d%3D%22M60%2010%20C90%2010%20100%2040%2085%2055%22/%3E%3Cpath%20d%3D%22M60%20110%20C30%20110%2020%2080%2035%2065%22/%3E%3C/g%3E%3Cg%20fill%3D%22%23A3171C%22%3E%3Cpath%20d%3D%22M60%2052%20L68%2060%20L60%2068%20L52%2060%20Z%22/%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%2210%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22110%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%2210%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%22110%22%20r%3D%223%22/%3E%3C/g%3E%3C/svg%3E");background-size:120px 120px;opacity:.10;z-index:-1;
+  animation:drift 60s linear infinite}
+.hero-glow{position:absolute;right:-12%;top:-40%;width:60%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(163,23,28,.55),rgba(163,23,28,0) 65%);z-index:-1}
+@keyframes drift{to{transform:translate(120px,120px)}}
+.hero-in{padding:34px 20px 26px;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:end}
+@media (max-width:820px){.hero-in{grid-template-columns:1fr;padding-top:26px}}
+.kicker{display:inline-flex;align-items:center;gap:8px;margin:0 0 10px;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#E9B9B0}
+.kicker::before{content:"";width:18px;height:18px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2228%22%20height%3D%2228%22%20viewBox%3D%220%200%2028%2028%22%3E%3Cpath%20d%3D%22M14%202%20L26%2014%20L14%2026%20L2%2014%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23A3171C%22%20stroke-width%3D%222.5%22/%3E%3Cpath%20d%3D%22M14%209%20L19%2014%20L14%2019%20L9%2014%20Z%22%20fill%3D%22%23141010%22/%3E%3C/svg%3E") center/contain no-repeat;filter:brightness(1.6)}
+header.hero h1{font-family:var(--serif);font-weight:800;font-size:clamp(42px,8vw,84px);line-height:.95;margin:0;letter-spacing:-.02em;font-variation-settings:"SOFT" 100}
+header.hero h1 em{font-style:normal;color:#D6332C;-webkit-text-stroke:0;background:linear-gradient(transparent 62%,rgba(163,23,28,.0) 62%)}
+.lede{font-size:18px;color:#D9CDBD;margin:14px 0 0;max-width:52ch}
+.hero-card{background:rgba(245,240,230,.06);border:1px solid rgba(245,240,230,.16);border-radius:14px;padding:16px 18px;backdrop-filter:blur(4px)}
+.hero-card .lab{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#E9B9B0}
+#brandBt{display:block;font-family:var(--batak);font-size:clamp(34px,5.4vw,54px);line-height:1.5;color:var(--putih);min-height:1.5em}
+#brandBt .ch{display:inline-block;opacity:0;transform:translateY(14px);animation:rise .5s cubic-bezier(.2,.8,.2,1) forwards}
+#heroLt{font-family:var(--serif);font-size:20px;font-style:italic;color:#E9B9B0;min-height:1.4em;display:block}
+.ipon{height:22px;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2222%22%20viewBox%3D%220%200%2048%2022%22%3E%3Crect%20width%3D%2248%22%20height%3D%2222%22%20fill%3D%22%23141010%22/%3E%3Cpath%20d%3D%22M0%2022%20L12%204%20L24%2022%20Z%20M24%2022%20L36%204%20L48%2022%20Z%22%20fill%3D%22%23A3171C%22/%3E%3Cpath%20d%3D%22M6%2022%20L12%2013%20L18%2022%20Z%20M30%2022%20L36%2013%20L42%2022%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M24%200%20L30%208%20L24%2016%20L18%208%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M0%200%20L6%208%20L0%2016%20Z%20M48%200%20L42%208%20L48%2016%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3C/svg%3E");background-size:48px 22px;background-repeat:repeat-x}
+
+/* ===== NAV lengket ===== */
+.navbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--page) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px);margin-top:calc(-1 * env(safe-area-inset-top,0px))}
+nav.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:10px 0}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{flex:0 0 auto;background:transparent;border:1px solid transparent;border-radius:999px;padding:7px 15px;cursor:pointer;font-weight:500;color:var(--muted);transition:background .2s,color .2s}
+nav.tabs button:hover{color:var(--ink);background:var(--paper-2)}
+nav.tabs button[aria-selected="true"]{color:var(--putih);background:var(--hitam);border-color:var(--hitam);box-shadow:inset 0 -3px 0 var(--merah)}
+:root[data-theme="dark"] nav.tabs button[aria-selected="true"]{background:var(--merah);border-color:var(--merah)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) nav.tabs button[aria-selected="true"]{background:var(--merah);border-color:var(--merah)}}
+
+main.wrap{padding:26px 20px 70px}
+section.panel{display:none}
+section.panel.on{display:block;animation:fadeup .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* ===== kartu dengan sudut gorga ===== */
+.card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.card::after{content:"";position:absolute;top:-1px;right:18px;width:48px;height:8px;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2222%22%20viewBox%3D%220%200%2048%2022%22%3E%3Crect%20width%3D%2248%22%20height%3D%2222%22%20fill%3D%22%23141010%22/%3E%3Cpath%20d%3D%22M0%2022%20L12%204%20L24%2022%20Z%20M24%2022%20L36%204%20L48%2022%20Z%22%20fill%3D%22%23A3171C%22/%3E%3Cpath%20d%3D%22M6%2022%20L12%2013%20L18%2022%20Z%20M30%2022%20L36%2013%20L42%2022%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M24%200%20L30%208%20L24%2016%20L18%208%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M0%200%20L6%208%20L0%2016%20Z%20M48%200%20L42%208%20L48%2016%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3C/svg%3E");background-size:24px 11px;background-position:0 -3px;border-radius:0 0 4px 4px;opacity:.95}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:820px){.row{grid-template-columns:1fr}}
+.dir{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin-bottom:16px;background:var(--paper);box-shadow:var(--shadow)}
+.dir button{border:0;background:transparent;padding:8px 16px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
+.dir button[aria-pressed="true"]{background:var(--merah);color:#FFF8EE}
+label.lbl{display:block;font-weight:700;margin:0 0 6px}
+textarea{width:100%;min-height:160px;resize:vertical;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;line-height:1.5;transition:border-color .2s,box-shadow .2s}
+textarea:focus{outline:none;border-color:var(--merah);box-shadow:0 0 0 4px color-mix(in srgb,var(--merah) 18%,transparent)}
+textarea.batak{font-family:var(--batak);font-size:26px;line-height:1.6}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.btn{border:1px solid var(--hitam);background:var(--hitam);color:var(--putih);border-radius:999px;padding:8px 16px;cursor:pointer;font-weight:500;transition:transform .15s,background .2s}
+.btn:hover{transform:translateY(-1px);background:var(--merah);border-color:var(--merah)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--merah);color:var(--merah);background:transparent}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+select{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 12px}
+.out-batak{font-family:var(--batak);font-size:clamp(30px,4.4vw,46px);line-height:1.7;min-height:120px;word-wrap:break-word;white-space:pre-wrap}
+.out-latin{font-family:var(--serif);font-size:23px;line-height:1.6;min-height:120px;white-space:pre-wrap;word-wrap:break-word}
+.flash{animation:flash .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes flash{from{opacity:.25;transform:translateY(6px)}to{opacity:1;transform:none}}
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;background:var(--paper-2);border-radius:10px;padding:10px 12px;white-space:pre-wrap;word-break:break-all;min-height:44px;border-left:4px solid var(--merah)}
+.hint{color:var(--muted);font-size:15px;margin:8px 0 0}
+.placeholder{color:var(--muted);font-family:var(--sans);font-size:16px}
+h2{font-family:var(--serif);font-weight:800;font-size:clamp(28px,4vw,38px);line-height:1.1;margin:0 0 8px;letter-spacing:-.01em}
+h2::after{content:"";display:block;width:84px;height:10px;margin-top:10px;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2222%22%20viewBox%3D%220%200%2048%2022%22%3E%3Crect%20width%3D%2248%22%20height%3D%2222%22%20fill%3D%22%23141010%22/%3E%3Cpath%20d%3D%22M0%2022%20L12%204%20L24%2022%20Z%20M24%2022%20L36%204%20L48%2022%20Z%22%20fill%3D%22%23A3171C%22/%3E%3Cpath%20d%3D%22M6%2022%20L12%2013%20L18%2022%20Z%20M30%2022%20L36%2013%20L42%2022%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M24%200%20L30%208%20L24%2016%20L18%208%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M0%200%20L6%208%20L0%2016%20Z%20M48%200%20L42%208%20L48%2016%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3C/svg%3E");background-size:24px 11px;background-position:0 -1px;border-radius:2px}
+h3{font-family:var(--serif);font-weight:700;font-size:22px;margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h3::before{content:"";width:16px;height:16px;flex:0 0 16px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2228%22%20height%3D%2228%22%20viewBox%3D%220%200%2028%2028%22%3E%3Cpath%20d%3D%22M14%202%20L26%2014%20L14%2026%20L2%2014%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23A3171C%22%20stroke-width%3D%222.5%22/%3E%3Cpath%20d%3D%22M14%209%20L19%2014%20L14%2019%20L9%2014%20Z%22%20fill%3D%22%23141010%22/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* papan ketik aksara */
+.kbd{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.kbd button{min-width:52px;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:4px 6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;line-height:1.1;transition:transform .12s,border-color .2s}
+.kbd button:hover{border-color:var(--merah);transform:translateY(-2px)}
+.kbd button:active{transform:scale(.94)}
+.kbd b{font-family:var(--batak);font-weight:400;font-size:24px;line-height:1.4}
+.kbd small{font-size:12px;color:var(--muted)}
+.kbd .sep{flex-basis:100%;height:0}
+
+/* uraian */
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.g{font-family:var(--batak);font-size:28px;line-height:1.3;white-space:nowrap}
+td.k{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px}
+tr.word td{border-top:2px solid var(--ink);font-weight:700}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:var(--paper-2)}
+
+/* belajar: kartu huruf */
+.letters{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:12px}
+.letter{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 6px 10px;text-align:center;overflow:hidden;transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s,border-color .2s;cursor:default}
+.letter::before{content:"";position:absolute;inset:auto 0 0 0;height:5px;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2222%22%20viewBox%3D%220%200%2048%2022%22%3E%3Crect%20width%3D%2248%22%20height%3D%2222%22%20fill%3D%22%23141010%22/%3E%3Cpath%20d%3D%22M0%2022%20L12%204%20L24%2022%20Z%20M24%2022%20L36%204%20L48%2022%20Z%22%20fill%3D%22%23A3171C%22/%3E%3Cpath%20d%3D%22M6%2022%20L12%2013%20L18%2022%20Z%20M30%2022%20L36%2013%20L42%2022%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M24%200%20L30%208%20L24%2016%20L18%208%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M0%200%20L6%208%20L0%2016%20Z%20M48%200%20L42%208%20L48%2016%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3C/svg%3E");background-size:20px 9px;opacity:0;transition:opacity .2s}
+.letter:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:var(--shadow);border-color:var(--merah)}
+.letter:hover::before{opacity:1}
+.letter .g{font-family:var(--batak);font-size:46px;line-height:1.3;display:block;transition:transform .25s,color .2s}
+.letter:hover .g{transform:scale(1.12);color:var(--merah)}
+.letter .l{font-family:var(--serif);font-weight:700;font-size:19px}
+.letter .k{font-size:13px;color:var(--muted)}
+.rules{display:grid;gap:12px}
+.rule{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--merah);border-radius:4px 14px 14px 4px;padding:14px 18px;box-shadow:var(--shadow)}
+.rule p{margin:0 0 8px}
+.ex{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline}
+.ex span.g{font-family:var(--batak);font-size:30px}
+.ex span.c{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:var(--muted)}
+
+/* latihan */
+.q-glyph{font-family:var(--batak);font-size:clamp(52px,10vw,88px);line-height:1.4;text-align:center;margin:10px 0;animation:pop .45s cubic-bezier(.2,.8,.2,1.2)}
+.q-latin{font-family:var(--serif);font-size:42px;text-align:center;margin:18px 0;animation:pop .45s cubic-bezier(.2,.8,.2,1.2)}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opts button{padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper);cursor:pointer;font-family:var(--serif);font-size:22px;transition:transform .12s,border-color .2s,box-shadow .2s}
+.opts button:hover{transform:translateY(-2px);border-color:var(--ink)}
+.opts button.batak{font-family:var(--batak);font-size:32px}
+.opts button.right{border-color:var(--ok);box-shadow:inset 0 0 0 2px var(--ok);animation:pop .3s}
+.opts button.wrong{border-color:var(--bad);box-shadow:inset 0 0 0 2px var(--bad);animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.score{display:flex;justify-content:space-between;color:var(--muted);margin-bottom:6px}
+.qbar{height:10px;border-radius:999px;background:var(--paper-2);overflow:hidden;margin-bottom:10px}
+.qbar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--merah) 0 14px,var(--hitam) 14px 17px,var(--putih) 17px 20px,var(--hitam) 20px 23px);transition:width .4s cubic-bezier(.2,.8,.2,1)}
+
+/* berkas */
+.drop{border:2px dashed var(--line);border-radius:16px;padding:34px 16px;text-align:center;background:var(--paper);cursor:pointer;transition:border-color .2s,transform .2s,background .2s}
+.drop:hover,.drop.over{border-color:var(--merah);transform:scale(1.01);background:color-mix(in srgb,var(--merah) 5%,var(--paper))}
+.status{margin-top:10px;min-height:24px}
+.status.err{color:var(--bad)}
+footer.wrap{color:var(--muted);font-size:14px;padding:20px 20px 40px}
+.foot-band{height:22px;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2222%22%20viewBox%3D%220%200%2048%2022%22%3E%3Crect%20width%3D%2248%22%20height%3D%2222%22%20fill%3D%22%23141010%22/%3E%3Cpath%20d%3D%22M0%2022%20L12%204%20L24%2022%20Z%20M24%2022%20L36%204%20L48%2022%20Z%22%20fill%3D%22%23A3171C%22/%3E%3Cpath%20d%3D%22M6%2022%20L12%2013%20L18%2022%20Z%20M30%2022%20L36%2013%20L42%2022%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M24%200%20L30%208%20L24%2016%20L18%208%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M0%200%20L6%208%20L0%2016%20Z%20M48%200%20L42%208%20L48%2016%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3C/svg%3E");background-size:48px 22px;transform:scaleY(-1)}
+
+/* umpasa */
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 13px;cursor:pointer;transition:background .2s,color .2s}
+.chips button[aria-pressed="true"]{background:var(--merah);border-color:var(--merah);color:#FFF8EE}
+#sSearch{flex:1 1 200px;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.slist{display:grid;gap:14px;margin-top:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr))}
+.say{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);transition:transform .2s,border-color .2s;animation:fadeup .4s both}
+.say:hover{transform:translateY(-3px);border-color:var(--merah)}
+.say .type{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ulos);font-weight:700}
+.say .bt{font-family:var(--batak);font-size:clamp(24px,3.2vw,30px);line-height:1.75;margin:4px 0 6px;word-wrap:break-word}
+.say .lt{font-family:var(--serif);font-size:19px;line-height:1.5;font-style:italic}
+.say .mean{margin:8px 0 0}
+.say .ctx{color:var(--muted);font-size:15px;margin:4px 0 0}
+.say .tools{margin-top:10px}
+.say .btn{padding:5px 12px;font-size:15px}
+.today{background:var(--hitam);color:var(--putih);border-color:var(--hitam);overflow:hidden}
+.today::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23F5F0E6%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M10%2060%20C10%2030%2040%2020%2055%2035%20C68%2048%2050%2066%2038%2056%20C30%2049%2038%2040%2045%2044%22/%3E%3Cpath%20d%3D%22M110%2060%20C110%2090%2080%20100%2065%2085%20C52%2072%2070%2054%2082%2064%20C90%2071%2082%2080%2075%2076%22/%3E%3Cpath%20d%3D%22M60%2010%20C90%2010%20100%2040%2085%2055%22/%3E%3Cpath%20d%3D%22M60%20110%20C30%20110%2020%2080%2035%2065%22/%3E%3C/g%3E%3Cg%20fill%3D%22%23A3171C%22%3E%3Cpath%20d%3D%22M60%2052%20L68%2060%20L60%2068%20L52%2060%20Z%22/%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%2210%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22110%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%2210%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%22110%22%20r%3D%223%22/%3E%3C/g%3E%3C/svg%3E");background-size:120px 120px;opacity:.08;pointer-events:none}
+.today .say{color:var(--putih)}
+.today .say .ctx,.today .hint{color:#CDBFAE}
+.today .say .type{color:#F08A84}
+.today .bt{font-size:clamp(28px,4.6vw,42px)}
+.today .btn.ghost{color:var(--putih);border-color:rgba(245,240,230,.3)}
+.sform{display:grid;gap:10px}
+.sform label{display:grid;gap:4px;font-weight:700}
+.sform textarea,.sform select{font-weight:400}
+.sform textarea{min-height:0}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}#brandBt .ch{opacity:1;transform:none}}
+/* ===== Pembaca Bibel ===== */
+.rd-bar{display:grid;gap:10px;margin-bottom:14px}
+.rd-row{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.rd-f{display:grid;gap:2px;font-size:13px;color:var(--muted);flex:1 1 140px;min-width:0}
+.rd-f select{width:100%;color:var(--ink);font-size:16px}
+.rd-ctl{align-items:center}
+.rd-ib{min-width:42px;height:40px;border:1px solid var(--line);background:var(--paper);border-radius:999px;cursor:pointer;font-size:18px;line-height:1;padding:0 12px;transition:border-color .2s,transform .12s}
+.rd-ib:hover{border-color:var(--ulos)}
+.rd-ib:active{transform:scale(.94)}
+.rd-ib[aria-expanded="true"]{background:var(--ulos);border-color:var(--ulos);color:var(--ulos-ink)}
+.rd-pg{display:inline-flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.rd-pg input{width:4.2em;height:40px;border:1px solid var(--line);border-radius:999px;background:var(--paper);text-align:center;color:var(--ink)}
+.rd-sep{flex:1}
+.rd-search{margin:-4px 0 14px}
+.rd-search input{width:100%;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:9px 14px}
+.rd-res{max-height:260px;overflow:auto;margin-top:8px;display:grid;gap:4px}
+.rd-res button{text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px;cursor:pointer}
+.rd-res button:hover{border-color:var(--ulos)}
+.rd-res b{color:var(--ulos);margin-right:6px;font-variant-numeric:tabular-nums}
+.rd-res mark{background:color-mix(in srgb,var(--ulos) 25%,transparent);color:inherit;border-radius:3px}
+.rd-stagewrap{position:relative}
+.rd-stage{position:relative;margin:0 auto;touch-action:pan-y;user-select:text}
+.rd-paper{position:absolute;top:0;background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow)}
+.rd-paper.l{border-radius:10px 2px 2px 10px;box-shadow:var(--shadow),inset -18px 0 22px -20px rgba(20,16,16,.45)}
+.rd-paper.r{border-radius:2px 10px 10px 2px;box-shadow:var(--shadow),inset 18px 0 22px -20px rgba(20,16,16,.45)}
+.rd-paper.s{border-radius:10px}
+.rd-foot{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;border-top:1px solid var(--line)}
+.rd-fb{font-family:var(--serif);font-style:italic}
+.rd-clip{position:absolute;overflow:hidden}
+.rd-flow{height:100%;column-fill:auto;transition:transform .38s cubic-bezier(.2,.8,.2,1);will-change:transform;
+  font-family:var(--batak);font-size:var(--rd-fs,22px);line-height:1.62;color:var(--ink);orphans:2;widows:2}
+.rd-flow.nojump{transition:none}
+.rd-flow.latin{font-family:var(--serif);font-size:calc(var(--rd-fs,22px) * .82);line-height:1.55}
+.rd-flow p{margin:0 0 .28em;text-align:justify;hyphens:none}
+.rd-flow sup{font-family:var(--sans);font-size:.48em;font-weight:700;color:var(--ulos);vertical-align:.95em;margin-right:.22em;line-height:0}
+.rd-flow .lt{display:block;font-family:var(--serif);font-style:italic;font-size:.66em;line-height:1.45;color:var(--muted);margin:.05em 0 .2em;text-align:left}
+.rd-flow .pb{color:var(--ulos);font-size:1.1em;margin-left:.15em}
+.rd-flow h4{font-family:var(--batak);font-weight:400;font-size:1.12em;margin:.7em 0 .3em;break-after:avoid;color:var(--ink)}
+.rd-flow.latin h4{font-family:var(--serif);font-weight:700}
+.rd-flow h4 small{display:block;font-family:var(--sans);font-size:.5em;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.rd-flow .bk{break-inside:avoid;text-align:center;margin:.4em 0 1em}
+.rd-flow .bk .nm{display:block;font-size:2.1em;line-height:1.4}
+.rd-flow.latin .bk .nm{font-family:var(--serif);font-weight:800;font-size:1.9em}
+.rd-flow .bk .sub{display:block;font-family:var(--sans);font-size:.62em;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.rd-flow .bk svg{display:block;width:88%;max-width:420px;height:auto;margin:.35em auto 0;color:var(--ulos)}
+.rd-flow .end{text-align:center;color:var(--ulos);font-family:var(--batak);font-size:1.5em;letter-spacing:.3em;margin-top:.6em;break-inside:avoid}
+.rd-flow .end small{display:block;font-family:var(--sans);font-size:.4em;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.rd-zone{position:absolute;top:0;bottom:0;width:13%;border:0;background:transparent;cursor:pointer;z-index:2;padding:0}
+.rd-zl{left:0}.rd-zr{right:0}
+.rd-zone:hover{background:linear-gradient(90deg,color-mix(in srgb,var(--ulos) 8%,transparent),transparent)}
+.rd-zr:hover{background:linear-gradient(270deg,color-mix(in srgb,var(--ulos) 8%,transparent),transparent)}
+.rd-msg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);pointer-events:none;padding:20px}
+.rd-msg:empty{display:none}
+.rd-scrub{width:100%;max-width:720px;display:block;margin:16px auto 0;accent-color:var(--ulos)}
+.rd-note{text-align:center}
+/* layar penuh */
+.rd.full{position:fixed;inset:0;z-index:60;background:var(--page);padding:calc(10px + env(safe-area-inset-top,0px)) 12px calc(10px + env(safe-area-inset-bottom,0px));overflow:hidden;display:flex;flex-direction:column}
+.rd.full .rd-bar{margin-bottom:10px}
+.rd.full .rd-note{display:none}
+.rd.full .rd-scrub{margin-top:8px}
+body.rd-lock{overflow:hidden}
+@media (max-width:620px){.rd-f{flex:1 1 30%}.rd-f span{display:none}.rd-ctl{gap:5px;flex-wrap:nowrap}.rd-sep{flex:1 1 0;min-width:0}.rd-ib{min-width:34px;height:38px;padding:0 6px;font-size:16px}.rd-pg input{width:3.4em;height:38px}.rd-pg{gap:3px;font-size:14px}}
+/* ===== Profil ===== */
+.pf{display:grid;grid-template-columns:minmax(220px,320px) 1fr;gap:28px;align-items:start}
+@media (max-width:760px){.pf{grid-template-columns:1fr}}
+.pf-photo{position:relative;border-radius:18px;overflow:hidden;background:var(--hitam);aspect-ratio:4/5;box-shadow:var(--shadow)}
+.pf-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.pf-ph{display:flex;align-items:center;justify-content:center;height:100%;color:var(--putih);font-family:var(--serif);font-size:72px;font-weight:800}
+.pf h2{margin-top:4px}
+.pf .role{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--muted);margin:0 0 16px}
+.pf .bt-name{font-family:var(--batak);font-size:34px;color:var(--ulos);line-height:1.4;display:block}
+.pf .bio p{margin:0 0 12px;font-size:18px;line-height:1.65}
+.pf-soc{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.pf-soc a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:8px 14px;transition:border-color .2s,transform .15s}
+.pf-soc a:hover{border-color:var(--ulos);transform:translateY(-2px)}
+.pf-soc svg{width:16px;height:16px;color:var(--ulos)}
+.pf-empty{text-align:center;padding:40px 16px}
+/* ===== Statistik ===== */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:10px 0 20px}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
+.kpi .k{font-size:14px;color:var(--muted)}
+.kpi .v{font-family:var(--serif);font-weight:800;font-size:clamp(28px,4vw,38px);line-height:1.1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.kpi .s{font-size:13px;color:var(--muted)}
+.chartcard{padding:16px 18px}
+.ch-t{margin:0 0 8px;font-size:18px}
+.ch-t::before{display:none}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .bar{fill:var(--ulos)}
+.chart .bar.hl{fill:var(--ink)}
+.chart .hit{fill:transparent;cursor:default}
+.chart .ax{font:12px var(--sans);fill:var(--muted)}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .base{stroke:var(--muted);stroke-width:1}
+.hbars{display:grid;gap:8px}
+.hbar{display:grid;grid-template-columns:130px 1fr 52px;gap:10px;align-items:center;font-size:15px}
+.hbar .tr{height:14px;background:var(--paper-2);border-radius:4px;overflow:hidden}
+.hbar .tr i{display:block;height:100%;background:var(--ulos);border-radius:0 4px 4px 0}
+.hbar .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.sttip{position:fixed;z-index:70;pointer-events:none;background:var(--hitam);color:var(--putih);border-radius:8px;padding:6px 10px;font-size:14px;box-shadow:var(--shadow);white-space:nowrap}
+.pf-photo .ipon{position:absolute;left:0;right:0;bottom:0;height:14px;background-size:30px 14px}
+
+/* ===== Artikel (ringkas di aplikasi) ===== */
+.btn{text-decoration:none;display:inline-block}
+.ar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px;margin-top:16px}
+.ar-card{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,border-color .2s}
+.ar-card:hover{transform:translateY(-3px);border-color:var(--ulos)}
+.ar-media{position:relative;aspect-ratio:16/9;background:var(--hitam);overflow:hidden}
+.ar-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ar-media .gl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--batak);color:var(--putih);font-size:38px;padding:12px;text-align:center}
+.ar-txt{padding:14px 16px 16px;display:grid;gap:2px}
+.ar-kat{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ulos);font-weight:700}
+.ar-txt h3{margin:2px 0;font-size:20px;line-height:1.2}
+.ar-txt h3::before{display:none}
+.ar-bt{font-family:var(--batak);font-size:19px;color:var(--muted);line-height:1.5}
+.ar-meta{font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-pat" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div>
+      <p class="kicker">Aksara Batak Toba</p>
+      <h1>Surat <em>Batak</em></h1>
+      <p class="lede">Belajar dan alih aksara Batak Toba: tulis huruf Latin untuk melihatnya dalam aksara Batak, atau tempel aksara Batak untuk membacanya dalam huruf Latin.</p>
+    </div>
+    <div class="hero-card" aria-live="off">
+      <div class="lab">Dibaca</div>
+      <span id="brandBt" lang="bbc" aria-hidden="true"></span>
+      <span id="heroLt"></span>
+    </div>
+  </div>
+  <div class="ipon" aria-hidden="true"></div>
+</header>
+<div class="navbar">
+  <div class="wrap">
+    <nav class="tabs" role="tablist" aria-label="Bagian aplikasi">
+      <button role="tab" aria-selected="true" data-tab="convert">Alih aksara</button>
+      <button role="tab" aria-selected="false" data-tab="bibel">Bibel</button>
+      <button role="tab" aria-selected="false" data-tab="artikel">Artikel</button>
+      <button role="tab" aria-selected="false" data-tab="file">Dari berkas</button>
+      <button role="tab" aria-selected="false" data-tab="learn">Belajar huruf</button>
+      <button role="tab" aria-selected="false" data-tab="say">Umpasa &amp; poda</button>
+      <button role="tab" aria-selected="false" data-tab="quiz">Latihan</button>
+      <button role="tab" aria-selected="false" data-tab="profil">Profil penulis</button>
+      <button role="tab" aria-selected="false" data-tab="stats">Statistik</button>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+  <!-- ALIH AKSARA -->
+  <section class="panel on" id="p-convert" role="tabpanel">
+    <div class="dir" role="group" aria-label="Arah alih aksara">
+      <button id="dirL2B" aria-pressed="true">Latin ke aksara Batak</button>
+      <button id="dirB2L" aria-pressed="false">Aksara Batak ke Latin</button>
+    </div>
+    <div class="row">
+      <div>
+        <label class="lbl" for="inp" id="inpLbl">Teks Latin</label>
+        <textarea id="inp" spellcheck="false" placeholder="Contoh: Horas! Anduhur pidong toba sirubaruba pidong harangan."></textarea>
+        <div class="tools">
+          <span id="modeWrap" hidden>
+            <label for="mode" class="hint" style="margin:0">Jenis masukan</label>
+            <select id="mode">
+              <option value="auto">Kenali otomatis</option>
+              <option value="unicode">Aksara Batak (Unicode)</option>
+              <option value="toba">Kode ketikan font Toba</option>
+            </select>
+          </span>
+          <button class="btn ghost" id="clearBtn">Kosongkan</button>
+          <button class="btn ghost" id="kbdBtn" hidden aria-expanded="false">Papan ketik aksara</button>
+        </div>
+        <div class="kbd" id="kbd" hidden></div>
+      </div>
+      <div>
+        <div id="outB" class="card">
+          <div class="out-batak" id="outUni" lang="bbc"><span class="placeholder">Hasil aksara Batak muncul di sini.</span></div>
+          <div class="tools"><button class="btn" id="copyUni">Salin aksara</button></div>
+          <label class="lbl" style="margin-top:16px">Kode ketikan font Toba</label>
+          <div class="code" id="outToba"></div>
+          <div class="tools"><button class="btn ghost" id="copyToba">Salin kode</button></div>
+          <p class="hint">Tempel kode ini di Word lalu beri font Toba. Pada tampilan Unicode di atas, paninggil (ng) bisa tampil di atas huruf induk, bukan di atas tanda vokal; itu keterbatasan font Noto Sans Batak.</p>
+        </div>
+        <div id="outL" class="card" hidden>
+          <div class="out-latin" id="outLatin"><span class="placeholder">Hasil huruf Latin muncul di sini.</span></div>
+          <div class="tools"><button class="btn" id="copyLatin">Salin teks</button></div>
+          <p class="hint">Aksara Batak memakai huruf ha untuk bunyi h dan k, sehingga bunyi k di awal suku kata terbaca h. Huruf serapan f, v, dan z juga kembali sebagai p dan j.</p>
+        </div>
+      </div>
+    </div>
+    <div id="breakdownWrap" hidden>
+      <h3>Uraian per suku kata</h3>
+      <div class="card scroll"><table id="breakdown"><thead><tr><th>Suku kata</th><th>Aksara</th><th>Kode Toba</th><th>Cara menulis</th></tr></thead><tbody></tbody></table></div>
+      <p class="hint" id="bdNote"></p>
+    </div>
+  </section>
+
+  <!-- DARI BERKAS -->
+  <section class="panel" id="p-file" role="tabpanel">
+    <h2>Alih aksara dari berkas</h2>
+    <p class="hint" style="margin-bottom:14px">Teks, Word (.docx), PDF, atau foto. Semua berkas diproses di perangkat Anda dan tidak dikirim ke mana pun. Foto dan PDF hasil pindaian dibaca sebagai teks Latin; foto tulisan aksara Batak belum bisa dibaca otomatis.</p>
+    <div class="drop" id="drop" tabindex="0" role="button" aria-label="Pilih berkas">
+      <strong>Taruh berkas di sini atau klik untuk memilih</strong>
+      <div class="hint">.txt, .md, .docx, .pdf, .jpg, .png, .webp</div>
+    </div>
+    <input type="file" id="fileInp" accept=".txt,.md,.docx,.pdf,image/jpeg,image/png,image/webp" hidden>
+    <div class="status" id="fStatus" role="status"></div>
+    <div class="tools" id="scanWrap" hidden><button class="btn" id="scanBtn">Baca halaman sebagai gambar</button><span class="hint" id="scanHint"></span></div>
+    <div id="fWork" hidden>
+      <h3>Teks yang terbaca</h3>
+      <textarea id="fText" spellcheck="false"></textarea>
+      <div class="tools">
+        <label for="fKind" class="hint" style="margin:0">Isi berkas berupa</label>
+        <select id="fKind">
+          <option value="latin">Huruf Latin</option>
+          <option value="unicode">Aksara Batak (Unicode)</option>
+          <option value="toba">Kode ketikan font Toba</option>
+        </select>
+        <button class="btn" id="fGo">Alih aksarakan</button>
+      </div>
+      <div id="fResult" hidden>
+        <h3 id="fResTitle">Hasil</h3>
+        <div class="card">
+          <div id="fResBatak" class="out-batak" hidden></div>
+          <div id="fResLatin" class="out-latin" hidden></div>
+          <label class="lbl" id="fCodeLbl" style="margin-top:12px" hidden>Kode ketikan font Toba</label>
+          <div class="code" id="fResToba" hidden></div>
+          <div class="tools">
+            <button class="btn" id="fCopy">Salin hasil</button>
+            <button class="btn ghost" id="fCopyToba" hidden>Salin kode Toba</button>
+            <button class="btn ghost" id="fSave" hidden>Simpan sebagai .txt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BELAJAR -->
+  <section class="panel" id="p-learn" role="tabpanel">
+    <h2>Ina ni surat</h2>
+    <p class="hint">Sembilan belas huruf induk Batak Toba. Setiap huruf konsonan sudah membawa bunyi a. Di bawah setiap huruf ada tombol yang diketik untuk font Toba.</p>
+    <div class="letters" id="letters" style="margin-top:14px"></div>
+    <h3>Anak ni surat, dicontohkan pada huruf ba</h3>
+    <div class="card scroll"><table id="signs"><thead><tr><th>Nama</th><th>Bunyi</th><th>Aksara</th><th>Dibaca</th><th>Kode Toba</th></tr></thead><tbody></tbody></table></div>
+    <h3>Aturan penulisan</h3>
+    <div class="rules" id="rules"></div>
+  </section>
+
+  <!-- BIBEL -->
+  <section class="panel" id="p-bibel" role="tabpanel">
+    <div class="rd" id="rd">
+      <div class="rd-bar">
+        <div class="rd-row">
+          <label class="rd-f"><span>Kitab</span><select id="rdBook" aria-label="Pilih kitab"></select></label>
+          <label class="rd-f"><span>Pasal</span><select id="rdChap" aria-label="Pilih pasal"></select></label>
+          <label class="rd-f"><span>Tampilan</span>
+            <select id="rdMode" aria-label="Tampilan teks">
+              <option value="aksara">Aksara</option>
+              <option value="paralel">Aksara + Latin</option>
+              <option value="latin">Latin</option>
+            </select>
+          </label>
+        </div>
+        <div class="rd-row rd-ctl">
+          <button class="rd-ib" id="rdPrev" aria-label="Halaman sebelumnya">&#8249;</button>
+          <span class="rd-pg"><input id="rdPageIn" type="number" min="1" inputmode="numeric" aria-label="Nomor halaman"><span id="rdPageTot">/ 1</span></span>
+          <button class="rd-ib" id="rdNext" aria-label="Halaman berikutnya">&#8250;</button>
+          <span class="rd-sep" aria-hidden="true"></span>
+          <button class="rd-ib" id="rdZoomOut" aria-label="Perkecil huruf">A&#8722;</button>
+          <button class="rd-ib" id="rdZoomIn" aria-label="Perbesar huruf">A+</button>
+          <button class="rd-ib" id="rdSearchBtn" aria-label="Cari ayat" aria-expanded="false">&#9906;</button>
+          <button class="rd-ib" id="rdFull" aria-label="Layar penuh">&#x26F6;</button>
+        </div>
+      </div>
+      <div class="rd-search" id="rdSearch" hidden>
+        <input type="search" id="rdQ" placeholder="Cari kata dalam kitab ini (huruf Latin)" aria-label="Cari dalam kitab">
+        <div class="rd-res" id="rdRes"></div>
+      </div>
+      <div class="rd-stagewrap" id="rdWrap">
+        <div class="rd-stage" id="rdStage">
+          <div class="rd-paper" id="rdP1"><span class="rd-foot"><span class="rd-fb"></span><span class="rd-fn"></span></span></div>
+          <div class="rd-paper" id="rdP2" hidden><span class="rd-foot"><span class="rd-fb"></span><span class="rd-fn"></span></span></div>
+          <div class="rd-clip" id="rdClip"><div class="rd-flow" id="rdFlow" lang="bbc"></div></div>
+          <button class="rd-zone rd-zl" id="rdZL" tabindex="-1" aria-hidden="true"></button>
+          <button class="rd-zone rd-zr" id="rdZR" tabindex="-1" aria-hidden="true"></button>
+        </div>
+        <div class="rd-msg" id="rdMsg" role="status"></div>
+      </div>
+      <input type="range" id="rdScrub" class="rd-scrub" min="1" max="1" value="1" aria-label="Geser halaman">
+      <p class="hint rd-note">Geser layar atau pakai tombol panah untuk membalik halaman. Posisi baca terakhir tersimpan di perangkat ini.</p>
+    </div>
+  </section>
+
+  <!-- ARTIKEL -->
+  <section class="panel" id="p-artikel" role="tabpanel">
+    <h2>Artikel</h2>
+    <p class="hint">Tulisan tentang aksara, adat, dan budaya Batak Toba.</p>
+    <div class="ar-grid" id="arList"></div>
+    <p class="status" id="arMsg" role="status"></p>
+    <div class="tools"><a class="btn" href="/artikel/">Semua artikel</a></div>
+  </section>
+
+  <!-- UMPASA, UMPAMA, HATA PODA -->
+  <section class="panel" id="p-say" role="tabpanel">
+    <h2>Umpasa, umpama, dan hata poda</h2>
+    <p class="hint">Ungkapan Batak Toba dalam aksara dan huruf Latin. Sebagian dilengkapi arti dan kapan biasa diucapkan. Anda juga bisa menambahkan koleksi sendiri.</p>
+    <div class="card today" id="sToday" style="margin-top:14px"></div>
+    <div class="tools" style="margin-top:18px">
+      <div class="chips" id="sChips" role="group" aria-label="Saring jenis"></div>
+      <input type="search" id="sSearch" placeholder="Cari kata atau arti" aria-label="Cari ungkapan">
+    </div>
+    <div id="sList" class="slist"></div>
+    <p class="hint" id="sEmpty" hidden>Tidak ada ungkapan yang cocok. Ubah pencarian atau pilih jenis lain.</p>
+    <h3>Tambah ungkapan sendiri</h3>
+    <div class="card">
+      <div class="sform">
+        <label>Jenis
+          <select id="sfType"><option value="umpasa">Umpasa</option><option value="umpama">Umpama</option><option value="poda">Hata poda</option></select>
+        </label>
+        <label>Teks dalam huruf Latin<textarea id="sfText" rows="3" placeholder="Tulis ungkapannya di sini"></textarea></label>
+        <label>Arti<textarea id="sfMean" rows="2" placeholder="Arti dalam bahasa Indonesia (boleh dikosongkan)"></textarea></label>
+      </div>
+      <div class="tools"><button class="btn" id="sfAdd">Simpan ungkapan</button><span class="hint" id="sfMsg" style="margin:0"></span></div>
+      <p class="hint">Ungkapan yang Anda tambahkan tersimpan di peramban perangkat ini saja.</p>
+    </div>
+  </section>
+
+  <!-- LATIHAN -->
+  <section class="panel" id="p-quiz" role="tabpanel">
+    <h2>Latihan</h2>
+    <div class="tools" style="margin:6px 0 16px">
+      <div class="dir" role="group" aria-label="Jenis latihan" style="margin:0">
+        <button id="qRead" aria-pressed="true">Baca aksara</button>
+        <button id="qWrite" aria-pressed="false">Tulis aksara</button>
+      </div>
+      <button class="btn ghost" id="qRestart">Mulai ulang</button>
+    </div>
+    <div class="card" style="max-width:620px">
+      <div class="score"><span id="qProg"></span><span id="qScore"></span></div>
+      <div id="qPrompt"></div>
+      <div class="opts" id="qOpts"></div>
+      <p class="hint" id="qFeedback" aria-live="polite"></p>
+      <div class="tools"><button class="btn" id="qNext" hidden>Soal berikutnya</button></div>
+    </div>
+  </section>
+  <!-- PROFIL PENULIS -->
+  <section class="panel" id="p-profil" role="tabpanel">
+    <div id="pfWrap"></div>
+  </section>
+
+  <!-- STATISTIK -->
+  <section class="panel" id="p-stats" role="tabpanel">
+    <h2>Statistik kunjungan</h2>
+    <p class="hint">Jumlah kunjungan dan waktu aplikasi dibuka, dihitung tanpa menyimpan data pribadi pengunjung. Waktu memakai WIB.</p>
+    <div class="tools" style="margin:14px 0 6px">
+      <div class="dir" role="group" aria-label="Rentang waktu" id="stRange" style="margin:0">
+        <button data-d="7" aria-pressed="false">7 hari</button>
+        <button data-d="30" aria-pressed="true">30 hari</button>
+        <button data-d="90" aria-pressed="false">90 hari</button>
+      </div>
+      <button class="btn ghost" id="stTableBtn" aria-expanded="false">Lihat sebagai tabel</button>
+    </div>
+    <p class="status" id="stMsg" role="status"></p>
+    <div id="stBody" hidden>
+      <div class="kpis" id="stKpi"></div>
+      <div class="card chartcard"><h3 class="ch-t">Kunjungan per hari</h3><div class="chart" id="stDaily"></div></div>
+      <div class="row" style="margin-top:20px">
+        <div class="card chartcard"><h3 class="ch-t">Jam paling ramai (WIB)</h3><div class="chart" id="stHours"></div></div>
+        <div class="card chartcard"><h3 class="ch-t">Hari dalam seminggu</h3><div class="chart" id="stWeek"></div></div>
+      </div>
+      <div class="card chartcard" style="margin-top:20px"><h3 class="ch-t">Bagian yang paling sering dibuka</h3><div id="stTabs" class="hbars"></div></div>
+      <div class="card scroll" id="stTable" style="margin-top:20px" hidden></div>
+      <p class="hint" id="stGen"></p>
+    </div>
+    <div id="stTip" class="sttip" role="tooltip" hidden></div>
+  </section>
+</main>
+<div class="foot-band" aria-hidden="true"></div>
+<footer class="wrap">Aturan alih aksara mengikuti kaidah Batak Toba yang dipakai untuk mengalihaksarakan Bibel: tanda vokal suku kata tertutup ditulis pada konsonan penutup, huruf i dan u hanya untuk vokal yang berdiri sendiri, dan ha mewakili bunyi h dan k.</footer>
+<script>
+// ===== Mesin alih aksara Batak Toba =====
+const BT = (() => {
+  const VOW = new Set(['a','i','u','e','o']);
+  // konsonan Latin -> [kode Toba dasar, kode Toba + u, Unicode]
+  const CONS = {
+    ng:['<','>','\u1BDD'], ny:['[',']','\u1BE0'], h:['h','H','\u1BC2'], k:['h','H','\u1BC2'],
+    b:['b','B','\u1BC5'], p:['p','P','\u1BC7'], n:['n','N','\u1BC9'], w:['w','W','\u1BCB'],
+    g:['g','G','\u1BCE'], j:['j','J','\u1BD0'], d:['d','D','\u1BD1'], r:['r','R','\u1BD2'],
+    m:['m','M','\u1BD4'], t:['t','T','\u1BD6'], s:['s','S','\u1BD8'], y:['y','Y','\u1BDB'],
+    l:['l','L','\u1BDE'], c:['c','C','\u1BE1'], f:['p','P','\u1BC7'], v:['p','P','\u1BC7'],
+    z:['j','J','\u1BD0'], q:['h','H','\u1BC2']
+  };
+  const U = { A:'\u1BC0', I:'\u1BE4', UU:'\u1BE5', sE:'\u1BE9', sI:'\u1BEA', sO:'\u1BEC', sU:'\u1BEE',
+              NG:'\u1BF0', H:'\u1BF1', P:'\u1BF2' };
+  const VSIGN_T = {a:'',i:'i',e:'e',o:'o'};
+  const VSIGN_U = {a:'',i:U.sI,e:U.sE,o:U.sO,u:U.sU};
+  const INIT_T = {a:'a',i:'I',u:'U',e:'ae',o:'ao'};
+  const INIT_U = {a:U.A,i:U.I,u:U.UU,e:U.A+U.sE,o:U.A+U.sO};
+
+  function tokens(w){
+    w = w.toLowerCase().replace(/x/g,'ks');
+    const out=[]; let i=0;
+    while(i<w.length){
+      const two=w.slice(i,i+2);
+      if(two==='ng'||two==='ny'){out.push(two);i+=2;} else {out.push(w[i]);i++;}
+    }
+    return out;
+  }
+  function syllables(w){
+    const t=tokens(w), syl=[]; let i=0;
+    while(i<t.length){
+      let onset=null;
+      if(!VOW.has(t[i])){onset=t[i];i++;}
+      if(i>=t.length||!VOW.has(t[i])){syl.push({onset,v:null,coda:null});continue;}
+      const v=t[i]; i++;
+      let coda=null;
+      if(i<t.length && !VOW.has(t[i]) && (i+1>=t.length || !VOW.has(t[i+1]))){coda=t[i];i++;}
+      syl.push({onset,v,coda});
+    }
+    return syl;
+  }
+  const latinSyl = s => (s.onset||'')+(s.v||'')+(s.coda||'');
+
+  // satu suku kata -> {toba, uni, note}
+  function sylOut(s){
+    const C = x => CONS[x] || [x,x,x];
+    if(s.v===null) return {toba:C(s.onset)[0]+'\\', uni:C(s.onset)[2]+U.P, note:'Konsonan tanpa vokal: huruf induk + pangolat'};
+    const openT = () => s.onset ? (s.v==='u'?C(s.onset)[1]:C(s.onset)[0]+VSIGN_T[s.v]) : INIT_T[s.v];
+    const openU = () => s.onset ? C(s.onset)[2]+VSIGN_U[s.v] : INIT_U[s.v];
+    if(!s.coda){
+      return {toba:openT(), uni:openU(), note: s.onset ? (s.v==='a'?'Huruf induk (bunyi a melekat)':'Huruf induk + tanda vokal '+s.v) :
+        (s.v==='i'||s.v==='u' ? 'Vokal '+s.v+' berdiri sendiri: huruf induk '+s.v : (s.v==='a'?'Huruf a':'Huruf a + tanda vokal '+s.v))};
+    }
+    if(s.coda==='ng') return {toba:openT()+'^', uni:openU()+U.NG, note:'ng penutup: paninggil'};
+    if(s.coda==='h') return {toba:openT()+'x', uni:openU()+U.H, note:'h penutup: hajoringan'};
+    // suku kata tertutup: tanda vokal pindah ke konsonan penutup (kode Toba)
+    const first = s.onset ? C(s.onset)[0] : 'a';
+    const cc = C(s.coda);
+    const toba = first + (s.v==='u' ? cc[1] : cc[0]+VSIGN_T[s.v]) + '\\';
+    const uni = (s.onset ? C(s.onset)[2] : U.A) + VSIGN_U[s.v] + cc[2] + U.P;
+    const note = 'Suku kata tertutup: konsonan '+s.coda+' + pangolat' + (s.v!=='a' ? '; tanda vokal '+s.v+' ditulis pada konsonan penutup' : '');
+    return {toba, uni, note};
+  }
+  function wordParts(w){ return syllables(w).map(s=>({latin:latinSyl(s), ...sylOut(s)})); }
+  function latinToBatak(text){
+    text = text.replace(/-/g,' ');
+    let toba='', uni='';
+    const re=/[A-Za-z]+|[^A-Za-z]+/g; let m;
+    while((m=re.exec(text))){
+      const piece=m[0];
+      if(/^[A-Za-z]+$/.test(piece)){ const ps=wordParts(piece); toba+=ps.map(p=>p.toba).join(''); uni+=ps.map(p=>p.uni).join(''); }
+      else { toba+=piece; uni+=piece; }
+    }
+    return {toba, uni};
+  }
+
+  // ===== Batak -> Latin (kode font Toba atau Unicode) =====
+  const BASE_T = {a:'a',h:'h',k:'h',b:'b',p:'p',n:'n',w:'w',g:'g',j:'j',d:'d',r:'r',m:'m',t:'t',f:'t',s:'s',y:'y',l:'l','<':'ng','[':'ny',c:'c'};
+  const BASEU_T = {A:'a',H:'h',K:'h',B:'b',P:'p',N:'n',W:'w',G:'g',J:'j',D:'d',R:'r',M:'m',T:'t',F:'t',S:'s',Y:'y',L:'l','>':'ng',']':'ny',C:'c'};
+  const UNI_BASE = {'\u1BC0':'a','\u1BC1':'a','\u1BC2':'h','\u1BC3':'h','\u1BC4':'h','\u1BC5':'b','\u1BC6':'b','\u1BC7':'p','\u1BC8':'p',
+    '\u1BC9':'n','\u1BCA':'n','\u1BCB':'w','\u1BCC':'w','\u1BCD':'w','\u1BCE':'g','\u1BCF':'g','\u1BD0':'j','\u1BD1':'d','\u1BD2':'r','\u1BD3':'r',
+    '\u1BD4':'m','\u1BD5':'m','\u1BD6':'t','\u1BD7':'t','\u1BD8':'s','\u1BD9':'s','\u1BDA':'s','\u1BDB':'y','\u1BDC':'y','\u1BDD':'ng',
+    '\u1BDE':'l','\u1BDF':'l','\u1BE0':'ny','\u1BE1':'c','\u1BE2':'nd','\u1BE3':'mb'};
+  const UNI_SIGN = {'\u1BE7':'e','\u1BE8':'e','\u1BE9':'e','\u1BEA':'i','\u1BEB':'i','\u1BEC':'o','\u1BED':'o','\u1BEE':'u','\u1BEF':'u'};
+
+  function isUnicodeBatak(s){ return /[\u1BC0-\u1BFF]/.test(s); }
+
+  // pecah jadi klaster: {c: konsonan|'' (vokal), v: vokal|null(default a), ng, h, kill, raw}
+  function clustersToba(word){
+    const cl=[]; let cur=null;
+    const push=()=>{ if(cur) cl.push(cur); cur=null; };
+    for(const ch of word){
+      if(ch==='I'||ch==='U'){ push(); cur={c:'',v:ch==='I'?'i':'u',letter:true}; }
+      else if(BASE_T[ch]!==undefined){ push(); cur = ch==='a' ? {c:'',v:null,letter:true} : {c:BASE_T[ch],v:null}; }
+      else if(BASEU_T[ch]!==undefined){ push(); cur = ch==='A' ? {c:'',v:'u',letter:true} : {c:BASEU_T[ch],v:'u'}; }
+      else if(cur && (ch==='i'||ch==='e'||ch==='o')) cur.v = ch;
+      else if(cur && ch==='^') cur.ng=true;
+      else if(cur && ch==='x') cur.h=true;
+      else if(cur && ch==='\\') cur.kill=true;
+      else { push(); cl.push({other:ch}); }
+    }
+    push(); return cl;
+  }
+  function clustersUni(word){
+    const cl=[]; let cur=null;
+    const push=()=>{ if(cur) cl.push(cur); cur=null; };
+    for(const ch of word){
+      if(ch==='\u1BE4'||ch==='\u1BE5'){ push(); cur={c:'',v:ch==='\u1BE4'?'i':'u',letter:true}; }
+      else if(UNI_BASE[ch]!==undefined){ push(); cur = UNI_BASE[ch]==='a' ? {c:'',v:null,letter:true} : {c:UNI_BASE[ch],v:null}; }
+      else if(cur && UNI_SIGN[ch]) cur.v=UNI_SIGN[ch];
+      else if(cur && ch==='\u1BF0') cur.ng=true;
+      else if(cur && ch==='\u1BF1') cur.h=true;
+      else if(cur && (ch==='\u1BF2'||ch==='\u1BF3')) cur.kill=true;
+      else if(ch==='\u200D'||ch==='\u200C') {}
+      else { push(); cl.push({other:ch}); }
+    }
+    push(); return cl;
+  }
+  function clustersToLatin(cl){
+    // kembalikan tanda vokal yang "pindah" ke konsonan penutup
+    for(let i=1;i<cl.length;i++){
+      const c=cl[i], p=cl[i-1];
+      if(c.kill && c.v && !p.other && !p.kill && !p.ng && !p.h && (p.v===null)){
+        p.v=c.v; c.v=null;
+      }
+    }
+    let out='';
+    for(const c of cl){
+      if(c.other!==undefined){ out+=c.other; continue; }
+      let s='';
+      if(c.kill){ s = c.c==='h' ? 'k' : c.c; if(c.letter) s=(c.v||'a'); }
+      else s = c.c + (c.v||'a');
+      if(c.ng) s+='ng';
+      if(c.h) s+='h';
+      out+=s;
+    }
+    return out;
+  }
+  function batakToLatin(text, mode){
+    const uni = mode ? mode==='unicode' : isUnicodeBatak(text);
+    if(uni) return clustersToLatin(clustersUni(text));
+    // kode Toba: proses per "kata" (rangkaian karakter non-spasi)
+    return text.split(/(\s+)/).map(part=>/^\s+$/.test(part)?part:clustersToLatin(clustersToba(part))).join('');
+  }
+  function looksLikeTobaCode(t){
+    const n=(t.match(/[\\^]/g)||[]).length, w=(t.match(/\S+/g)||[]).length||1;
+    return n/w > 0.25;
+  }
+  return {latinToBatak, wordParts, batakToLatin, isUnicodeBatak, looksLikeTobaCode, syllables};
+})();
+if(typeof module!=='undefined') module.exports=BT;
+
+(function(){
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const store = { get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} } };
+
+$('brandBt').textContent = BT.latinToBatak('surat batak').uni;
+
+/* ---------- tab ---------- */
+document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('nav.tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+  document.querySelectorAll('section.panel').forEach(p => p.classList.toggle('on', p.id === 'p-' + b.dataset.tab));
+}));
+
+/* ---------- salin ---------- */
+async function copyText(text, btn){
+  const old = btn.textContent;
+  try { await navigator.clipboard.writeText(text); btn.textContent = 'Tersalin'; }
+  catch(e){
+    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); btn.textContent = 'Tersalin'; }catch(_){ btn.textContent = 'Gagal menyalin'; }
+    ta.remove();
+  }
+  setTimeout(() => btn.textContent = old, 1400);
+}
+
+/* ---------- alih aksara ---------- */
+let dir = 'l2b';
+const inp = $('inp');
+function setDir(d){
+  dir = d;
+  $('dirL2B').setAttribute('aria-pressed', d === 'l2b');
+  $('dirB2L').setAttribute('aria-pressed', d === 'b2l');
+  $('inpLbl').textContent = d === 'l2b' ? 'Teks Latin' : 'Aksara Batak';
+  $('modeWrap').hidden = d === 'l2b';
+  $('kbdBtn').hidden = d === 'l2b';
+  if(d === 'l2b'){ $('kbd').hidden = true; $('kbdBtn').setAttribute('aria-expanded','false'); }
+  inp.placeholder = d === 'l2b' ? 'Contoh: Horas! Anduhur pidong toba sirubaruba pidong harangan.' : 'Tempel aksara Batak (Unicode) atau kode font Toba, misalnya: hor\\';
+  $('outB').hidden = d !== 'l2b';
+  $('outL').hidden = d === 'l2b';
+  render();
+}
+$('dirL2B').onclick = () => setDir('l2b');
+$('dirB2L').onclick = () => {
+  // bawa hasil ke arah sebaliknya bila ada
+  if(dir === 'l2b' && inp.value.trim()) inp.value = BT.latinToBatak(inp.value).uni;
+  setDir('b2l');
+};
+$('clearBtn').onclick = () => { inp.value=''; render(); inp.focus(); };
+
+function updateInputFont(){
+  const v = inp.value;
+  inp.classList.toggle('batak', dir === 'b2l' && BT.isUnicodeBatak(v));
+}
+function render(){
+  updateInputFont();
+  const v = inp.value;
+  if(dir === 'l2b'){
+    if(!v.trim()){
+      $('outUni').innerHTML = '<span class="placeholder">Hasil aksara Batak muncul di sini.</span>';
+      $('outToba').textContent = ''; $('breakdownWrap').hidden = true; return;
+    }
+    const r = BT.latinToBatak(v);
+    $('outUni').textContent = r.uni;
+    $('outToba').textContent = r.toba;
+    renderBreakdown(v);
+  } else {
+    $('breakdownWrap').hidden = true;
+    if(!v.trim()){ $('outLatin').innerHTML = '<span class="placeholder">Hasil huruf Latin muncul di sini.</span>'; return; }
+    const m = $('mode').value;
+    const mode = m === 'auto' ? (BT.isUnicodeBatak(v) ? 'unicode' : 'toba') : m;
+    $('outLatin').textContent = BT.batakToLatin(v, mode);
+  }
+}
+function renderBreakdown(text){
+  const words = (text.replace(/-/g,' ').match(/[A-Za-z]+/g) || []);
+  const max = 12, tb = $('breakdown').querySelector('tbody');
+  let html = '';
+  words.slice(0, max).forEach(w => {
+    const r = BT.latinToBatak(w);
+    html += '<tr class="word"><td>' + esc(w) + '</td><td class="g">' + esc(r.uni) + '</td><td class="k">' + esc(r.toba) + '</td><td></td></tr>';
+    BT.wordParts(w).forEach(p => {
+      html += '<tr><td>' + esc(p.latin) + '</td><td class="g">' + esc(p.uni) + '</td><td class="k">' + esc(p.toba) + '</td><td>' + esc(p.note) + '</td></tr>';
+    });
+  });
+  tb.innerHTML = html;
+  $('breakdownWrap').hidden = words.length === 0;
+  $('bdNote').textContent = words.length > max ? 'Uraian menampilkan ' + max + ' kata pertama.' : '';
+}
+let t; inp.addEventListener('input', () => { clearTimeout(t); t = setTimeout(render, 80); });
+$('mode').onchange = render;
+$('copyUni').onclick = e => copyText($('outUni').textContent, e.currentTarget);
+$('copyToba').onclick = e => copyText($('outToba').textContent, e.currentTarget);
+$('copyLatin').onclick = e => copyText($('outLatin').textContent, e.currentTarget);
+
+/* papan ketik aksara (Unicode) */
+const LETTERS = [['a','a'],['ha','h'],['ma','m'],['na','n'],['ra','r'],['ta','t'],['sa','s'],['pa','p'],['la','l'],['ga','g'],['ja','j'],['da','d'],['nga','<'],['ba','b'],['wa','w'],['ya','y'],['nya','['],['i','I'],['u','U']];
+const SIGNS = [
+  {name:'hauluan', sound:'i', uni:'\u1BEA', code:'i', read:'bi'},
+  {name:'haboritan', sound:'u', uni:'\u1BEE', code:'huruf kapital (B)', read:'bu'},
+  {name:'haluain', sound:'e', uni:'\u1BE9', code:'e', read:'be'},
+  {name:'sihora', sound:'o', uni:'\u1BEC', code:'o', read:'bo'},
+  {name:'paninggil', sound:'ng di akhir', uni:'\u1BF0', code:'^', read:'bang'},
+  {name:'hajoringan', sound:'h di akhir', uni:'\u1BF1', code:'x', read:'bah'},
+  {name:'pangolat', sound:'mematikan vokal', uni:'\u1BF2', code:'\\', read:'b'}
+];
+const BA = '\u1BC5';
+function uniOf(latin){ return BT.latinToBatak(latin).uni; }
+(function buildKbd(){
+  const k = $('kbd'); let html = '';
+  LETTERS.forEach(([l]) => { html += '<button type="button" data-ins="' + uniOf(l) + '"><b>' + uniOf(l) + '</b><small>' + l + '</small></button>'; });
+  html += '<span class="sep"></span>';
+  SIGNS.forEach(s => { html += '<button type="button" data-ins="' + s.uni + '"><b>' + BA + s.uni + '</b><small>' + s.name + '</small></button>'; });
+  html += '<button type="button" data-ins=" "><b>&nbsp;</b><small>spasi</small></button><button type="button" data-del="1"><b>&#9003;</b><small>hapus</small></button>';
+  k.innerHTML = html;
+  k.addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    const s = inp.selectionStart, en = inp.selectionEnd, v = inp.value;
+    if(b.dataset.del){
+      const cut = s === en ? Math.max(0, s - 1) : s;
+      inp.value = v.slice(0, cut) + v.slice(en); inp.selectionStart = inp.selectionEnd = cut;
+    } else {
+      inp.value = v.slice(0, s) + b.dataset.ins + v.slice(en); inp.selectionStart = inp.selectionEnd = s + b.dataset.ins.length;
+    }
+    inp.focus(); render();
+  });
+})();
+$('kbdBtn').onclick = () => { const k = $('kbd'); k.hidden = !k.hidden; $('kbdBtn').setAttribute('aria-expanded', String(!k.hidden)); };
+
+/* ---------- belajar ---------- */
+(function buildLearn(){
+  $('letters').innerHTML = LETTERS.map(([l, code]) =>
+    '<div class="letter"><span class="g">' + uniOf(l) + '</span><span class="l">' + l + '</span><div class="k">tombol ' + esc(code) + '</div></div>').join('');
+  $('signs').querySelector('tbody').innerHTML = SIGNS.map(s => {
+    const r = BT.latinToBatak(s.read === 'b' ? 'b' : s.read);
+    return '<tr><td>' + s.name + '</td><td>' + s.sound + '</td><td class="g">' + BA + s.uni + '</td><td>' + s.read + '</td><td class="k">' + esc(s.code === 'huruf kapital (B)' ? 'B' : r.toba) + '</td></tr>';
+  }).join('');
+  const RULES = [
+    ['Bunyi a sudah melekat pada setiap huruf induk konsonan, jadi tidak perlu tanda tambahan.', ['na','toba']],
+    ['Suku kata tertutup ditutup dengan konsonan berpangolat. Tanda vokalnya ditulis pada konsonan penutup itu, bukan pada huruf awalnya.', ['padot','bosur','burju']],
+    ['Bunyi ng di akhir suku kata ditulis dengan paninggil; ng yang mengawali suku kata memakai huruf nga.', ['pidong','denggan','mangula']],
+    ['Bunyi h di akhir suku kata ditulis dengan hajoringan.', ['bah','oloh']],
+    ['Huruf i dan u hanya dipakai bila vokal itu berdiri sendiri sebagai suku kata. Pada suku kata tertutup dipakai huruf a, begitu juga untuk vokal e dan o di awal kata.', ['idia','indukna','Umbahen','Unggas','Ende','Ondeng']],
+    ['Bunyi k ditulis dengan huruf ha.', ['halak','colok']],
+    ['Konsonan yang tidak diikuti vokal, seperti pada gugus kr, ditulis dengan pangolat.', ['Kristus']],
+    ['Huruf serapan f dan v ditulis dengan pa, dan z dengan ja. Tanda hubung pada nama diganti spasi.', ['Firaun','Zebulon']]
+  ];
+  $('rules').innerHTML = RULES.map(([txt, exs]) => '<div class="rule"><p>' + txt + '</p><div class="ex">' +
+    exs.map(w => { const r = BT.latinToBatak(w); return '<span><span class="g">' + r.uni + '</span> ' + w + ' <span class="c">' + esc(r.toba) + '</span></span>'; }).join('') + '</div></div>').join('');
+})();
+
+/* ---------- latihan ---------- */
+const WORDS = ['horas','burju','denggan','ende','ondeng','pidong','toba','halak','mangan','bosur','padot','mangula','harangan','tondi','langit','tano','aek','hata','roha','dalan','ari','bulan','mata','ulos','gondang','huta','inang','amang','boru','dongan','hula','debata','ulaon','pustaha','surat','dohot','asa','ingkon','indukna','sipanganon','namboru','tulang','bona','pasu','ginjang','toru','bagas','sopo','lombu','horbo'];
+let qMode = 'read', qList = [], qi = 0, qScore = 0, answered = false;
+const shuffle = a => { for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+function qStart(){
+  qList = shuffle(WORDS.slice()).slice(0, 10); qi = 0; qScore = 0; qShow();
+}
+function qShow(){
+  answered = false; $('qNext').hidden = true; $('qFeedback').textContent = '';
+  if(qi >= qList.length){
+    const best = Math.max(+(store.get('sb-best-' + qMode) || 0), qScore); store.set('sb-best-' + qMode, best);
+    $('qPrompt').innerHTML = '<p class="q-latin">' + qScore + ' dari ' + qList.length + '</p><p class="hint" style="text-align:center">Skor terbaik untuk latihan ini: ' + best + '</p>';
+    $('qOpts').innerHTML = ''; $('qProg').textContent = 'Selesai'; $('qScore').textContent = ''; return;
+  }
+  const w = qList[qi];
+  const opts = shuffle([w, ...shuffle(WORDS.filter(x => x !== w)).slice(0, 3)]);
+  $('qProg').textContent = 'Soal ' + (qi + 1) + ' dari ' + qList.length;
+  $('qScore').textContent = 'Benar ' + qScore;
+  if(qMode === 'read'){
+    $('qPrompt').innerHTML = '<div class="q-glyph" lang="bbc">' + uniOf(w) + '</div><p class="hint" style="text-align:center">Bagaimana kata ini dibaca?</p>';
+    $('qOpts').innerHTML = opts.map(o => '<button type="button" data-w="' + o + '">' + o + '</button>').join('');
+  } else {
+    $('qPrompt').innerHTML = '<div class="q-latin">' + w + '</div><p class="hint" style="text-align:center">Pilih tulisan aksara yang benar.</p>';
+    $('qOpts').innerHTML = opts.map(o => '<button type="button" class="batak" data-w="' + o + '">' + uniOf(o) + '</button>').join('');
+  }
+}
+$('qOpts').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b || answered) return;
+  answered = true;
+  const w = qList[qi], ok = b.dataset.w === w;
+  if(ok) qScore++;
+  $('qOpts').querySelectorAll('button').forEach(x => { if(x.dataset.w === w) x.classList.add('right'); else if(x === b) x.classList.add('wrong'); });
+  const r = BT.latinToBatak(w);
+  $('qFeedback').textContent = (ok ? 'Benar. ' : 'Belum tepat. ') + w + ' ditulis per suku kata: ' + BT.wordParts(w).map(p => p.latin).join('-') + ' (kode Toba ' + r.toba + ').';
+  $('qScore').textContent = 'Benar ' + qScore;
+  $('qNext').hidden = false; $('qNext').focus();
+});
+$('qNext').onclick = () => { qi++; qShow(); };
+$('qRestart').onclick = qStart;
+$('qRead').onclick = () => { qMode = 'read'; $('qRead').setAttribute('aria-pressed','true'); $('qWrite').setAttribute('aria-pressed','false'); qStart(); };
+$('qWrite').onclick = () => { qMode = 'write'; $('qWrite').setAttribute('aria-pressed','true'); $('qRead').setAttribute('aria-pressed','false'); qStart(); };
+qStart();
+
+/* ---------- dari berkas (versi mandiri: semua diproses di perangkat pengunjung) ---------- */
+const libs = {};
+function loadScript(src){
+  if(libs[src]) return libs[src];
+  return libs[src] = new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = () => { delete libs[src]; rej(new Error('load')); }; document.head.appendChild(s); });
+}
+const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+const PDFW = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+const MAMMOTH = 'https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js';
+const TESS = 'https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';
+let lastPdf = null, busy = false;
+const status = (msg, err) => { const el = $('fStatus'); el.textContent = msg; el.classList.toggle('err', !!err); };
+
+const drop = $('drop'), fileInp = $('fileInp');
+drop.onclick = () => fileInp.click();
+drop.onkeydown = e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); fileInp.click(); } };
+drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
+drop.ondragleave = () => drop.classList.remove('over');
+drop.ondrop = e => { e.preventDefault(); drop.classList.remove('over'); if(e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); };
+fileInp.onchange = () => { if(fileInp.files[0]) handleFile(fileInp.files[0]); fileInp.value = ''; };
+
+function guessKind(text){
+  if(BT.isUnicodeBatak(text)) return 'unicode';
+  if(BT.looksLikeTobaCode(text)) return 'toba';
+  return 'latin';
+}
+function showText(text, kind){
+  $('fWork').hidden = false; $('fResult').hidden = true;
+  $('fText').value = text; $('fKind').value = kind || guessKind(text);
+  $('fText').classList.toggle('batak', BT.isUnicodeBatak(text));
+}
+const offline = () => !navigator.onLine;
+async function handleFile(f){
+  if(busy) return;
+  $('scanWrap').hidden = true; lastPdf = null; $('fResult').hidden = true;
+  const name = f.name.toLowerCase();
+  try{
+    if(f.type.startsWith('image/')){ await ocr([f], 'foto'); return; }
+    if(name.endsWith('.txt') || name.endsWith('.md')){ showText(await f.text()); status('Berkas ' + f.name + ' terbaca.'); return; }
+    if(name.endsWith('.docx')){
+      status('Membaca ' + f.name + '...');
+      await loadScript(MAMMOTH);
+      const r = await window.mammoth.extractRawText({arrayBuffer: await f.arrayBuffer()});
+      showText(r.value.replace(/\n{3,}/g, '\n\n').trim()); status('Berkas ' + f.name + ' terbaca.'); return;
+    }
+    if(name.endsWith('.pdf')){
+      status('Membaca ' + f.name + '...');
+      await loadScript(PDFJS);
+      const pdfjs = window.pdfjsLib; pdfjs.GlobalWorkerOptions.workerSrc = PDFW;
+      const pdf = await pdfjs.getDocument({data: new Uint8Array(await f.arrayBuffer())}).promise;
+      lastPdf = pdf;
+      const out = [];
+      for(let p = 1; p <= pdf.numPages; p++){
+        const page = await pdf.getPage(p); const tc = await page.getTextContent();
+        let line = '', lastY = null;
+        tc.items.forEach(it => { const y = it.transform[5]; if(lastY !== null && Math.abs(y - lastY) > 2){ out.push(line); line = ''; } line += it.str; lastY = y; });
+        out.push(line); out.push('');
+        if(p % 10 === 0) status('Membaca halaman ' + p + ' dari ' + pdf.numPages + '...');
+      }
+      const text = out.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+      $('scanWrap').hidden = false;
+      $('scanHint').textContent = 'Membaca teks dari gambar setiap halaman (' + pdf.numPages + ' halaman).';
+      if(text.replace(/\s/g, '').length < 20){
+        $('fWork').hidden = true;
+        status('PDF ini tidak memuat lapisan teks, kemungkinan hasil pindaian. Tekan tombol di bawah untuk membacanya dari gambar halaman.', true);
+        return;
+      }
+      showText(text); status('PDF terbaca: ' + pdf.numPages + ' halaman.');
+      $('scanHint').textContent = 'Pakai ini bila teks di atas kosong atau kacau.';
+      return;
+    }
+    status('Jenis berkas ini belum didukung. Gunakan .txt, .md, .docx, .pdf, atau foto.', true);
+  } catch(e){
+    status(offline() ? 'Membaca Word dan PDF memerlukan koneksi internet saat pertama kali dipakai.' : 'Berkas tidak bisa dibaca. Pastikan berkasnya tidak rusak atau terkunci kata sandi.', true);
+  }
+}
+$('scanBtn').onclick = async () => {
+  if(!lastPdf || busy) return;
+  const blobs = [];
+  for(let p = 1; p <= lastPdf.numPages; p++){
+    status('Menyiapkan halaman ' + p + ' dari ' + lastPdf.numPages + '...');
+    const page = await lastPdf.getPage(p); const vp = page.getViewport({scale: 2});
+    const cv = document.createElement('canvas'); cv.width = vp.width; cv.height = vp.height;
+    await page.render({canvasContext: cv.getContext('2d'), viewport: vp}).promise;
+    blobs.push(cv);
+  }
+  ocr(blobs, 'halaman PDF');
+};
+
+// OCR teks Latin di perangkat pengunjung (Tesseract). Aksara Batak belum didukung oleh OCR ini.
+let tessWorker = null;
+async function ocr(images, what){
+  busy = true; $('scanBtn').disabled = true;
+  try{
+    status('Menyiapkan pembaca teks gambar (unduhan sekali, sekitar 10 MB)...');
+    await loadScript(TESS);
+    if(!tessWorker) tessWorker = await Tesseract.createWorker('ind', 1, {
+      logger: m => { if(m.status === 'recognizing text') status('Membaca ' + what + '... ' + Math.round(m.progress * 100) + '%'); }
+    });
+    const parts = [];
+    for(let i = 0; i < images.length; i++){
+      if(images.length > 1) status('Membaca ' + what + ' ' + (i + 1) + ' dari ' + images.length + '...');
+      const r = await tessWorker.recognize(images[i]);
+      parts.push(r.data.text.trim());
+    }
+    const text = parts.join('\n\n').trim();
+    if(!text){ status('Tidak ada teks yang terbaca. Coba foto yang lebih terang, tajam, dan tegak lurus.', true); return; }
+    showText(text, 'latin');
+    status('Teks Latin terbaca dari ' + what + '. Periksa dan perbaiki bila ada huruf yang salah baca sebelum dialihaksarakan.');
+  } catch(e){
+    status(offline() ? 'Membaca foto memerlukan koneksi internet saat pertama kali dipakai.' : 'Foto tidak bisa dibaca. Coba berkas lain.', true);
+  } finally { busy = false; $('scanBtn').disabled = false; }
+}
+
+$('fText').addEventListener('input', () => $('fText').classList.toggle('batak', BT.isUnicodeBatak($('fText').value)));
+$('fGo').onclick = () => {
+  const text = $('fText').value, kind = $('fKind').value;
+  const toBatak = kind === 'latin';
+  $('fResult').hidden = false;
+  $('fResBatak').hidden = !toBatak; $('fResToba').hidden = !toBatak; $('fCodeLbl').hidden = !toBatak; $('fCopyToba').hidden = !toBatak;
+  $('fResLatin').hidden = toBatak; $('fSave').hidden = false;
+  if(toBatak){
+    const r = BT.latinToBatak(text);
+    $('fResTitle').textContent = 'Hasil dalam aksara Batak';
+    $('fResBatak').textContent = r.uni; $('fResToba').textContent = r.toba;
+  } else {
+    $('fResTitle').textContent = 'Hasil dalam huruf Latin';
+    $('fResLatin').textContent = BT.batakToLatin(text, kind);
+  }
+  $('fResult').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'});
+};
+$('fCopy').onclick = e => copyText($('fResLatin').hidden ? $('fResBatak').textContent : $('fResLatin').textContent, e.currentTarget);
+$('fCopyToba').onclick = e => copyText($('fResToba').textContent, e.currentTarget);
+$('fSave').onclick = () => {
+  const toBatak = !$('fResBatak').hidden;
+  const body = toBatak ? $('fResBatak').textContent + '\n\n--- Kode ketikan font Toba ---\n' + $('fResToba').textContent : $('fResLatin').textContent;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([body], {type: 'text/plain;charset=utf-8'}));
+  a.download = toBatak ? 'hasil-aksara-batak.txt' : 'hasil-latin.txt';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+};
+
+// aplikasi bisa dipasang dan dipakai tanpa internet
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+
+setDir('l2b');
+inp.value = 'Horas! Anduhur pidong toba sirubaruba pidong harangan.';
+render();
+})();
+</script>
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store = { get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } } };
+const TYPES = {umpasa:'Umpasa', umpama:'Umpama', poda:'Hata poda', bibel:'Poda (Bibel)'};
+
+const DATA = [
+  {t:'umpasa', x:'Sahat-sahat ni solu, sahat ma tu bontean; leleng ma hita mangolu, sai sahat ma tu panggabean.',
+   m:'Sampailah perahu sampai ke tepian; semoga kita panjang umur hingga mencapai kebahagiaan.', c:'Penutup kata sambutan atau doa restu dalam acara adat.'},
+  {t:'umpasa', x:'Martantan ma baringin, mardangka hariara; maranak ma hamu sampulu pitu, marboru sampulu onom.',
+   m:'Seperti beringin dan hariara yang rimbun bercabang, semoga kalian dikaruniai banyak putra dan putri.', c:'Restu bagi pengantin dalam pesta pernikahan.'},
+  {t:'umpasa', x:'Pir ma pongki, bahul-bahul pansalongan; pir ma tondi, luas ma pangomoan.',
+   m:'Semoga jiwa kokoh dan rezeki berlimpah.', c:'Doa restu, misalnya saat memberi ulos atau makanan adat.'},
+  {t:'umpasa', x:'Dangka ni arirang, peak di tonga onan; badan ta padao-dao, tondi ta i marsigonggoman.',
+   m:'Raga kita boleh berjauhan, tetapi jiwa kita tetap saling berpelukan.', c:'Saat berpisah atau melepas keluarga yang merantau.'},
+  {t:'umpasa', x:'Tuat ma hamu na di dolok, martungkot sialagundi; adat pinungka ni na parjolo, sipaihut-ihut on ni na parpudi.',
+   m:'Adat yang dirintis para pendahulu patut diikuti oleh generasi sesudahnya.', c:'Mengingatkan pentingnya meneruskan adat.'},
+  {t:'umpasa', x:'Sinuan bulu sibahen na las, sinuan partuturan sibahen na horas.',
+   m:'Bambu ditanam untuk kehangatan; kekerabatan dipelihara untuk kesejahteraan.', c:'Menekankan pentingnya menjaga hubungan kekerabatan.'},
+  {t:'umpasa', x:'Hotang binebebebe, hotang pinulos-pulos; unang iba mandele, ai godang do tudos-tudos.',
+   m:'Jangan berputus asa, sebab banyak orang yang mengalami hal serupa.', c:'Menghibur orang yang sedang kesusahan.'},
+  {t:'umpama', x:'Aek godang tu aek laut, dos ni roha sibahen na saut.',
+   m:'Seperti sungai yang bermuara ke laut, kesepakatan hatilah yang membuat rencana terlaksana.', c:'Saat bermusyawarah mencari mufakat.'},
+  {t:'umpama', x:'Jolo dinilat bibir, asa dihatahon.',
+   m:'Pikirkan dulu sebelum berbicara.', c:'Nasihat agar berhati-hati dalam berkata-kata.'},
+  {t:'umpama', x:'Molo litok aek di toruan, tingkiron ma tu julu.',
+   m:'Bila air di hilir keruh, periksalah ke hulu: carilah sumber masalahnya.', c:'Saat menyelesaikan perselisihan.'},
+  {t:'umpama', x:'Sidapot solup do na ro.',
+   m:'Pendatang memakai takaran tempat yang didatangi; di mana bumi dipijak, di situ langit dijunjung.', c:'Mengingatkan pendatang untuk menghormati adat setempat.'},
+  {t:'umpama', x:'Ndang dao tuak sian bagotna.',
+   m:'Tuak tidak jauh dari pohon enaunya: anak tidak jauh berbeda dari orang tuanya.', c:'Membandingkan sifat anak dengan orang tuanya.'},
+  {t:'poda', x:'Somba marhula-hula, manat mardongan tubu, elek marboru.',
+   m:'Hormat kepada pihak hula-hula, berhati-hati terhadap saudara semarga, dan mengasihi pihak boru.', c:'Inti falsafah Dalihan Na Tolu.'},
+  {t:'poda', x:'Hamoraon, hagabeon, hasangapon.',
+   m:'Kekayaan, keturunan, dan kehormatan: tiga cita-cita hidup orang Batak.', c:'Nilai hidup yang sering dipesankan orang tua.'},
+  {t:'poda', x:'Pantun hangoluan, tois hamagoan.',
+   m:'Sopan santun membawa kehidupan, kesombongan membawa kebinasaan.', c:'Nasihat tentang kerendahan hati.'},
+  {t:'poda', x:'Anakkonhi do hamoraon di ahu.',
+   m:'Anakku adalah kekayaanku.', c:'Ungkapan orang tua yang menempatkan anak di atas harta.'},
+  {t:'bibel', x:'Biar mida Jahowa do parmulaan ni parbinotoan, alai anggo halak na oto manoisi hapistaran dohot pangajaran.', m:'', c:'Poda 1:7'},
+  {t:'bibel', x:'Marhaposan tu Jahowa ma ho sian nasa roham, jala unang marpangunsandean ho tu pingkiranmu sandiri.', m:'', c:'Poda 3:5'},
+  {t:'bibel', x:'Alus na lambok paombun rimas, alai anggo hata na horas mambahen marsijongjong ateate.', m:'', c:'Poda 15:1'},
+  {t:'bibel', x:'Manang ise na tongtong marholong ni roha, i ma aleale, alai tartulluk di hagogotan pe ianggo dongan situtu.', m:'', c:'Poda 17:17'},
+  {t:'bibel', x:'Tibu hian pasomalsomal dakdanak i marparange hombar tu dalanna; nang dung matua ibana, ndang tagamon morot ibana sian i.', m:'', c:'Poda 22:6'},
+  {t:"umpama", x:"Adat do ugari, sinihathon ni Mulajadi; Siradotan manipat ari, salaon di siulubalang ari.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Adong aek bolusoon, molo lao tu Sibolga; Na dokdoki gabe neang doi parsanon, Molo adaong dos ni roha.", m:'', c:'', src:1},
+  {t:"umpama", x:"Aek godang, aek laut; Dos ni roha do sibahen nasaut.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Aek marjullak-jullak, marjullak-jullak sian batu, Jullak-jullak na i attong pamasukon ma tu tabu-tabu; Hata pasu-pasu sian hamu hula-hula nami, Ampuon nami ma i attong martonga ni jabu.", m:'', c:'', src:1},
+  {t:"umpama", x:"Agatna do agat Dairi, imbalona imbalo pege; Hatana do mapultak gambiri, patna so malo hehe", m:'', c:'', src:1},
+  {t:"umpama", x:"Agia pe lapalapa asal di toru ni sobuon; agia pe malapalap asal ma dihangoluon", m:'', c:'', src:1},
+  {t:"umpasa", x:"Agia pe lapalapa asal ditoru ni sobuon; agia pe malapalap asal ma di hangoluon, ai sai na boi do jolma partalaga muba gabe parjoluon", m:'', c:'', src:1},
+  {t:"umpasa", x:"Aha simbohan ahado sitapangi, Aha do hasoan disiulubalang ari; Ia disi simbohan disi do sitapangi, Nang naung ganjang umur na, Sai tong do naeng marhurang nari.", m:'', c:'', src:1},
+  {t:"umpama", x:"Tung apala pinatakkas, Tung godang do na marsiak bagi; Ai pangidoani, godangan do na mangarsahi.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Ai na tinapu salaon, salaon situa-tua; Denggan ma hamu masianju-anjuan asa saut gabe jala sarimatua.", m:'', c:'', src:1},
+  {t:"umpama", x:"Amak do rere, dakka do dupang; Anak do bere, Amang do Tulang.", m:'', c:'', src:1},
+  {t:"umpama", x:"Amporik do silolom, Sidaodao pidong toba; Nasa tahinta tahi torop, sahat mai sipinta tua, di hitaon luhutna", m:'', c:'', src:1},
+  {t:"umpasa", x:"Amporik mallipik, Onggang marbabang; Gabe do parsinamot naotik, gabe nang parsinamot nagodang.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Andor hadukka baeen togu-togu ni lobbu, Andor hatiti baen togu-togu ni horbo; Penggeng ma hamu saur matua dihaliangi pahompu, Sahat tu na mar nini, sahat tu na marnono.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Anian ma pagabe tumundalhon sitodoan; Arimu ma gabe molo marsipaolo-oloan.", m:'', c:'', src:1},
+  {t:"umpama", x:"Ansimun sada holbung, pege sangkarimpang; manimbung rap tu toru, mangangkat rap tu ginjang", m:'', c:'', src:1},
+  {t:"umpama", x:"Asa pat ni gaja tu pat ni hora; angka anak ni raja do hamu pahompu ni namora", m:'', c:'', src:1},
+  {t:"umpasa", x:"Asa pitu anak ni ari sampulu dua anak ni bulan; Sai hipas ma hamu tujoloan ni ari huhut dipasu-pasu Tuhan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Asa tangkas ma purba, tangkas ma angkola; asa tangkas hita maduma, gabe jala mamora", m:'', c:'', src:1},
+  {t:"umpasa", x:"Asa tubuan laklak tubuan singkoru, Tubu sanggar di parsopoan; Asa tubu di nasida anak, tubu dohot boru, Jala jengkar-jengkar di hangoluan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Asing do huta Hullang, asing muse do huta Gunung Tua, Asing do molo tulang, asing muse do molo gabe dung simatua.", m:'', c:'', src:1},
+  {t:"umpama", x:"Assimun ma panorusi, hundur ma pangalambohi, Songon miak-miak ni hata dituturi didampoli.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tuak ma di abara mu hasahatan ni pasu pasu; Anak na olo tu jolo na olo ihuton, Na boi mambahen marsada, sipadao parguluton; Sahata ma hamu tu dolok sahata tu toruan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Bagot madungdung, tu pilo-pilo rumarajar; Salpu ma attong sian hamu na lungun, sai ro ma na jagar.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Bagot marhalto, ni agatan di robean. Horas ma hamu na mangat-ton; Tu gadda na attong dihami na mangalean.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sahat-sahat ni soluma sahat tu bontean; Sahat ma hamu tu parhorasan, sahat tu panggaben.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Balintang ma pagabe tumandangkon sitandoan; Arinta ma gabe molo marsipaoloan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Banuarea na godang, hatubuan ni tumbur tua; Akka na metmet, tibu ma imbur magodang, Akka amatta dohot inatta, anggiat ma saur matua.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Baris-baris ni ga-ja, dirura pangaloan. Molo marsuru raja, dae do so oloan. Ai molo ni oloan, ro ma pangomoan. Molo sonioloan, ro do hamagoan.", m:'', c:'', src:1},
+  {t:"umpama", x:"Barita ni lappedang, mardakka bulang bira; Hamoraon ni hamu Amangboru nami, tarbarita do ro didia.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Binanga ni sihombing, binongkak di Tarabunga, Tusanggar ma amporik, tu lubang ma satua. Asa sinur ma na pinahan, gabe naniula. Horas pardalandalan, mangomo partigatiga.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Binolus Purbatua laho tu Parsingkaman; Naburju marnatuatua ingkon sai dapotan pandaraman", m:'', c:'', src:1},
+  {t:"umpasa", x:"Binsar mata ni ari, poltak mata ni bulan; Tubuan boru ma hamu na malo maccari, Tubuan anak na gabe Raja panungkunan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Bintang na rumiris, tu ombun na sumorop. Anak pe attong dihamu riris, boru pe torop.", m:'', c:'', src:1},
+  {t:"umpama", x:"Bola-bola ni tangan, sitongka i bolahononhon; bola-bola ni halak, sitongka i tangihononhon.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Bona ni pinasa, hasakkotan ni jomuran; Tung aha pe dijama hamu, sai tong ma dalan ni pasu-pasu.", m:'', c:'', src:1},
+  {t:"umpama", x:"Bulu na matoras, denggan ma i bahenon hite; Akka Naposo naung matoras, Denggan ma i mardongan saripe.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Bulung namartampuk, bulung ni simarlasuna; Nunga hujalo hami tintin marangkup, Dohonon ma hata pasu-pasuna.", m:'', c:'', src:1},
+  {t:"umpama", x:"Bulung ni dapdap lakkop, Ba i na adong i ma ta parhajop.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Bulung ni Taen tu bulung ni Tulan Ba molo tarbahen; sai topot hamu hami sahali sabulan, Molo so boi bulung ni tulan, pinomat bulung ni salaon, Ba molo so boi sahali sabulan, pinomat sahali sataon.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Bulung siala, tu bulung ni pirdot, Bulung ni motung mardua rupa; Akka naung hinata, sude ma hita marningot, sai unang adong hita na lupa.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Dakka ni arirang, peak di tonga onan; Badan muna naso jadi sirang, tondi mu marsigomgoman.", m:'', c:'', src:1},
+  {t:"umpama", x:"Dakka ni bulu duri, jait masi jaotan; Di haroro ni hamu amangboru nami, aha ma na naeng taringotan.", m:'', c:'', src:1},
+  {t:"umpama", x:"Danggur ma danggur barat, toho tu toru ni sinkkoru; Hata ni sipanganon na binoan muna, takkas ma di paboa amangboru.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Dangir-dangir ni batu ma hamu, pandakdahan ni simbora; Gabe do hamu jala sarimatua asal ma sai marsada ni roha", m:'', c:'', src:1},
+  {t:"umpama", x:"Dangka do dupang, Amak do rere; Ama do tulang, Anak do nang ibebere", m:'', c:'', src:1},
+  {t:"umpasa", x:"Dangka ni hariara ma pinangait-ngaithon, tubuma dihamu anak dohot boru, sai unang ma panahit-nahithon.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Dekke ni sale-sale, dengke ni Simamora; Tamba ni nagabe, sai tibu ma hamu mamora.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Denggan ma bulu godang, denggan ma bahen hite-hite; Molo dung adong anak magodang denggan ma asa hot ripe, Digijjang ma arirang, ditoru panggonggonan; Ari mu ma naso jadi sirang, Tondi mu tontong ma masigonggoman.", m:'', c:'', src:1},
+  {t:"umpama", x:"Diginjang bulung botik binoto do paetna; bunipe parsisiraan binoto do assimna", m:'', c:'', src:1},
+  {t:"umpama", x:"Dijolo raja sieahan, dipudi raja sipaimaon", m:'', c:'', src:1},
+  {t:"umpama", x:"Disi do gandina, disi do nang gandona; Disi do daina disi do nang tabona", m:'', c:'', src:1},
+  {t:"umpasa", x:"Doding ni dodingkon, doding ni mandalasena; Pasu-pasu pinasahat mu na i, Sai unang ma muba sai unang sesa.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Dolok ni Panampahan, tondongkon ni Tarabunga; Sai horas ma hamu dipardalanan songoni dung sahat tu inganan muna", m:'', c:'', src:1},
+  {t:"umpasa", x:"Dolok ni Simalungun, tu dolok ni Simamora; Salpu ma sian hamu na lungun, sai hatop ma ro si las ni roha.", m:'', c:'', src:1},
+  {t:"umpama", x:"Eme na masak di gagat ursa, ia i namasa ima di ula.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Eme ni sitambatua, parlinggoman ni siborok; Amanta Debata do sileon tua, sai dohot ma hamu diparorot", m:'', c:'', src:1},
+  {t:"umpasa", x:"Eme sitambatua bahen tuhor ni bosi; Angka hata nauli ima dijangkon tondi.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Gadu-gadu ni Silindung, tu gadu-gadu ni Sipoholon; Sai tubu ma anakmuna 17 dohot borumuna 16.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Giring-giring ma tu gosta-gosta, tu boras ni sikkoru; Sai tibu ma hamu mangiring-iring, huhut mangompa-ompa anak dohot boru.", m:'', c:'', src:1},
+  {t:"umpama", x:"Godang do porda Ndang sadia hulamot; Godang do roha Ndang sadia sinamot", m:'', c:'', src:1},
+  {t:"umpasa", x:"Godang sibutongbutong, otik si pir ni tondi; tung so sadia pe sipanganon nahupatupa hami,Sai pamurnas ma tu daging, saudara tu bohi, sipalomak imbulu, sipaneang holi holi.", m:'', c:'', src:1},
+  {t:"umpama", x:"Habang ambaroba paihut-ihut rura; Padan naung pinaboa ndang jadi mubauba", m:'', c:'', src:1},
+  {t:"umpasa", x:"Habang ambaroba songgop tu hau torop; Debata do namartua, luhut ma hita diparorot.", m:'', c:'', src:1},
+  {t:"umpama", x:"Habang amporik mangalumbalumba solu; songgop siputi dipunsu hau natimbo, Adong do patik sian dalihan natolu; mangaruhuti sude angka tarombo", m:'', c:'', src:1},
+  {t:"umpasa", x:"Habang leang-leang songgop tu parapian, Bolak ni rosu angka na marpariban, sai masitopot-topotan songon pidong leang-leang.", m:'', c:'', src:1},
+  {t:"umpama", x:"Habang ma ninna si buruk sahat tu durame; Molo sada hamuna muruk sada nian dame", m:'', c:'', src:1},
+  {t:"umpasa", x:"Habang pidong rande, songgop appapaluan; Manang ise naeng gabe, jala mamora, Di oloi ma partaluan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Habang pidong sibigo, paihut-ihut bulan; Saluhut angka na tapangido, sai tibu ma dipasaut Tuhan.", m:'', c:'', src:1},
+  {t:"umpama", x:"Habang ruba-ruba, songgop di bona ni assosoit; Ianggo tu hula-hula, tung tokka do makkolit.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Hariara bonana, hariara ujungna; horas ma amana, horas ma nang boruna.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Hariara madungdung, pilo-pilo na maragar; Sai tading ma na lungun, ro ma na jagar.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Hariara na bolon bahen parlape-lapean; Sai tubu ma di hamu anak dohot boru na bolas pangunsandean.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Hau ni Gunungtua, dangkana madaguldagul; Tibu ma dilehon Tuhanta dihamu tua, jala tibu hamu diapulapul.", m:'', c:'', src:1},
+  {t:"umpama", x:"Hau ni tarabunga hasonggopan ni haluang; hula-hula naburju do hamu na so pola gulu di uang.", m:'', c:'', src:1},
+  {t:"umpama", x:"Hinarat pangkal ni tobu, lam tu tonggina; Unang dok hamu hami namangholit, sibahenon do na so sadia", m:'', c:'', src:1},
+  {t:"umpama", x:"Hot pe jabu i, tong doi margulang-gulang; Sian dia pe mangalap boru bere i, tong doi boru ni Tulang.", m:'', c:'', src:1},
+  {t:"umpama", x:"Hotang benebebebe, hotang ni Siringkiron; Unang iba mandele, ai godang dope sihirimon", m:'', c:'', src:1},
+  {t:"umpasa", x:"Hotang do ragian, hadang-hadangan pansalongan; Sihahaan gabe sianggian, molo hurang sinaloan", m:'', c:'', src:1},
+  {t:"umpama", x:"Hotang hotari hotang pulogos; Gogo ma mansari, na dangol do na pogos", m:'', c:'', src:1},
+  {t:"umpama", x:"Hula-Hula Bona ni ari, Tinongos ni Ompunta Mulajadi Sisubuton marulak loni, sisombaon di rim ni tahi", m:'', c:'', src:1},
+  {t:"umpama", x:"Ihan di pandaungan, sangkot sapa di parpagaran, Denggan do hita masisungkunan, ringkot masiajar-ajaran.", m:'', c:'', src:1},
+  {t:"umpama", x:"Ijuk di para-para, hotang di parlabian, nabisuk nampuna hata, na oto tu panggadisan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Inganan ni puli, dihauma silenggam. Marakkup do nauli, mardongan do nadenggan. Akkup ni parhorasan i Amangboru. Dia laklakna, dia unokna. Dia ma hatana, aha ma ni dokna takkas ma dihatahon Amangboru.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Janji urat ni eme tu laklak ni simarlasuna, Adat na denggan na so ra sega, uhum na uli na so ra muba i, asa manumpak ma Tuhanta i sinur ma pinahan gabe na niula jala horas jolma.", m:'', c:'', src:1},
+  {t:"umpama", x:"Jari-Jari sampulu, sude do mampanggoari; Atik tung adong hatanami natarsalpu, jumolo hami marsantabi", m:'', c:'', src:1},
+  {t:"umpama", x:"Jolo nidodo asa hinonong", m:'', c:'', src:1},
+  {t:"umpama", x:"Jolo tinaha garung niba, niantan sulangat niba", m:'', c:'', src:1},
+  {t:"umpama", x:"Jolo tiniktik sanggar laho bahenon huru-huruan; Jolo sinukkun marga asa binoto partuturan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Jongjong di Purba tua, manatapnatap tu Panamparan; Sahat ma hamu sarimatua, ai nungga malua hamu sian parmaraan", m:'', c:'', src:1},
+  {t:"umpama", x:"Jujur do mula ni bada, bolus do mula ni dame", m:'', c:'', src:1},
+  {t:"umpasa", x:"Laho pe ibana mangula sai na dao ma parmaraan Sai dapotsa na niluluan sai jumpang na jinalahan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Landit ma bulung botik, porhot bulung ni ambasang. Sipanganon na otik, manghorasi ma tu tondi dohot pamatang", m:'', c:'', src:1},
+  {t:"umpama", x:"Lata pe na lata, duhut duhut do si but-buton. Hata pe na hata, pandohan ni suhut do tiopon.", m:'', c:'', src:1},
+  {t:"umpama", x:"Loja siborok manjalahi guluan, ingkon hir do hodok manjalahi hangoluan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Loting di tomboman, tabo nasiniraan sai tondinta ma masigomgoman, dao ma namasisaritaan.", m:'', c:'', src:1},
+  {t:"umpama", x:"Manat unang tartuktuk, dadap unang tarrobung", m:'', c:'', src:1},
+  {t:"umpasa", x:"Mandurung di aek Sihoru-horu, manjala di aek Sigura-gura; Udur ma hamu jala leleng mangolu, hipas matua sonang sora mahua.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Mangerbang bunga-bunga, di na buha siang ari. Horas ma hamu na marsabutuha, Lam tu gabe na ma attong akka na marhaha maranggi.", m:'', c:'', src:1},
+  {t:"umpama", x:"Manghuling taguk-taguk diatas ni arirang; Huncus do nambura saut, bauan nambura sirang", m:'', c:'', src:1},
+  {t:"umpasa", x:"Mangordang ma di tano tur, manerak di hauma saba. Mangasi ma attong amatta Debata, Dipatorop ma na toropi, mangarerak ma anak si sada-sada.", m:'', c:'', src:1},
+  {t:"umpama", x:"Mangula ma pangula, dipasae duhut-duhut; Molo burju marhula-hula, dipadao mara marsundut-sundut.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Manuk mirasialtong molo martubi monang-monang, salpu do angka parungkilon jala ro do parsaulian pansamotan", m:'', c:'', src:1},
+  {t:"umpama", x:"Manuk ni pealangge hotek-hotek laho marpira, Nasirang marale-ale lobian namaten ina", m:'', c:'', src:1},
+  {t:"umpama", x:"Marangkup songon nahundul, mardongan songon na mardalan; Marangkup do nauli, mardongan do nadenggan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Marbulung ma tambinsu, marjengga-jengga ma pinasa Sai tubu ma anak nabisuk, dohot boru naulibasa.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Mardakka Jabi-jabi, marbulung ia si Tulan; Angka pasu-pasu na pinasahat muna, Sai sude mai dipasaut Tuhan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Marhosa-hosa sunting, marsiusungan dompak dolok; Ala ni lambok ni pakkuling na holang i gabe jonok", m:'', c:'', src:1},
+  {t:"umpama", x:"Marmutik ma lasiak, doppak mata ni ari. Malo ma ho (lae, ito), manganju parumaenmi, Di arian nang di bot niari.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Marmutik tabu-tabu mandompakhon mataniari; Sai hot ma di hamu akka pasu-pasu, laho marhajophon akka na sinari.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Martahuak ma manuk di bungkulan ni ruma; Horas ma hula-hulana,songoni nang akka boruna.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Martantan ma baringin, marurat jabi-jabi; Horas ma hita madingin, tumpahon ni umpunta Mulajadi", m:'', c:'', src:1},
+  {t:"umpasa", x:"Martumbur ma baringin, mardangka ma hariara, matorop ma hamu maribur, matangkang ma juara.", m:'', c:'', src:1},
+  {t:"umpama", x:"Marurat ibana bagas tu toru, marbulung timbo tu ginjang, mardangka dao tu siamun, marranting dao tu hambirang", m:'', c:'', src:1},
+  {t:"umpama", x:"Masiaminaminan songon lampak ni gaol, masitungkoltungkolan songon suhat di robean, Mangankat rap tu ginjang manimbung rap tu toru, tongtong satahi saoloan.", m:'', c:'', src:1},
+  {t:"umpama", x:"Metmet dope sikkoru da nungga dihandang-handangi; Metmet dope si boru da nungga ditandang-tandangi.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Molo adong disi hulingkuling sai adong ma disi holiholi; Molo adong disi na so muli sai adong do rongkap ni i naso mangoli", m:'', c:'', src:1},
+  {t:"umpama", x:"Molo so boi bulung ni tulan, pinomat bulung ni salaon; Ba molo so boi sahali sabulan, pinomat sahali sataon", m:'', c:'', src:1},
+  {t:"umpama", x:"Na niida ni mata paula so niida, na binege ni pinggol paula so ni bege.", m:'', c:'', src:1},
+  {t:"umpama", x:"Namandanggurhon tu dolok do molo basa namarhula-hula", m:'', c:'', src:1},
+  {t:"umpasa", x:"Napuran sirara uruk, na peaak di pinggan pasu. Hupasahat hami tu hamu ulos on, Debata do ianggo na ma masu-masu.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Napuran tano-tano rangging marsiranggongan, Badan ta i padao-dao, tondita i marsigomgoman.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Napuran tano tano, tu sarindan ni Pinasa. Anggo daging ni ama/inantaon mulak ma gabe tano. Jala tondi nai mulak ma tu nampunasa (Tuhan).", m:'', c:'', src:1},
+  {t:"umpasa", x:"Naung sampulu sada, jumadi sampulu tolu; Angka pasu-pasu pinasahat muna, Sai anggiatma padenggan ngolu-ngolu.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Ni durung si Tuma laos dapot Pora-pora; Molo mamasu-masu hula-hula mangido sian Tuhan, Napogos hian iba, boi do gabe mamora.", m:'', c:'', src:1},
+  {t:"umpama", x:"Niarit tarugi pora-pora; molo tinean uli, tong do tenon dohot gora", m:'', c:'', src:1},
+  {t:"umpama", x:"Niluluan taddok, hape dapot do parindahanan; Tuk do nian pamangan maddok, Alai dang tuk sijamaon ni tangan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Niumpat padang togu, mangihut si marbulubulu; Sai leleng ma nasida mangolu ro di nasarsar uban di ulu, sahat tu namangiringiring pahompu", m:'', c:'', src:1},
+  {t:"umpama", x:"Nunga juppang tali aksa, ihot ni ogung oloan; Nunga sippul sude akka naung hinata, Ai denggan do hita masi pa olo-oloan.", m:'', c:'', src:1},
+  {t:"umpama", x:"Nunga pitu lilinami, paualu jogianami; Nunga nauli nipinami, nunga ro hamu nanaeng pandurungannami", m:'', c:'', src:1},
+  {t:"umpasa", x:"Obuk do jambulan, nidandan ni boru Samara; Pasu-pasu na mardongan tangiang sian hula-hula, Mambahen marsundut-sundut soada mara.", m:'', c:'', src:1},
+  {t:"umpama", x:"Ompu raja di jolo martungkot siala gundi; Adat pinungka ni angka ompu na parjolo, ihuthonon ni hita na di pudi", m:'', c:'', src:1},
+  {t:"umpasa", x:"Otik sibutong-butong, godang si pirni tondi. Otik sosadia sipanganon on, asa Pamurnas ma tu daging saudara tu bohi, Palomak imbulu paneang holi-holi.", m:'', c:'', src:1},
+  {t:"umpama", x:"Pago-pago taruge pauk-pauk hudali; Angka nasala pinauli, angka na denggan niulahi.", m:'', c:'', src:1},
+  {t:"umpama", x:"Pagulut lali tu asar ni tabuan; ai unang hamu pagulut dohot marsalisih ala ni sidabuan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Palti ma bulung siala, lomak bulung ni ompu-ompu; Manumpak ma Ompunta Debata, manghorasi ma angka sahala ni Ompu.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Parik ni Lubutua hatubuan ni bulu duri; Na burju marnatuatua sai ingkon dapotan rongkap na uli", m:'', c:'', src:1},
+  {t:"umpasa", x:"Pege sakkarimpang, tu Assimun si sada holbung; Raap mangakkat ma hamu tu ginjang, Raap manimbung antong, tu toru.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Pege sangkarimpang, hunik sahadanghadangan; Badanmu ma nasoboi sirang, tondimu masigomgoman", m:'', c:'', src:1},
+  {t:"umpama", x:"Pidong Harijo pidong harangan, sitapi-tapi pidong Toba; Nagogo mangula do butong mangan, najugul marguru do dapotan poda.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Pidong sitapitapi, habang diatas hauma; Horas ma hamu na hupaborhat hami, Horas hami na tininggalhonmuna", m:'', c:'', src:1},
+  {t:"umpasa", x:"Pinasa ni Siantar godang rambu-rambuna; Tung otik pe hatakki, sai godang ma pinasuna.", m:'', c:'', src:1},
+  {t:"umpama", x:"Pitu batu martindi sada do sitaon nadokdok", m:'', c:'', src:1},
+  {t:"umpama", x:"Pitu lili nami, ai gohan mu ma attong hajut nami; Uli nipi nami, ai gohan mu ma attong hajut nami.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Polta bulan i Ama ni Manggule; Ro nuaeng angka pomparanmu mamboan sipanganon ba dohot hami mauliate", m:'', c:'', src:1},
+  {t:"umpasa", x:"Poltak bulan tula, binsar ia mata ni ari; Tibu ma ro tu hamu soritua, singkat ni sori ni ari", m:'', c:'', src:1},
+  {t:"umpasa", x:"Rabba na poso, ndang piga tubuan lata; Hami na poso, ndang piga na umboto hata", m:'', c:'', src:1},
+  {t:"umpasa", x:"Ramba ni Sipoholon, marduhut duhut sitata. Tung boha pe borat ni Sitaonon, Tottong do ingkon pujion Tuhatta Debata.", m:'', c:'', src:1},
+  {t:"umpama", x:"Ranting ni Bulu Duri, sanjongkal dua jari; Hamu do hula-hula panuturi, laos hamu do pangajari", m:'', c:'', src:1},
+  {t:"umpama", x:"Rata bulung ni salak, rataan dope bulung ni sitorop; Uli pe hata ni sahalak, ulian dope hatani natorop", m:'', c:'', src:1},
+  {t:"umpasa", x:"Rimbur ni Pakkat tu rimbur ni Hotang; Sai tudia pe hamu mangalakka, sai tusima hamu dapot pansamotan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Ruma ijuk tu ruma gorga; Sai tubu ma anakmuna na bisuk dohot borumuna na lambok marroha.", m:'', c:'', src:1},
+  {t:"umpama", x:"Sada silompa gadong, dua silompa uli; Tung sahalak pe namanghatahon sude ma hitaon naung taruli.", m:'', c:'', src:1},
+  {t:"umpama", x:"Sadde sige, dibikkulan ni sopo. Patuk do manise molo so takkas binoto. Onpe na manise ma hami nuaeng tu hamu amangboru. Hata ni sipanganon na pinatupa muna i, dihatahon amangboru ma.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sahat sahat di solu ma, Sai sahat ma tu bontean; Nunga sahat hita mangolu, Sai sahat ma tupanggabean", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sahat sahat ni solu ma sahat tu bontean, di torang ni ari; Nunga marujung dohot denggan ulaonta sadarion, ba sahat ma hita on mangolu, horas sahat tu panggabean diramoti amanta debata ganup ari.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sahat-sahat ni solu, sahat ma tu bottean. Leleng ma attong hita mangolu, Sahat tu parhorasan sahat tu panggabean.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sahat-sahat ni solu sahat ma tu bottean. Leleng ma hamu mangolu, Sahat tu parhorasan, sahat tu panggabean!", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sahat-sahat ni solu, sahat ma tu labuan; Sahat ma hamu leleng mangolu, jala sai di dongani Tuhan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sahat-sahat ni solu, sahat ma tu Tigaras. Leleng ma hamu mangolu, gabe, jala horas-horas.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sahat solu, sahat di parbinsar ni ari; Leleng ma hamu mangolu jala di iring-iring Tuhan ganup ari.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sahatsahat ni solu ma sahat di rondang ni bulan; Sai leleng ma hamu mangolu jala sai dipasupasu Tuhan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sai dangka ni hariara ma nipangait-aithon; Sai tubu ma anak dohot boru sitongka panahit-nahiton.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sai horas ma tondi madingin, pir tondi matogu, Hot ma dibatu-batuna. Togu di pangarahutanna, lili ma di ginjang, hodong ma di toru, riris ma jolma di ginjang, gok ma pinahan di toru Tubu ma anak na malo martahi dohot boru na malo marhuhuasi", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sai jolo ni nang nang do, asa di nungnung. Jolo pinangan do, asa nisukkun.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sai marrongkap mai songon bagot, marsibar songon ambalang, jala sai masigomgoman ma tondi ni nasida tu na tama.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sai ro ma nipi na uli sai leleng hamu mangolu; Haliangan ni nono dohot nini raphon anak dohot boru", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sai situbu laklak ma hamu situbu singkoru di dolok ni purbatua, sai tubuan anak ma hamu tubuan boru, donganmuna sarimatua.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sai tong doi lubang nangpe dihukkupi rere; Sai tong doi boru ni Tulang, manang boru ni ise pei dialap bere.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sanggirgir ma di tobing, silantom di tapian. Manang didia pe hamu pomparan ni ama, inangon, Disi ma hamu gabe horas, huhut dapotan parsaulian.", m:'', c:'', src:1},
+  {t:"umpama", x:"Siboru buas siboru Bakkara, molo dung puas sae soada mara", m:'', c:'', src:1},
+  {t:"umpama", x:"Silaklak ni dandorung tu dakka ni sila-sila; Ndang iba jumonok-jonok tu naso oroan niba.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Simbora ma pulguk, pulguk di lage-lage; Sai mora ma hita luhut, huhut horas jala gabe.", m:'', c:'', src:1},
+  {t:"umpama", x:"Sinabi laitu binahen tu harangni hoda; Molo gulut boruna, amana do martola Molo gulut amana, boruna do martola.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sinimbur ni pangkat ma tu sinimbur ni hotang, tudia pe nasida mangalangka sai tu si ma nasida dapotan pangomoan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sinuan bulu, Sibahen na las. Sinuan partuturan, sibahen na horas.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Muba dolok muba duhutna, muba luat sai adong do muba adatna.", m:'', c:'', src:1},
+  {t:"umpama", x:"Sirsir ansimna jala hona dohot asomna", m:'', c:'', src:1},
+  {t:"umpasa", x:"Bagot na marhalto ma di ladang ni Panggabean; Horas ma hami na manganhon, lam martamba sinadongan di hamu na mangalean", m:'', c:'', src:1},
+  {t:"umpama", x:"Sisuan bulu jala sipanjala, siboto uhum do hamu jala anak ni raja.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sitiktik ma sigompa, golang-golang pangarahutnaTung so sadia pe na tupa, sai godang ma pinasuna", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sitorop ma dangkana, Sitorop ma bulungna; Gabe ma hula-hulana, Songon i ma nang boruna.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Soban rantingranting soban ni Sijamapolang; Ba molo rugi hamu sian antinganting, ba sai mangomo ma sian golang", m:'', c:'', src:1},
+  {t:"umpasa", x:"Songgop si Ruba-ruba tu dakka ni Hapadan, Angka pasu-pasu na ni lehon muna, Sai dijangkon tondi ma dohot badan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Songon lote addolok, na masi jou-jouan. Molo adong na huranglobi di hamu, Denggan ma hamu masianju-anjuan. Molo adong na gaale ditonga-tonga mu, Denggan ma hamu masi urupan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Sori manungkun sori mandapot, sai matua marpanungkun tu na nidapot.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Suman tu aek natio do hamu, riong-riong di pinggan pasu; Hula-hula nabasa do hamu, na girgir mamasu-masu.", m:'', c:'', src:1},
+  {t:"umpama", x:"Sungkunon poda natua-tua, sungkunon gogo naumposo", m:'', c:'', src:1},
+  {t:"umpasa", x:"Takkas uju purba, takkasan ma uju angkola. Takkas hita maduma, takkasan ma na mamora. Hata ni sipanganon masak i, Takkas ma dipaboa Amangboru.", m:'', c:'', src:1},
+  {t:"umpama", x:"Tampuk ni dambibir do i na so boi tu panggonggonan; Parjahajaha di bibir do i, parpustaha di tolonan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tampuk ni sibaganding di dolok ni pangiringan; horas ma hamu na marhaha maranggi molo sai masipairing-iringan.", m:'', c:'', src:1},
+  {t:"umpama", x:"Tep-tep do mula ni gondang, serser do mulani tortor. Sise mula ni uhum, sukkun mula ni hata; Sipanganon naung pinasahat muna amangboru, dia ma lak-lak na, dia unok na, dia hatana, aha ma nidokna, takkas ma dipaboa amangboru.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tibbo tiang ni ruma, tibboan do tiang ni sopo. Nungnga tung ganjang umur ni natua-tuaon, Sai lobi ganjang ma umur ni na poso.", m:'', c:'', src:1},
+  {t:"umpama", x:"Tiktik mula ni gondang, serser mula ni tortor, sungkun mula ni hata", m:'', c:'', src:1},
+  {t:"umpama", x:"Timbo bulung botik, binoto paet, Buni pe parsiraan binoto do assim na.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Timbo dolok martimbang, torunai dalan tu onanSai asi ma roha ni Tuhanta sian banua ginjang, sai ditambai ma angka hahipason dohot pansamotan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tinaba hau toras bahen sopo di balian; Na burju marnatoras ingkon dapotan parsaulian", m:'', c:'', src:1},
+  {t:"umpama", x:"Tinallik randorung bontar gotana, Dos do anak dohot boru nang pe pulik margana, ai dompak marmeme anak, dompak do tong marmeme boru, andung ni anak sabulan di dalan, andung ni boru sataon.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tinampul bulung bira bahen saong laho tu ladang; Sai mangomo ma hamu sian tigatiga ba sai maruntung ma sian dagang", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tinapu bulung nisabi, baen lompan ni pangula; Sahat ma pasu-pasu na nilehon muna i tu hami, Sai horas ma nang hamu hula-hula.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tinapu bulung salaon dongan ni bulung si tulan; Ba sai naek pangkat ma hamu ganup taon, sai tamba gaji tiap bulan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tinapu bulung siarum, bahen uram ni pora-pora; Na hassiti, tibu ma malum, sai ro ma silas ni roha.", m:'', c:'', src:1},
+  {t:"umpama", x:"Tinpu bulung ni sabi nibutbut pinaspashon; I dope na tarpatupa hami ba i ma jolo tahalashon", m:'', c:'', src:1},
+  {t:"umpama", x:"Tinutung antarasa, nidolos andaliman; tu jolo mangalangka, tu pudi marpanarian", m:'', c:'', src:1},
+  {t:"umpama", x:"Togu urat ni bulu, toguan urat ni padang; togu pe nidok ni uhum, toguan nidok ni padan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tombak ni Simalungun , parsobanan ni Simamora; Sai tibu ma salpu nalungun, jala ro las ni roha", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tombak ni Sipinggan di dolok ni Sitapongan; Di dia pe hita maringanan, sai tong ma hita masihaholongan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tonggi sibahut, tabo pora-pora; gabe ma hita luhut, horas jala mamora", m:'', c:'', src:1},
+  {t:"umpama", x:"Torop do bittang di langit, si gara ni api sada do; Torop do si boru nauli, tinodo ni rohakku holoan ho do", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tu sanggar ma amporik, tu lubang ma satua; Sinur ma pinahan gabe dohot na niula", m:'', c:'', src:1},
+  {t:"umpama", x:"Tuat ma na dolok martungkot sialagundi; adat ni ompunta sijolo-jolo tubu siihuttonon ni na di pidi.", m:'', c:'', src:1},
+  {t:"umpama", x:"Tuat si puti, nakkok sideak. Ia i na uli ima ta pareak.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tubu dingindingin jonok tu simartolu; Horas ma tondi madingin pir tondi matogu", m:'', c:'', src:1},
+  {t:"umpama", x:"Tubu hau parira, didolok Simangonding; Tung boha pe tua ni ama dohot ina, Tottong do lungun roha molo dung monding.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tubu ma halosi di dolok ni Pintu batu; Hami do na mangulosi Debata ma na mamasu-masu", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tubu ma hariara diholang-holang ni huta, dakkanai tanggo pinarait-aithon, Tubu ma di hamu anak na marsahala dohot boru namartua, sitongka panahit-nahiton.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tubu ma singkoru di dolok ni Simamora; Sai torop ma anak dohot boru na basa jala sisubut roha", m:'', c:'', src:1},
+  {t:"umpama", x:"Tubu simarimbalo dilambung simarhalosi; Tongka do siripe manjalo na so umboto mamalosi", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tubu simartolu, didolok panamparan; Penggeng ma hamu sahat tu na saur matua, Dihaliangi akka popparan.", m:'', c:'', src:1},
+  {t:"umpama", x:"Tudia ma luluon da goreng-goreng bahen soban; Tudia ma luluon da boru Tobing bahen dongan.", m:'', c:'', src:1},
+  {t:"umpasa", x:"Tumbur ni pangkat tu tumbur ni hotang; Tusi hamu mangalangka, disi ma hamu dapotan", m:'', c:'', src:1},
+  {t:"umpasa", x:"Turtu ninna anduhur, tio ninna lote, hata nauli hata nadenggan nanidokmunai, dijangkon tondinami mai, unang muba unang mose.", m:'', c:'', src:1},
+  {t:"umpama", x:"Urat ni singkoru dihungkupi bulang bira; Anggo barita haburjuonmuna marboru, nunga tarbarita sahat ro didia.", m:'', c:'', src:1}
+];
+const KEY = 'sb-umpasa-saya';
+function mine(){ try{ return JSON.parse(store.get(KEY) || '[]'); }catch(e){ return []; } }
+function all(){ return DATA.map((d,i)=>({...d, id:'b'+i})).concat(mine().map(d=>({...d, own:true}))); }
+
+let filter = 'semua';
+const chips = [['semua','Semua'],['umpasa','Umpasa'],['umpama','Umpama'],['poda','Hata poda'],['bibel','Poda (Bibel)'],['saya','Koleksi saya']];
+function chipLabels(){ const a = all(); $('sChips').innerHTML = chips.map(([k,l]) => { const n = k==='semua' ? a.length : a.filter(d => k==='saya' ? d.own : d.t===k).length;
+  return '<button type="button" data-f="'+k+'" aria-pressed="'+(k===filter)+'">'+l+' <small style="opacity:.7">'+n+'</small></button>'; }).join(''); }
+chipLabels();
+let shown = 30;
+const more = document.createElement('div'); more.className = 'tools'; more.style.justifyContent = 'center';
+more.innerHTML = '<button type="button" class="btn ghost" id="sMore">Tampilkan lebih banyak</button>';
+$('sList').after(more);
+$('sMore').onclick = () => { shown += 30; renderList(true); };
+$('sChips').addEventListener('click', e => { const b = e.target.closest('button'); if(!b) return; filter = b.dataset.f;
+  $('sChips').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); renderList(); });
+$('sSearch').addEventListener('input', renderList);
+
+function card(d, big){
+  const r = BT.latinToBatak(d.x);
+  return '<article class="say'+(big?' ':'')+'" data-id="'+esc(d.id)+'">' +
+    '<div class="type">'+TYPES[d.t]+(d.own?', koleksi saya':'')+'</div>' +
+    '<div class="bt" lang="bbc">'+esc(r.uni)+'</div>' +
+    '<div class="lt">'+esc(d.x)+'</div>' +
+    (d.m ? '<p class="mean">'+esc(d.m)+'</p>' : '') +
+    (d.c ? '<p class="ctx">'+esc(d.c)+'</p>' : '') +
+    '<div class="tools">' +
+      '<button type="button" class="btn ghost" data-act="uni">Salin aksara</button>' +
+      '<button type="button" class="btn ghost" data-act="toba">Salin kode Toba</button>' +
+      '<button type="button" class="btn ghost" data-act="open">Uraikan</button>' +
+      (d.own ? '<button type="button" class="btn ghost" data-act="del">Hapus</button>' : '') +
+    '</div></article>';
+}
+function renderToday(){
+  const base = DATA.filter(d => d.t !== 'bibel' && d.x.length < 150);
+  const day = Math.floor(Date.now() / 86400000);
+  const d = {...base[day % base.length], id:'b'+DATA.indexOf(base[day % base.length])};
+  $('sToday').innerHTML = '<div class="hint" style="margin:0 0 4px">Ungkapan hari ini</div>' + card(d, true).replace('<article class="say ', '<article class="say" style="border:0;padding:0;background:transparent" ');
+}
+function renderList(keep){
+  if(keep !== true) shown = 30;
+  const q = $('sSearch').value.trim().toLowerCase();
+  const items = all().filter(d => (filter === 'semua' || (filter === 'saya' ? d.own : d.t === filter)) &&
+    (!q || (d.x + ' ' + (d.m||'') + ' ' + (d.c||'')).toLowerCase().includes(q)));
+  $('sList').innerHTML = items.slice(0, shown).map(d => card(d)).join('');
+  more.hidden = items.length <= shown;
+  $('sMore').textContent = 'Tampilkan lebih banyak (' + (items.length - shown) + ' lagi)';
+  $('sEmpty').hidden = items.length > 0;
+  if(filter === 'saya' && !items.length && !q) $('sEmpty').textContent = 'Koleksi Anda masih kosong. Tambahkan ungkapan lewat formulir di bawah.';
+  else $('sEmpty').textContent = 'Tidak ada ungkapan yang cocok. Ubah pencarian atau pilih jenis lain.';
+}
+async function copy(text, btn){
+  const old = btn.textContent;
+  try{ await navigator.clipboard.writeText(text); btn.textContent = 'Tersalin'; }catch(e){ btn.textContent = 'Gagal menyalin'; }
+  setTimeout(() => btn.textContent = old, 1400);
+}
+document.getElementById('p-say').addEventListener('click', e => {
+  const b = e.target.closest('button[data-act]'); if(!b) return;
+  const id = b.closest('article').dataset.id; const d = all().find(x => x.id === id); if(!d) return;
+  const r = BT.latinToBatak(d.x);
+  if(b.dataset.act === 'uni') copy(r.uni, b);
+  else if(b.dataset.act === 'toba') copy(r.toba, b);
+  else if(b.dataset.act === 'del'){ store.set(KEY, JSON.stringify(mine().filter(x => x.id !== id))); chipLabels(); renderList(); }
+  else if(b.dataset.act === 'open'){
+    const inp = $('inp'); document.querySelector('nav.tabs button[data-tab="convert"]').click();
+    if($('dirL2B').getAttribute('aria-pressed') !== 'true') $('dirL2B').click();
+    inp.value = d.x; inp.dispatchEvent(new Event('input')); window.scrollTo({top:0});
+  }
+});
+$('sfAdd').onclick = () => {
+  const x = $('sfText').value.trim();
+  if(!x){ $('sfMsg').textContent = 'Tulis teks ungkapannya dulu.'; return; }
+  const list = mine(); list.unshift({id:'u'+Date.now(), t:$('sfType').value, x, m:$('sfMean').value.trim(), c:''});
+  if(!store.set(KEY, JSON.stringify(list))){ $('sfMsg').textContent = 'Ungkapan tidak bisa disimpan di peramban ini.'; return; }
+  $('sfText').value = ''; $('sfMean').value = ''; $('sfMsg').textContent = 'Tersimpan di Koleksi saya.';
+  filter = 'saya'; chipLabels(); $('sChips').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x.dataset.f === 'saya')); renderList();
+  setTimeout(() => $('sfMsg').textContent = '', 2500);
+};
+renderToday(); renderList();
+})();
+</script>
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // kata yang bergantian di kepala halaman
+  const WORDS = ['Horas!','Surat Batak','Horas jala gabe','Mauliate godang','Sahat ma'];
+  const el = document.getElementById('brandBt'), lt = document.getElementById('heroLt');
+  let i = 0;
+  const seg = (window.Intl && Intl.Segmenter) ? new Intl.Segmenter('id',{granularity:'grapheme'}) : null;
+  function show(){
+    const w = WORDS[i % WORDS.length]; i++;
+    const uni = BT.latinToBatak(w).uni;
+    const parts = seg ? Array.from(seg.segment(uni), s => s.segment) : uni.split(' ');
+    el.innerHTML = '';
+    parts.forEach((p, k) => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = p; s.style.animationDelay = (k * 70) + 'ms'; el.appendChild(s); });
+    lt.textContent = w;
+  }
+  show();
+  if(!reduce) setInterval(show, 3600);
+
+  // hasil alih aksara muncul dengan gerakan halus setiap berubah
+  ['outUni','outLatin'].forEach(id => {
+    const n = document.getElementById(id); if(!n) return;
+    new MutationObserver(() => { n.classList.remove('flash'); void n.offsetWidth; n.classList.add('flash'); }).observe(n, {childList:true, characterData:true, subtree:true});
+  });
+
+  // bilah kemajuan latihan bermotif ulos
+  const prog = document.getElementById('qProg');
+  if(prog){
+    const bar = document.createElement('div'); bar.className = 'qbar'; bar.innerHTML = '<i></i>';
+    prog.parentNode.parentNode.insertBefore(bar, prog.parentNode);
+    const upd = () => { const m = prog.textContent.match(/(\d+) dari (\d+)/); bar.firstChild.style.width = m ? ((+m[1] - 1) / +m[2] * 100) + '%' : (prog.textContent === 'Selesai' ? '100%' : '0'); };
+    new MutationObserver(upd).observe(prog, {childList:true, characterData:true, subtree:true}); upd();
+  }
+
+  // tab: gulir agar bagian aktif terlihat pada layar sempit
+  document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => {
+    b.scrollIntoView({inline:'center', block:'nearest', behavior: reduce ? 'auto' : 'smooth'});
+    const top = document.querySelector('.navbar').offsetTop;
+    if(window.scrollY > top) window.scrollTo({top, behavior: reduce ? 'auto' : 'smooth'});
+  }));
+})();
+</script>
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store = { get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} } };
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BASE = 'data/';
+const PB = '᯽', METEK = '᯼';
+const GODANG = '<svg viewBox="0 0 420 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">' +
+  '<path d="M20 14H178M20 26H178M242 14H400M242 26H400"/><path d="M20 6V34M400 6V34M8 10H20M8 20H20M8 30H20M400 10H412M400 20H412M400 30H412"/>' +
+  '<ellipse cx="210" cy="20" rx="30" ry="12"/><ellipse cx="210" cy="20" rx="12" ry="18"/></g>' +
+  '<g fill="currentColor"><circle cx="210" cy="20" r="4.5"/><path d="M70 20l6-6 6 6-6 6zM120 20l6-6 6 6-6 6zM290 20l6-6 6 6-6 6zM340 20l6-6 6 6-6 6z"/>' +
+  '<circle cx="45" cy="5" r="2.4"/><circle cx="45" cy="35" r="2.4"/><circle cx="150" cy="5" r="2.4"/><circle cx="150" cy="35" r="2.4"/>' +
+  '<circle cx="270" cy="5" r="2.4"/><circle cx="270" cy="35" r="2.4"/><circle cx="375" cy="5" r="2.4"/><circle cx="375" cy="35" r="2.4"/></g></svg>';
+
+const S = { index:null, book:null, data:null, mode:store.get('sb-bibel-mode') || 'aksara', zoom:+(store.get('sb-bibel-zoom') || 1),
+  page:0, pages:1, pageW:0, spread:false, verses:[], heads:[], ready:false, shown:false, full:false, cache:{} };
+const flow = $('rdFlow');
+$('rdMode').value = S.mode;
+
+const uni = t => BT.latinToBatak(t).uni;
+
+function msg(t){ $('rdMsg').textContent = t || ''; }
+
+async function loadIndex(){
+  if(S.index) return S.index;
+  const r = await fetch(BASE + 'index.json'); if(!r.ok) throw new Error('idx');
+  S.index = await r.json();
+  $('rdBook').innerHTML = S.index.map(b => '<option value="' + b.n + '">' + b.n + '. ' + esc(b.name) + '</option>').join('');
+  return S.index;
+}
+async function loadBook(n){
+  if(S.cache[n]) return S.cache[n];
+  const r = await fetch(BASE + String(n).padStart(2,'0') + '.json'); if(!r.ok) throw new Error('book');
+  return S.cache[n] = await r.json();
+}
+
+function build(){
+  const d = S.data, m = S.mode, parts = [];
+  const name = d.name;
+  parts.push('<div class="bk">' + (m === 'latin' ? '<span class="nm">' + esc(name) + '</span>' :
+    '<span class="nm">' + esc(uni(name)) + '</span><span class="sub">' + esc(name) + '</span>') + GODANG + '</div>');
+  d.ch.forEach((vs, ci) => {
+    const c = ci + 1, head = name + ' ' + c;
+    parts.push('<h4 id="rc-' + c + '" data-c="' + c + '">' + (m === 'latin' ? esc(head) : esc(uni(head)) + (m === 'paralel' ? '<small>' + esc(head) + '</small>' : '')) + '</h4>');
+    vs.forEach((t, vi) => {
+      const last = vi === vs.length - 1;
+      let body = t;
+      if(last && body.endsWith('.')) body = body.slice(0, -1);
+      const shown = m === 'latin' ? esc(body) : esc(uni(body));
+      parts.push('<p data-c="' + c + '" data-v="' + (vi+1) + '"><sup>' + (vi+1) + '</sup>' + shown + (last ? '<span class="pb">' + PB + '</span>' : '') +
+        (m === 'paralel' ? '<span class="lt">' + esc(t) + '</span>' : '') + '</p>');
+    });
+  });
+  parts.push('<div class="end">' + METEK + METEK + METEK + '<small>' + esc(name) + '</small></div><span id="rdEndMark"></span>');
+  flow.classList.toggle('latin', m === 'latin');
+  flow.innerHTML = parts.join('');
+  S.verses = Array.from(flow.querySelectorAll('p[data-v]'));
+  S.heads = Array.from(flow.querySelectorAll('h4'));
+  $('rdChap').innerHTML = d.ch.map((_, i) => '<option value="' + (i+1) + '">Pasal ' + (i+1) + '</option>').join('');
+}
+
+function pageOf(el){
+  const fl = flow.getBoundingClientRect().left;
+  return Math.max(0, Math.floor((el.getBoundingClientRect().left - fl + 2) / S.pageW));
+}
+function firstVerseOnPage(p){
+  const v = S.verses; let lo = 0, hi = v.length - 1, ans = v[0];
+  while(lo <= hi){ const mid = (lo + hi) >> 1; if(pageOf(v[mid]) >= p){ ans = v[mid]; hi = mid - 1; } else lo = mid + 1; }
+  return ans;
+}
+
+function layout(keep){
+  const wrap = $('rdWrap'); const W = wrap.clientWidth; if(!W || !S.data) return;
+  const anchor = keep && S.ready && S.verses.length ? firstVerseOnPage(S.page) : null;
+  S.spread = W >= 860;
+  const pageW = Math.floor(S.spread ? Math.min(W / 2, 600) : Math.min(W, 680));
+  const barH = $('rd').querySelector('.rd-bar').offsetHeight + ($('rdSearch').hidden ? 0 : $('rdSearch').offsetHeight);
+  const avail = S.full ? innerHeight - barH - 80 : innerHeight - barH - 170;
+  const pageH = Math.max(360, S.full ? avail : Math.min(avail, Math.round(pageW * (S.spread ? 1.42 : 1.5))));
+  const pad = Math.round(Math.max(16, Math.min(44, pageW * .07))), foot = 30;
+  const cw = pageW - 2 * pad;
+  S.pageW = pageW;
+  const stage = $('rdStage'); stage.style.width = (S.spread ? 2 * pageW : pageW) + 'px'; stage.style.height = pageH + 'px';
+  const p1 = $('rdP1'), p2 = $('rdP2');
+  [p1, p2].forEach((p, i) => { p.style.width = pageW + 'px'; p.style.height = pageH + 'px'; p.style.left = (i * pageW) + 'px';
+    p.querySelector('.rd-foot').style.cssText = 'height:' + foot + 'px;padding:0 ' + pad + 'px;margin:0 ' + 0 + 'px'; });
+  p2.hidden = !S.spread;
+  p1.className = 'rd-paper ' + (S.spread ? 'l' : 's'); p2.className = 'rd-paper r';
+  const clip = $('rdClip');
+  clip.style.left = pad + 'px'; clip.style.top = pad + 'px';
+  clip.style.width = (S.spread ? pageW + cw : cw) + 'px'; clip.style.height = (pageH - 2 * pad - foot + 6) + 'px';
+  const base = (pageW < 420 ? 19 : 22) * S.zoom;
+  flow.style.setProperty('--rd-fs', base.toFixed(1) + 'px');
+  flow.style.width = cw + 'px'; flow.style.columnWidth = cw + 'px'; flow.style.columnGap = (2 * pad) + 'px';
+  flow.classList.add('nojump'); flow.style.transform = 'translateX(0)';
+  S.pages = pageOf($('rdEndMark')) + 1;
+  S.ready = true;
+  const p = anchor ? pageOf(anchor) : Math.min(S.page, S.pages - 1);
+  go(p, true);
+  requestAnimationFrame(() => flow.classList.remove('nojump'));
+}
+
+function go(p, instant){
+  if(!S.ready) return;
+  const step = S.spread ? 2 : 1;
+  p = Math.max(0, Math.min(S.pages - 1, p));
+  if(S.spread) p -= p % 2;
+  S.page = p;
+  if(instant || reduce) flow.classList.add('nojump');
+  flow.style.transform = 'translateX(' + (-p * S.pageW) + 'px)';
+  if(instant || reduce) requestAnimationFrame(() => flow.classList.remove('nojump'));
+  const n1 = p + 1, n2 = p + 2;
+  $('rdP1').querySelector('.rd-fn').textContent = n1;
+  $('rdP1').querySelector('.rd-fb').textContent = S.data.name;
+  $('rdP2').querySelector('.rd-fn').textContent = n2 <= S.pages ? n2 : '';
+  $('rdP2').querySelector('.rd-fb').textContent = n2 <= S.pages ? S.data.name : '';
+  $('rdPageIn').value = n1; $('rdPageIn').max = S.pages; $('rdPageTot').textContent = '/ ' + S.pages;
+  $('rdScrub').max = S.pages; $('rdScrub').value = n1;
+  $('rdPrev').disabled = p <= 0; $('rdNext').disabled = p + step >= S.pages;
+  const v = firstVerseOnPage(p);
+  const lastVis = p + step - 1, h = S.heads.find(x => { const q = pageOf(x); return q >= p && q <= lastVis; });
+  if(v){ $('rdChap').value = h ? h.dataset.c : v.dataset.c; store.set('sb-bibel-pos', JSON.stringify({b:S.book, c:+v.dataset.c, v:+v.dataset.v})); }
+}
+const next = () => go(S.page + (S.spread ? 2 : 1));
+const prev = () => go(S.page - (S.spread ? 2 : 1));
+function goVerse(c, v){
+  const el = flow.querySelector('p[data-c="' + c + '"][data-v="' + v + '"]') || $('rc-' + c);
+  if(el) go(pageOf(el));
+}
+
+async function openBook(n, c, v){
+  try{
+    msg('Memuat kitab...');
+    await loadIndex();
+    S.book = +n; $('rdBook').value = n;
+    S.data = await loadBook(n);
+    S.page = 0; S.ready = false;
+    build();
+    if(document.fonts && document.fonts.ready) await document.fonts.ready;
+    msg('');
+    layout(false);
+    if(c) goVerse(c, v || 1);
+    if(!S.full) toReader();
+  } catch(e){
+    msg(navigator.onLine ? 'Kitab tidak bisa dimuat. Muat ulang halaman lalu coba lagi.' : 'Kitab ini belum tersimpan di perangkat. Sambungkan ke internet untuk membukanya pertama kali.');
+  }
+}
+function rerender(){ if(!S.data) return; const v = S.ready ? firstVerseOnPage(S.page) : null; S.ready = false; build(); layout(false);
+  if(v) goVerse(v.dataset.c, v.dataset.v); }
+
+// pertama kali tab dibuka
+function toReader(){
+  const nav = document.querySelector('.navbar'), top = $('rd').getBoundingClientRect().top + scrollY - (nav ? nav.offsetHeight : 0) - 8;
+  if(Math.abs(scrollY - top) > 4) scrollTo({top, behavior: reduce ? 'auto' : 'smooth'});
+}
+function show(){
+  toReader();
+  if(!S.shown){
+    S.shown = true;
+    let pos = null; try{ pos = JSON.parse(store.get('sb-bibel-pos') || 'null'); }catch(e){}
+    openBook(pos ? pos.b : 1, pos && pos.c, pos && pos.v);
+  } else layout(true);
+}
+document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => { if(b.dataset.tab === 'bibel') requestAnimationFrame(show); }));
+
+// kontrol
+$('rdBook').onchange = e => openBook(+e.target.value);
+$('rdChap').onchange = e => goVerse(+e.target.value, 1);
+$('rdMode').onchange = e => { S.mode = e.target.value; store.set('sb-bibel-mode', S.mode); rerender(); };
+$('rdPrev').onclick = prev; $('rdNext').onclick = next;
+$('rdZL').onclick = prev; $('rdZR').onclick = next;
+$('rdPageIn').onchange = e => go((+e.target.value || 1) - 1);
+$('rdScrub').oninput = e => go(+e.target.value - 1);
+function zoom(d){ S.zoom = Math.max(.7, Math.min(2, Math.round((S.zoom + d) * 10) / 10)); store.set('sb-bibel-zoom', S.zoom); layout(true); }
+$('rdZoomIn').onclick = () => zoom(.1); $('rdZoomOut').onclick = () => zoom(-.1);
+function setFull(on){
+  S.full = on; $('rd').classList.toggle('full', on); document.body.classList.toggle('rd-lock', on);
+  $('rdFull').setAttribute('aria-label', on ? 'Keluar dari layar penuh' : 'Layar penuh');
+  try{
+    if(on && document.documentElement.requestFullscreen && !document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+    if(!on && document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  }catch(e){}
+  setTimeout(() => layout(true), 120);
+}
+$('rdFull').onclick = () => setFull(!S.full);
+document.addEventListener('fullscreenchange', () => { if(!document.fullscreenElement && S.full) setFull(false); });
+document.addEventListener('keydown', e => {
+  if(!document.getElementById('p-bibel').classList.contains('on')) return;
+  if(/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) return;
+  if(e.key === 'ArrowRight' || e.key === 'PageDown'){ e.preventDefault(); next(); }
+  else if(e.key === 'ArrowLeft' || e.key === 'PageUp'){ e.preventDefault(); prev(); }
+  else if(e.key === 'Escape' && S.full) setFull(false);
+});
+// usap layar
+let tx = null, ty = 0;
+$('rdStage').addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive:true});
+$('rdStage').addEventListener('touchend', e => {
+  if(tx === null) return; const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+  if(Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3){ dx < 0 ? next() : prev(); }
+}, {passive:true});
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if(document.getElementById('p-bibel').classList.contains('on')) layout(true); }, 150); });
+
+// cari dalam kitab
+$('rdSearchBtn').onclick = () => {
+  const s = $('rdSearch'); s.hidden = !s.hidden; $('rdSearchBtn').setAttribute('aria-expanded', String(!s.hidden));
+  if(!s.hidden) $('rdQ').focus(); layout(true);
+};
+let qt;
+$('rdQ').addEventListener('input', () => { clearTimeout(qt); qt = setTimeout(search, 200); });
+function search(){
+  const q = $('rdQ').value.trim().toLowerCase(), out = $('rdRes');
+  if(q.length < 2 || !S.data){ out.innerHTML = ''; return; }
+  const hits = [];
+  S.data.ch.forEach((vs, ci) => vs.forEach((t, vi) => { if(hits.length < 60 && t.toLowerCase().includes(q)) hits.push([ci+1, vi+1, t]); }));
+  const total = S.data.ch.reduce((n, vs) => n + vs.filter(t => t.toLowerCase().includes(q)).length, 0);
+  const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+  out.innerHTML = (hits.length ? '' : '<p class="hint">Tidak ditemukan di kitab ini.</p>') +
+    hits.map(([c, v, t]) => '<button type="button" data-c="' + c + '" data-v="' + v + '"><b>' + c + ':' + v + '</b>' + esc(t).replace(re, '<mark>$1</mark>') + '</button>').join('') +
+    (total > hits.length ? '<p class="hint">Menampilkan 60 dari ' + total + ' ayat.</p>' : '');
+}
+$('rdRes').addEventListener('click', e => { const b = e.target.closest('button[data-c]'); if(b) goVerse(+b.dataset.c, +b.dataset.v); });
+})();
+</script>
+<script>
+(function(){
+// Profil penulis diisi lewat halaman admin (/admin), disimpan di data/profil.json
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LINK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>';
+const MAIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
+function safeUrl(u){ try{ const x = new URL(u, location.href); return /^(https?|mailto):$/.test(x.protocol) ? x.href : null; }catch(e){ return null; } }
+const w = $('pfWrap');
+const empty = () => { w.innerHTML = '<div class="card pf-empty"><h2>Profil penulis</h2><p class="hint">Profil penulis akan segera ditampilkan.</p></div>'; };
+function render(P){
+  if(!P || !P.nama) return empty();
+  const bio = Array.isArray(P.bio) ? P.bio : String(P.bio || '').split(/\n\s*\n/).map(x => x.trim()).filter(Boolean);
+  const initials = P.nama.split(/\s+/).map(s => s[0]).slice(0, 2).join('').toUpperCase();
+  w.innerHTML = '<div class="pf">' +
+    '<div class="pf-photo">' + (P.foto ? '<img src="' + esc(P.foto) + '" alt="Foto ' + esc(P.nama) + '">' : '<div class="pf-ph" aria-hidden="true">' + esc(initials) + '</div>') + '<div class="ipon" aria-hidden="true"></div></div>' +
+    '<div><span class="bt-name" lang="bbc" aria-hidden="true">' + esc(BT.latinToBatak(P.nama).uni) + '</span>' +
+    '<h2>' + esc(P.nama) + '</h2>' + (P.peran ? '<p class="role">' + esc(P.peran) + '</p>' : '') +
+    '<div class="bio">' + bio.map(p => '<p>' + esc(p) + '</p>').join('') + '</div>' +
+    '<div class="pf-soc">' + (P.sosmed || []).map(s => { const u = safeUrl(s.url); return u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + (u.startsWith('mailto:') ? MAIL : LINK) + esc(s.label || u) + '</a>' : ''; }).join('') + '</div>' +
+    '</div></div>';
+}
+empty();
+if(/^https?:$/.test(location.protocol)) fetch('/data/profil.json', {cache:'no-cache'}).then(r => r.ok ? r.json() : null).then(render).catch(() => {});
+})();
+</script>
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store = { get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} } };
+const ss = { get(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }, set(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} } };
+const live = /^https?:$/.test(location.protocol) && !/^(localhost|127\.|\[::1\])/.test(location.hostname);
+
+/* ---------- pencatatan kunjungan ---------- */
+function send(body){
+  if(!live || navigator.webdriver) return;
+  try{ fetch('/api/hit', {method:'POST', body: JSON.stringify(body), keepalive:true, headers:{'content-type':'application/json'}}).catch(() => {}); }catch(e){}
+}
+(function hit(){
+  if(ss.get('sb-hit')) return; ss.set('sb-hit', '1');
+  const today = new Date(Date.now() + 7 * 3600e3).toISOString().slice(0, 10);
+  const newDevice = !store.get('sb-dev'), newToday = store.get('sb-day') !== today;
+  store.set('sb-dev', '1'); store.set('sb-day', today);
+  send({newDevice, newToday, tab:'convert'});
+  ss.set('sb-tab-convert', '1');
+})();
+document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => {
+  const t = b.dataset.tab; if(ss.get('sb-tab-' + t)) return; ss.set('sb-tab-' + t, '1'); send({type:'tab', tab:t});
+}));
+
+/* ---------- dasbor ---------- */
+const TABN = {convert:'Alih aksara', bibel:'Bibel', artikel:'Artikel', file:'Dari berkas', learn:'Belajar huruf', say:'Umpasa & poda', quiz:'Latihan', profil:'Profil penulis', stats:'Statistik'};
+const DAYN = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+const MON = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+const fmt = n => n.toLocaleString('id-ID');
+const fday = k => { const d = new Date(k + 'T00:00:00Z'); return d.getUTCDate() + ' ' + MON[d.getUTCMonth()]; };
+let days = 30, data = null, loaded = false;
+const tip = $('stTip');
+function showTip(e, text){ tip.textContent = text; tip.hidden = false; const x = Math.min(innerWidth - tip.offsetWidth - 8, e.clientX + 12); tip.style.left = x + 'px'; tip.style.top = (e.clientY - 38) + 'px'; }
+
+// grafik batang satu deret: satu warna, dasar di nol, sudut atas membulat
+function bars(el, vals, labels, tipText, labelEvery){
+  const W = Math.max(300, Math.round(el.clientWidth || 640)), H = W < 480 ? 180 : 220, L = 38, R = 6, T = 10, B = 26, n = vals.length;
+  const max = Math.max(1, ...vals), step = niceStep(max), top = Math.ceil(max / step) * step;
+  const cw = (W - L - R) / n, bw = Math.max(2, cw - 2);
+  const y = v => T + (H - T - B) * (1 - v / top);
+  let g = '';
+  for(let t = 0; t <= top; t += step) g += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y(t) + '" y2="' + y(t) + '"/><text class="ax" x="' + (L - 6) + '" y="' + (y(t) + 4) + '" text-anchor="end">' + fmt(t) + '</text>';
+  vals.forEach((v, i) => {
+    const x = L + i * cw + 1, h = (H - B) - y(v), r = Math.min(4, bw / 2, h);
+    if(v > 0) g += '<path class="bar" data-i="' + i + '" d="M' + x + ' ' + (H - B) + 'V' + (y(v) + r) + 'q0 -' + r + ' ' + r + ' -' + r + 'H' + (x + bw - r) + 'q' + r + ' 0 ' + r + ' ' + r + 'V' + (H - B) + 'Z"/>';
+    if(i % labelEvery === 0) g += '<text class="ax" x="' + (x + bw / 2) + '" y="' + (H - 8) + '" text-anchor="middle">' + esc(labels[i]) + '</text>';
+    g += '<rect class="hit" data-i="' + i + '" x="' + (L + i * cw) + '" y="' + T + '" width="' + cw + '" height="' + (H - T - B) + '"/>';
+  });
+  g += '<line class="base" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>';
+  el.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="Grafik batang">' + g + '</svg>';
+  el.querySelectorAll('.hit').forEach(r => {
+    const i = +r.dataset.i, bar = el.querySelector('.bar[data-i="' + i + '"]');
+    r.addEventListener('pointermove', e => { showTip(e, tipText(i)); if(bar) bar.classList.add('hl'); });
+    r.addEventListener('pointerleave', () => { tip.hidden = true; if(bar) bar.classList.remove('hl'); });
+  });
+}
+function niceStep(max){ const raw = max / 4, p = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p; return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 5 ? 5 : 10) * p; }
+
+function render(){
+  const d = data, sum = d.daily.reduce((a, x) => a + x.visits, 0);
+  const busiest = d.hours.indexOf(Math.max(...d.hours));
+  $('stKpi').innerHTML = [
+    ['Total kunjungan', fmt(d.total.v), d.total.since ? 'sejak ' + fday(d.total.since) : ''],
+    ['Perangkat berbeda', fmt(d.total.n), 'sejak pencatatan dimulai'],
+    ['Kunjungan hari ini', fmt(d.today.visits), fmt(d.today.visitors) + ' pengunjung'],
+    ['Rata-rata per hari', fmt(Math.round(sum / d.daily.length)), days + ' hari terakhir'],
+    ['Jam paling ramai', sum ? String(busiest).padStart(2, '0') + '.00' : '–', 'WIB']
+  ].map(([k, v, s]) => '<div class="kpi"><div class="k">' + k + '</div><div class="v">' + v + '</div><div class="s">' + s + '</div></div>').join('');
+  bars($('stDaily'), d.daily.map(x => x.visits), d.daily.map(x => fday(x.day)),
+    i => fday(d.daily[i].day) + ': ' + fmt(d.daily[i].visits) + ' kunjungan, ' + fmt(d.daily[i].visitors) + ' pengunjung', days <= 7 ? 1 : days <= 30 ? 5 : 15);
+  bars($('stHours'), d.hours, d.hours.map((_, i) => String(i).padStart(2, '0')), i => 'Pukul ' + String(i).padStart(2, '0') + '.00–' + String(i).padStart(2, '0') + '.59: ' + fmt(d.hours[i]) + ' kunjungan', 3);
+  const wk = [1,2,3,4,5,6,0];
+  bars($('stWeek'), wk.map(i => d.weekdays[i]), wk.map(i => DAYN[i].slice(0, 3)), i => DAYN[wk[i]] + ': ' + fmt(d.weekdays[wk[i]]) + ' kunjungan', 1);
+  const tabs = Object.entries(d.tabs).filter(([k]) => TABN[k]).sort((a, b) => b[1] - a[1]), tmax = Math.max(1, ...tabs.map(t => t[1]));
+  $('stTabs').innerHTML = tabs.length ? tabs.map(([k, v]) => '<div class="hbar"><span>' + TABN[k] + '</span><span class="tr"><i style="width:' + (v / tmax * 100) + '%"></i></span><span class="n">' + fmt(v) + '</span></div>').join('') : '<p class="hint">Belum ada data.</p>';
+  $('stTable').innerHTML = '<table><thead><tr><th>Tanggal</th><th>Kunjungan</th><th>Pengunjung</th></tr></thead><tbody>' +
+    d.daily.slice().reverse().map(x => '<tr><td>' + fday(x.day) + '</td><td>' + fmt(x.visits) + '</td><td>' + fmt(x.visitors) + '</td></tr>').join('') + '</tbody></table>';
+  $('stGen').textContent = 'Diperbarui ' + new Date(d.generated).toLocaleString('id-ID', {timeZone:'Asia/Jakarta', dateStyle:'medium', timeStyle:'short'}) + ' WIB. Angka bisa tertunda hingga satu menit.';
+  $('stBody').hidden = false;
+}
+async function load(){
+  if(!live){ $('stMsg').textContent = /^https?:$/.test(location.protocol) ? 'Statistik hanya tersedia di situs yang sudah dipasang di Netlify.' : 'Statistik hanya tersedia di situs yang sudah dipasang di Netlify, bukan di pratinjau ini.'; return; }
+  $('stMsg').textContent = 'Memuat statistik...';
+  try{
+    const r = await fetch('/api/stats?days=' + days); if(!r.ok) throw new Error(r.status);
+    data = await r.json(); $('stMsg').textContent = ''; render();
+  }catch(e){ $('stMsg').textContent = 'Statistik belum bisa dimuat. Pastikan situs dipasang lewat GitHub atau Netlify CLI supaya fungsi penghitungnya aktif.'; }
+}
+document.querySelector('nav.tabs button[data-tab="stats"]').addEventListener('click', () => { if(!loaded){ loaded = true; load(); } });
+$('stRange').addEventListener('click', e => { const b = e.target.closest('button'); if(!b) return; days = +b.dataset.d;
+  $('stRange').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); load(); });
+$('stTableBtn').onclick = () => { const t = $('stTable'); t.hidden = !t.hidden; $('stTableBtn').setAttribute('aria-expanded', String(!t.hidden)); $('stTableBtn').textContent = t.hidden ? 'Lihat sebagai tabel' : 'Sembunyikan tabel'; };
+// untuk pengujian lokal
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if(data && document.getElementById('p-stats').classList.contains('on')) render(); }, 200); });
+window.__sbStatsRender = d => { data = d; $('stMsg').textContent = ''; render(); };
+})();
+</script>
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let loaded = false;
+async function load(){
+  loaded = true;
+  if(!/^https?:$/.test(location.protocol)){ $('arMsg').textContent = 'Artikel tersedia di situs yang sudah dipasang.'; return; }
+  $('arMsg').textContent = 'Memuat artikel...';
+  try{
+    const r = await fetch('/artikel/index.json', {cache:'no-cache'}); if(!r.ok) throw 0;
+    const list = (await r.json()).slice(0, 6);
+    $('arMsg').textContent = list.length ? '' : 'Belum ada artikel. Tulisan pertama segera hadir.';
+    $('arList').innerHTML = list.map(a => '<a class="ar-card" href="/artikel/' + encodeURIComponent(a.slug) + '/">' +
+      '<div class="ar-media">' + (a.gambar ? '<img src="' + esc(a.gambar) + '" alt="" loading="lazy">' : '<span class="gl" lang="bbc" aria-hidden="true">' + esc(BT.latinToBatak(a.judul.split(/\s+/).slice(0, 2).join(' ')).uni) + '</span>') + '</div>' +
+      '<div class="ar-txt"><span class="ar-kat">' + esc(a.kategori) + '</span><h3>' + esc(a.judul) + '</h3><span class="ar-bt" lang="bbc" aria-hidden="true">' + esc(a.aksara) + '</span>' +
+      '<span class="ar-meta">' + esc(a.tanggalTeks) + ' · ' + a.menit + ' menit baca</span></div></a>').join('');
+  }catch(e){ loaded = false; $('arMsg').textContent = navigator.onLine ? 'Artikel belum bisa dimuat. Coba lagi nanti.' : 'Sambungkan ke internet untuk membaca artikel.'; }
+}
+const tabs = Array.from(document.querySelectorAll('nav.tabs button'));
+tabs.forEach(b => b.addEventListener('click', () => {
+  if(b.dataset.tab === 'artikel' && !loaded) load();
+  const h = b.dataset.tab === 'convert' ? '' : '#' + b.dataset.tab;
+  if(location.hash !== h) history.replaceState(null, '', location.pathname + location.search + h);
+}));
+function fromHash(){ const b = tabs.find(x => x.dataset.tab === location.hash.slice(1)); if(b && b.getAttribute('aria-selected') !== 'true') b.click(); }
+addEventListener('hashchange', fromHash);
+fromHash();
+})();
+</script>
+</body></html>
