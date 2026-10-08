@@ -1,7 +1,16 @@
 {
-  "nama": "",
-  "peran": "",
+  "nama": "Raja Guntar Simamora",
+  "peran": "Founder @halak__toba & Surat Batak App",
   "foto": "",
-  "bio": "",
-  "sosmed": []
+  "bio": "pemerhati budaya batak toba.",
+  "sosmed": [
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/halak__toba/"
+    },
+    {
+      "label": "X",
+      "url": "https://x.com/halak__toba"
+    }
+  ]
 }
