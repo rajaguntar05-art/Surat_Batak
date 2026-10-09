@@ -1,5 +1,5 @@
 // Surat Batak: simpan aplikasi di perangkat supaya bisa dibuka tanpa internet.
-const VERSION = 'surat-batak-v13';
+const VERSION = 'surat-batak-v15';
 const SHELL = ['/', '/index.html', '/manifest.json', '/fonts/SuratBatakToba-Regular.ttf', '/assets/artikel.css', '/icons/icon-192.png', '/icons/icon-512.png', '/icons/apple-touch-icon.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
