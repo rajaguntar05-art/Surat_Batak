@@ -1,6 +1,6 @@
 // Surat Batak: simpan aplikasi di perangkat supaya bisa dibuka tanpa internet.
-const VERSION = 'surat-batak-v7';
-const SHELL = ['/', '/index.html', '/manifest.json', '/fonts/NotoSansBatak-Regular.ttf', '/assets/artikel.css', '/icons/icon-192.png', '/icons/icon-512.png', '/icons/apple-touch-icon.png'];
+const VERSION = 'surat-batak-v13';
+const SHELL = ['/', '/index.html', '/manifest.json', '/fonts/SuratBatakToba-Regular.ttf', '/assets/artikel.css', '/icons/icon-192.png', '/icons/icon-512.png', '/icons/apple-touch-icon.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
 });
@@ -17,7 +17,7 @@ self.addEventListener('fetch', e => {
   // statistik dan halaman admin selalu langsung dari server
   if(same && (url.pathname.startsWith('/api/') || url.pathname.startsWith('/admin'))) return;
   // halaman, artikel, dan profil: ambil versi terbaru dulu, pakai salinan tersimpan bila luring
-  const fresh = same && (req.mode === 'navigate' || url.pathname.startsWith('/artikel/') || url.pathname === '/data/profil.json' || url.pathname.endsWith('.xml'));
+  const fresh = same && (req.mode === 'navigate' || url.pathname.startsWith('/artikel/') || url.pathname === '/data/profil.json' || url.pathname === '/data/latar.json' || url.pathname === '/img/latar/latar.json' || url.pathname.endsWith('.xml'));
   if(fresh){
     e.respondWith(fetch(req).then(r => {
       if(r.ok){ const copy = r.clone(); caches.open(VERSION).then(c => c.put(req, copy)); }

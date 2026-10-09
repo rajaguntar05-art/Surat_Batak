@@ -1,0 +1,7 @@
+SuratBatakToba-Regular.ttf adalah versi ubahan dari Noto Sans Batak
+(Copyright 2022 The Noto Project Authors), dirilis di bawah SIL Open Font License 1.1 (lihat OFL.txt).
+
+Perubahan untuk kaidah Batak Toba:
+- Paninggil (ng) ditempatkan di atas hauluan (i) dan sihora (o), bukan di atas huruf induk.
+- Hajoringan (h) ditempatkan di atas hauluan dan sihora.
+- Paninggil dan hajoringan menempel di atas huruf i dan u yang berdiri sendiri.

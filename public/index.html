@@ -8,8 +8,9 @@
 <meta name="theme-color" content="#141010">
 <meta property="og:title" content="Surat Batak">
 <meta property="og:description" content="Belajar dan alih aksara Batak Toba di HP, tablet, dan komputer.">
-<meta property="og:image" content="icons/icon-512.png">
+<meta property="og:image" content="/icons/og-image.png">
 <link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..800,100;1,9..144,400,100&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:"Noto Sans Batak";src:url("fonts/NotoSansBatak-Regular.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Surat Batak Toba";src:url("fonts/SuratBatakToba-Regular.ttf") format("truetype");font-display:swap}
 
 :root{
   --merah:#A3171C; --hitam:#141010; --putih:#F5F0E6;
@@ -28,7 +29,7 @@
   --pat:none;
   --serif:"Fraunces", Georgia, "Times New Roman", serif;
   --sans:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
-  --batak:"Noto Sans Batak", "Batak-Unicode", sans-serif;
+  --batak:"Surat Batak Toba", "Batak-Unicode", sans-serif;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
@@ -325,6 +326,39 @@ body.rd-lock{overflow:hidden}
 .ar-txt h3::before{display:none}
 .ar-bt{font-family:var(--batak);font-size:19px;color:var(--muted);line-height:1.5}
 .ar-meta{font-size:14px;color:var(--muted)}
+/* ===== Buat gambar ===== */
+.gm{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:24px;align-items:start;margin-top:14px}
+@media (max-width:860px){.gm{grid-template-columns:1fr}}
+.gm-prev{position:sticky;top:70px}
+@media (max-width:860px){.gm-prev{position:static}}
+.gm-stage{background:repeating-conic-gradient(var(--paper-2) 0 25%,var(--paper) 0 50%) 0 0/22px 22px;border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;justify-content:center;box-shadow:var(--shadow)}
+.gm-stage canvas{display:block;max-width:100%;max-height:70vh;width:auto;height:auto;border-radius:6px;touch-action:none;cursor:default;box-shadow:0 6px 20px -10px rgba(0,0,0,.5)}
+.gm-stage canvas.pan{cursor:grab}
+.gm-stage canvas.pan:active{cursor:grabbing}
+.gm-tip{text-align:center}
+.gm-dl{justify-content:center}
+.gm-ctl{display:grid;gap:4px}
+.gm-ctl textarea{min-height:90px;font-size:18px}
+.gm-g{display:grid;gap:8px;padding:14px 0;border-top:1px solid var(--line);margin-top:10px}
+.gm-l{font-weight:700;font-size:15px}
+.gm-r{display:grid;grid-template-columns:130px 1fr;align-items:center;gap:10px;font-size:15px}
+.gm-r input[type=range]{width:100%;accent-color:var(--ulos)}
+.gm-c{display:flex;gap:8px;align-items:center;font-size:15px;cursor:pointer}
+.gm-c input{accent-color:var(--ulos);width:18px;height:18px}
+.seg{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;padding:3px;background:var(--paper);gap:2px}
+.seg button{flex:1 1 auto;font-variant-numeric:tabular-nums;border:0;background:transparent;padding:7px 10px;border-radius:9px;cursor:pointer;font-size:15px}
+.seg button[aria-pressed="true"]{background:var(--merah);color:#FFF8EE}
+.bgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
+.bgs button{position:relative;aspect-ratio:1;border:2px solid transparent;border-radius:10px;padding:0;overflow:hidden;cursor:pointer;background:var(--c,#333) center/cover no-repeat}
+.bgs button[aria-checked="true"]{border-color:var(--ulos);box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--ulos)}
+.bgs button span{position:absolute;left:0;right:0;bottom:0;font-size:11px;line-height:1.2;padding:3px 4px;background:rgba(0,0,0,.55);color:#fff;text-align:left}
+.gm-up{cursor:pointer}
+.swatch{display:flex;gap:10px;flex-wrap:wrap}
+.swatch button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--c);cursor:pointer}
+.swatch button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--ulos)}
+
+.brandrow{display:flex;align-items:center;gap:18px}
+.brandrow .logo{width:clamp(72px,10vw,118px);height:auto;border-radius:12px;flex:0 0 auto}
 </style>
 </head>
 <body>
@@ -334,7 +368,7 @@ body.rd-lock{overflow:hidden}
   <div class="wrap hero-in">
     <div>
       <p class="kicker">Aksara Batak Toba</p>
-      <h1>Surat <em>Batak</em></h1>
+      <div class="brandrow"><img class="logo" src="icons/logo-header.png" width="496" height="546" alt="Logo Halak Toba"><h1>Surat <em>Batak</em></h1></div>
       <p class="lede">Belajar dan alih aksara Batak Toba: tulis huruf Latin untuk melihatnya dalam aksara Batak, atau tempel aksara Batak untuk membacanya dalam huruf Latin.</p>
     </div>
     <div class="hero-card" aria-live="off">
@@ -349,6 +383,7 @@ body.rd-lock{overflow:hidden}
   <div class="wrap">
     <nav class="tabs" role="tablist" aria-label="Bagian aplikasi">
       <button role="tab" aria-selected="true" data-tab="convert">Alih aksara</button>
+      <button role="tab" aria-selected="false" data-tab="gambar">Buat gambar</button>
       <button role="tab" aria-selected="false" data-tab="bibel">Bibel</button>
       <button role="tab" aria-selected="false" data-tab="artikel">Artikel</button>
       <button role="tab" aria-selected="false" data-tab="file">Dari berkas</button>
@@ -389,11 +424,11 @@ body.rd-lock{overflow:hidden}
       <div>
         <div id="outB" class="card">
           <div class="out-batak" id="outUni" lang="bbc"><span class="placeholder">Hasil aksara Batak muncul di sini.</span></div>
-          <div class="tools"><button class="btn" id="copyUni">Salin aksara</button></div>
+          <div class="tools"><button class="btn" id="copyUni">Salin aksara</button><button class="btn ghost" id="toImg">Jadikan gambar</button></div>
           <label class="lbl" style="margin-top:16px">Kode ketikan font Toba</label>
           <div class="code" id="outToba"></div>
           <div class="tools"><button class="btn ghost" id="copyToba">Salin kode</button></div>
-          <p class="hint">Tempel kode ini di Word lalu beri font Toba. Pada tampilan Unicode di atas, paninggil (ng) bisa tampil di atas huruf induk, bukan di atas tanda vokal; itu keterbatasan font Noto Sans Batak.</p>
+          <p class="hint">Tempel kode ini di Word lalu beri font Toba.</p>
         </div>
         <div id="outL" class="card" hidden>
           <div class="out-latin" id="outLatin"><span class="placeholder">Hasil huruf Latin muncul di sini.</span></div>
@@ -514,6 +549,83 @@ body.rd-lock{overflow:hidden}
     <div class="tools"><a class="btn" href="/artikel/">Semua artikel</a></div>
   </section>
 
+  <!-- BUAT GAMBAR -->
+  <section class="panel" id="p-gambar" role="tabpanel">
+    <h2>Buat gambar aksara</h2>
+    <p class="hint">Tulis kalimat dalam huruf Latin, pilih latar, lalu unduh sebagai PNG atau JPG untuk status, undangan, atau unggahan media sosial.</p>
+    <div class="gm">
+      <div class="gm-prev">
+        <div class="gm-stage" id="gmStage"><canvas id="gmCanvas" aria-label="Pratinjau gambar"></canvas></div>
+        <p class="hint gm-tip" id="gmTip">Geser foto di pratinjau untuk mengatur posisinya.</p>
+        <div class="tools gm-dl">
+          <button class="btn" id="gmPng">Unduh PNG</button>
+          <button class="btn ghost" id="gmJpg">Unduh JPG</button>
+          <button class="btn ghost" id="gmShare" hidden>Bagikan</button>
+        </div>
+        <p class="status" id="gmMsg" role="status"></p>
+      </div>
+      <div class="gm-ctl">
+        <label class="gm-l" for="gmText">Teks (huruf Latin)</label>
+        <textarea id="gmText" rows="3" spellcheck="false">Horas jala gabe, saur matua bulung</textarea>
+        <p class="hint" style="margin:4px 0 0">Tekan Enter untuk pindah baris.</p>
+
+        <div class="gm-g">
+          <span class="gm-l">Rasio gambar</span>
+          <div class="seg" id="gmSize" role="group" aria-label="Rasio gambar">
+            <button data-v="1080x1080" aria-pressed="true" title="1080 × 1080 piksel, unggahan Instagram dan Facebook">1:1</button>
+            <button data-v="1080x1350" aria-pressed="false" title="1080 × 1350 piksel, unggahan Instagram tegak">4:5</button>
+            <button data-v="1080x1440" aria-pressed="false" title="1080 × 1440 piksel, foto tegak">3:4</button>
+            <button data-v="1080x1920" aria-pressed="false" title="1080 × 1920 piksel, status WhatsApp, Story, Reels, TikTok">9:16</button>
+            <button data-v="1920x1080" aria-pressed="false" title="1920 × 1080 piksel, YouTube, presentasi, layar lebar">16:9</button>
+          </div>
+          <p class="hint" id="gmSizeHint" style="margin:0">1080 × 1080 piksel, untuk unggahan Instagram dan Facebook.</p>
+        </div>
+
+        <div class="gm-g">
+          <span class="gm-l">Latar</span>
+          <div class="bgs" id="gmBgs" role="radiogroup" aria-label="Pilih latar"></div>
+          <div class="tools" style="margin-top:8px">
+            <label class="btn ghost gm-up">Pakai foto sendiri<input type="file" id="gmFile" accept="image/*" hidden></label>
+          </div>
+          <label class="gm-r" id="gmZoomRow" hidden><span>Perbesar foto</span><input type="range" id="gmZoom" min="1" max="3" step="0.01" value="1"></label>
+          <label class="gm-r"><span>Samarkan latar</span><input type="range" id="gmDim" min="0" max="0.8" step="0.01" value="0.25"></label>
+        </div>
+
+        <div class="gm-g">
+          <label class="gm-r"><span>Ukuran aksara</span><input type="range" id="gmFs" min="3" max="22" step="0.1" value="9"></label>
+          <span class="gm-l">Rata teks</span>
+          <div class="seg" id="gmAlign" role="group" aria-label="Rata teks">
+            <button data-v="left" aria-pressed="false" title="Rata kiri">Kiri</button>
+            <button data-v="center" aria-pressed="true" title="Rata tengah">Tengah</button>
+            <button data-v="right" aria-pressed="false" title="Rata kanan">Kanan</button>
+            <button data-v="justify" aria-pressed="false" title="Rata kiri kanan">Kiri-kanan</button>
+          </div>
+          <span class="gm-l">Posisi tegak</span>
+          <div class="seg" id="gmVert" role="group" aria-label="Posisi tegak">
+            <button data-v="top" aria-pressed="false">Atas</button>
+            <button data-v="middle" aria-pressed="true">Tengah</button>
+            <button data-v="bottom" aria-pressed="false">Bawah</button>
+          </div>
+        </div>
+
+        <div class="gm-g">
+          <span class="gm-l">Warna aksara</span>
+          <div class="swatch" id="gmColor" role="radiogroup" aria-label="Warna aksara">
+            <button data-v="#FFFFFF" style="--c:#FFFFFF" aria-label="Putih" aria-pressed="true"></button>
+            <button data-v="#141010" style="--c:#141010" aria-label="Hitam" aria-pressed="false"></button>
+            <button data-v="#C8261F" style="--c:#C8261F" aria-label="Merah" aria-pressed="false"></button>
+            <button data-v="#E3B85C" style="--c:#E3B85C" aria-label="Emas" aria-pressed="false"></button>
+            <button data-v="#F3E6C8" style="--c:#F3E6C8" aria-label="Krem" aria-pressed="false"></button>
+          </div>
+          <label class="gm-c"><input type="checkbox" id="gmShadow" checked> Bayangan di belakang aksara</label>
+          <label class="gm-c"><input type="checkbox" id="gmLatin" checked> Tampilkan huruf Latin di bawah aksara</label>
+          <label class="gm-c"><input type="checkbox" id="gmOrn" checked> Hiasan gorga di tepi bawah</label>
+          <label class="gm-c"><input type="checkbox" id="gmMark" checked> Tulis alamat situs di pojok</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- UMPASA, UMPAMA, HATA PODA -->
   <section class="panel" id="p-say" role="tabpanel">
     <h2>Umpasa, umpama, dan hata poda</h2>
@@ -590,7 +702,6 @@ body.rd-lock{overflow:hidden}
   </section>
 </main>
 <div class="foot-band" aria-hidden="true"></div>
-<footer class="wrap">Aturan alih aksara mengikuti kaidah Batak Toba yang dipakai untuk mengalihaksarakan Bibel: tanda vokal suku kata tertutup ditulis pada konsonan penutup, huruf i dan u hanya untuk vokal yang berdiri sendiri, dan ha mewakili bunyi h dan k.</footer>
 <script>
 // ===== Mesin alih aksara Batak Toba =====
 const BT = (() => {
@@ -835,6 +946,7 @@ function renderBreakdown(text){
 let t; inp.addEventListener('input', () => { clearTimeout(t); t = setTimeout(render, 80); });
 $('mode').onchange = render;
 $('copyUni').onclick = e => copyText($('outUni').textContent, e.currentTarget);
+$('toImg').onclick = () => window.SB_toImage && window.SB_toImage(inp.value);
 $('copyToba').onclick = e => copyText($('outToba').textContent, e.currentTarget);
 $('copyLatin').onclick = e => copyText($('outLatin').textContent, e.currentTarget);
 
@@ -1389,6 +1501,7 @@ function card(d, big){
       '<button type="button" class="btn ghost" data-act="uni">Salin aksara</button>' +
       '<button type="button" class="btn ghost" data-act="toba">Salin kode Toba</button>' +
       '<button type="button" class="btn ghost" data-act="open">Uraikan</button>' +
+      '<button type="button" class="btn ghost" data-act="img">Jadikan gambar</button>' +
       (d.own ? '<button type="button" class="btn ghost" data-act="del">Hapus</button>' : '') +
     '</div></article>';
 }
@@ -1421,6 +1534,7 @@ document.getElementById('p-say').addEventListener('click', e => {
   const r = BT.latinToBatak(d.x);
   if(b.dataset.act === 'uni') copy(r.uni, b);
   else if(b.dataset.act === 'toba') copy(r.toba, b);
+  else if(b.dataset.act === 'img'){ if(window.SB_toImage) window.SB_toImage(d.x); }
   else if(b.dataset.act === 'del'){ store.set(KEY, JSON.stringify(mine().filter(x => x.id !== id))); chipLabels(); renderList(); }
   else if(b.dataset.act === 'open'){
     const inp = $('inp'); document.querySelector('nav.tabs button[data-tab="convert"]').click();
@@ -1758,7 +1872,7 @@ document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('cl
 }));
 
 /* ---------- dasbor ---------- */
-const TABN = {convert:'Alih aksara', bibel:'Bibel', artikel:'Artikel', file:'Dari berkas', learn:'Belajar huruf', say:'Umpasa & poda', quiz:'Latihan', profil:'Profil penulis', stats:'Statistik'};
+const TABN = {convert:'Alih aksara', gambar:'Buat gambar', bibel:'Bibel', artikel:'Artikel', file:'Dari berkas', learn:'Belajar huruf', say:'Umpasa & poda', quiz:'Latihan', profil:'Profil penulis', stats:'Statistik'};
 const DAYN = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 const MON = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
 const fmt = n => n.toLocaleString('id-ID');
@@ -1828,6 +1942,224 @@ $('stTableBtn').onclick = () => { const t = $('stTable'); t.hidden = !t.hidden; 
 // untuk pengujian lokal
 let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if(data && document.getElementById('p-stats').classList.contains('on')) render(); }, 200); });
 window.__sbStatsRender = d => { data = d; $('stMsg').textContent = ''; render(); };
+})();
+</script>
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cv = $('gmCanvas'), ctx = cv.getContext('2d');
+const COLORS = [
+  {id:'c-hitam', nama:'Hitam', warna:'#141010', nada:'gelap'},
+  {id:'c-merah', nama:'Merah', warna:'#7E1A1A', nada:'gelap'},
+  {id:'c-biru', nama:'Biru malam', warna:'#1F2A44', nada:'gelap'},
+  {id:'c-krem', nama:'Krem', warna:'#F3E6C8', nada:'terang'}
+];
+const S = { W:1080, H:1080, bg:null, img:null, zoom:1, ox:0, oy:0, align:'center', vert:'middle', color:'#FFFFFF', colorTouched:false, list:[], uploadUrl:null };
+let raf = 0;
+const redraw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
+
+/* ---------- pilihan bersegmen ---------- */
+function seg(id, key, after){
+  $(id).addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    $(id).querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    S[key] = b.dataset.v; if(after) after(); redraw();
+  });
+}
+seg('gmSize', 'size', () => { const [w, h] = S.size.split('x').map(Number); S.W = w; S.H = h; S.ox = S.oy = 0;
+  const b = $('gmSize').querySelector('[aria-pressed="true"]'); $('gmSizeHint').textContent = b.title.replace(', ', ', untuk ') + '.'; });
+seg('gmAlign', 'align'); seg('gmVert', 'vert');
+seg('gmColor', 'color', () => { S.colorTouched = true; });
+['gmText','gmFs','gmDim','gmShadow','gmLatin','gmOrn','gmMark'].forEach(id => $(id).addEventListener('input', redraw));
+$('gmZoom').addEventListener('input', e => { S.zoom = +e.target.value; redraw(); });
+
+/* ---------- latar ---------- */
+function setColorAuto(nada){
+  if(S.colorTouched) return;
+  S.color = nada === 'terang' ? '#141010' : '#FFFFFF';
+  $('gmColor').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x.dataset.v === S.color));
+}
+function pick(item){
+  S.bg = item; S.ox = S.oy = 0; S.zoom = 1; $('gmZoom').value = 1;
+  $('gmBgs').querySelectorAll('button').forEach(x => x.setAttribute('aria-checked', x.dataset.id === item.id));
+  const isImg = !!item.gambar;
+  $('gmZoomRow').hidden = !isImg; $('gmTip').hidden = !isImg; cv.classList.toggle('pan', isImg);
+  if(!isImg){ S.img = null; setColorAuto(item.nada); redraw(); return; }
+  if(item.bitmap){ S.img = item.bitmap; setColorAuto(item.nada); redraw(); return; }
+  const im = new Image();
+  im.onload = () => { if(S.bg === item){ S.img = im; setColorAuto(item.nada); redraw(); } };
+  im.onerror = () => { $('gmMsg').textContent = 'Latar ini tidak bisa dimuat. Pilih latar lain.'; };
+  im.src = item.gambar;
+}
+function renderBgs(){
+  $('gmBgs').innerHTML = S.list.map(it => '<button type="button" role="radio" aria-checked="false" data-id="' + esc(it.id) + '" title="' + esc(it.nama) + '" style="' +
+    (it.gambar ? 'background-image:url(\'' + esc(it.kecil || it.gambar) + '\')' : '--c:' + esc(it.warna)) + '"><span>' + esc(it.nama) + '</span></button>').join('');
+}
+$('gmBgs').addEventListener('click', e => { const b = e.target.closest('button[data-id]'); if(!b) return; const it = S.list.find(x => x.id === b.dataset.id); if(it) pick(it); });
+
+async function loadList(){
+  const get = u => fetch(u, {cache:'no-cache'}).then(r => r.ok ? r.json() : []).catch(() => []);
+  const [sys, adm] = /^https?:$/.test(location.protocol) ? await Promise.all([get('/img/latar/latar.json'), get('/data/latar.json')]) : [[], []];
+  const admin = (Array.isArray(adm) ? adm : []).filter(x => x && x.gambar).map((x, i) => ({id:'a' + i, nama:x.nama || 'Foto', gambar:x.gambar, nada:x.nada || 'gelap'}));
+  S.list = [...(S.upload ? [S.upload] : []), ...admin, ...(Array.isArray(sys) ? sys : []), ...COLORS];
+  renderBgs();
+  pick(S.upload || S.list.find(x => x.gambar) || COLORS[0]);
+}
+
+// foto milik pengguna: tetap di perangkat, tidak diunggah ke mana pun
+$('gmFile').addEventListener('change', async e => {
+  const f = e.target.files[0]; e.target.value = ''; if(!f) return;
+  $('gmMsg').textContent = 'Memuat foto...';
+  try{
+    let bmp;
+    try{ bmp = await createImageBitmap(f, {imageOrientation:'from-image'}); }
+    catch(_){ bmp = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = URL.createObjectURL(f); }); }
+    // tebak terang/gelap foto untuk memilih warna aksara
+    const t = document.createElement('canvas'); t.width = t.height = 24; const tc = t.getContext('2d'); tc.drawImage(bmp, 0, 0, 24, 24);
+    const d = tc.getImageData(0, 0, 24, 24).data; let L = 0; for(let i = 0; i < d.length; i += 4) L += .2126*d[i] + .7152*d[i+1] + .0722*d[i+2];
+    if(S.uploadUrl) URL.revokeObjectURL(S.uploadUrl);
+    S.uploadUrl = URL.createObjectURL(f);
+    S.upload = {id:'foto-anda', nama:'Foto Anda', gambar:S.uploadUrl, kecil:S.uploadUrl, bitmap:bmp, nada:(L / 576) > 150 ? 'terang' : 'gelap'};
+    S.list = [S.upload, ...S.list.filter(x => x.id !== 'foto-anda')];
+    renderBgs(); pick(S.upload); $('gmMsg').textContent = '';
+  }catch(err){ $('gmMsg').textContent = 'Foto tidak bisa dibuka. Coba foto JPG atau PNG lain.'; }
+});
+
+/* ---------- geser foto ---------- */
+let drag = null;
+cv.addEventListener('pointerdown', e => { if(!S.img) return; drag = {x:e.clientX, y:e.clientY}; cv.setPointerCapture(e.pointerId); });
+cv.addEventListener('pointermove', e => {
+  if(!drag) return; const k = cv.width / cv.clientWidth;
+  S.ox += (e.clientX - drag.x) * k; S.oy += (e.clientY - drag.y) * k; drag = {x:e.clientX, y:e.clientY}; redraw();
+});
+['pointerup','pointercancel'].forEach(t => cv.addEventListener(t, () => { drag = null; }));
+
+/* ---------- menggambar ---------- */
+function lum(hex){ const n = parseInt(hex.slice(1), 16); return .2126*(n>>16 & 255) + .7152*(n>>8 & 255) + .0722*(n & 255); }
+function wrap(words, maxW, space){
+  const lines = []; let cur = [], w = 0;
+  for(const wd of words){
+    const ww = ctx.measureText(wd).width;
+    if(cur.length && w + space + ww > maxW){ lines.push(cur); cur = [wd]; w = ww; }
+    else { w += (cur.length ? space : 0) + ww; cur.push(wd); }
+  }
+  if(cur.length) lines.push(cur);
+  return lines;
+}
+function layout(text, font, maxW){
+  ctx.font = font; const space = ctx.measureText(' ').width, out = [];
+  text.split('\n').forEach(p => {
+    const words = p.trim().split(/\s+/).filter(Boolean);
+    if(!words.length){ out.push({words:[], last:true}); return; }
+    const ls = wrap(words, maxW, space); ls.forEach((l, i) => out.push({words:l, last:i === ls.length - 1}));
+  });
+  return {lines:out, space};
+}
+function drawLines(L, font, x0, maxW, yTop, lh, align){
+  ctx.font = font; ctx.textBaseline = 'middle';
+  L.lines.forEach((ln, i) => {
+    const y = yTop + lh * i + lh / 2; if(!ln.words.length) return;
+    const widths = ln.words.map(w => ctx.measureText(w).width), sum = widths.reduce((a, b) => a + b, 0);
+    if(align === 'justify' && !ln.last && ln.words.length > 1){
+      const gap = (maxW - sum) / (ln.words.length - 1); let x = x0; ctx.textAlign = 'left';
+      ln.words.forEach((w, j) => { ctx.fillText(w, x, y); x += widths[j] + gap; });
+      return;
+    }
+    const s = ln.words.join(' ');
+    if(align === 'center'){ ctx.textAlign = 'center'; ctx.fillText(s, x0 + maxW / 2, y); }
+    else if(align === 'right'){ ctx.textAlign = 'right'; ctx.fillText(s, x0 + maxW, y); }
+    else { ctx.textAlign = 'left'; ctx.fillText(s, x0, y); }
+  });
+}
+function ornament(W, H, h){
+  const y = H - h, u = h * 2.2;
+  ctx.fillStyle = '#141010'; ctx.fillRect(0, y, W, h);
+  for(let x = -u; x < W + u; x += u){
+    ctx.fillStyle = '#A3171C'; ctx.beginPath(); ctx.moveTo(x, H); ctx.lineTo(x + u / 2, y + h * .18); ctx.lineTo(x + u, H); ctx.fill();
+    ctx.fillStyle = '#F5F0E6'; ctx.beginPath(); ctx.moveTo(x + u * .25, H); ctx.lineTo(x + u / 2, y + h * .58); ctx.lineTo(x + u * .75, H); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(x + u, y); ctx.lineTo(x + u + h * .3, y + h * .36); ctx.lineTo(x + u, y + h * .72); ctx.lineTo(x + u - h * .3, y + h * .36); ctx.fill();
+  }
+}
+function draw(){
+  const W = S.W, H = S.H; if(cv.width !== W) cv.width = W; if(cv.height !== H) cv.height = H;
+  ctx.save(); ctx.clearRect(0, 0, W, H);
+  // latar
+  if(S.img){
+    const iw = S.img.naturalWidth || S.img.width, ih = S.img.naturalHeight || S.img.height;
+    const sc = Math.max(W / iw, H / ih) * S.zoom, dw = iw * sc, dh = ih * sc;
+    const mx = (dw - W) / 2, my = (dh - H) / 2;
+    S.ox = Math.max(-mx, Math.min(mx, S.ox)); S.oy = Math.max(-my, Math.min(my, S.oy));
+    ctx.drawImage(S.img, (W - dw) / 2 + S.ox, (H - dh) / 2 + S.oy, dw, dh);
+  } else { ctx.fillStyle = (S.bg && S.bg.warna) || '#141010'; ctx.fillRect(0, 0, W, H); }
+  const light = lum(S.color) > 140, dim = +$('gmDim').value;
+  if(dim > 0){ ctx.fillStyle = light ? 'rgba(10,6,6,' + dim + ')' : 'rgba(255,250,240,' + dim + ')'; ctx.fillRect(0, 0, W, H); }
+  const orn = $('gmOrn').checked, oh = orn ? Math.round(Math.min(W, H) * .035) : 0;
+  if(orn) ornament(W, H, oh);
+  // teks
+  const raw = $('gmText').value.replace(/\r/g, '');
+  const uni = raw.split('\n').map(p => BT.latinToBatak(p).uni).join('\n');
+  const margin = Math.round(Math.min(W, H) * .08), maxW = W - 2 * margin;
+  const fs = Math.round(Math.min(W, H) * +$('gmFs').value / 100), lh = fs * 1.6;
+  const fontB = fs + 'px "Surat Batak Toba", sans-serif';
+  const B = layout(uni, fontB, maxW);
+  const showL = $('gmLatin').checked && raw.trim();
+  const fsL = Math.max(16, Math.round(fs * .42)), lhL = fsL * 1.4, fontL = 'italic ' + fsL + 'px "Fraunces", Georgia, serif';
+  const Lt = showL ? layout(raw, fontL, maxW) : {lines:[]};
+  const gap = showL ? fs * .35 : 0;
+  const total = B.lines.length * lh + gap + Lt.lines.length * lhL;
+  const top = margin, bottom = H - margin - oh;
+  let y = S.vert === 'top' ? top : S.vert === 'bottom' ? bottom - total : top + (bottom - top - total) / 2;
+  ctx.fillStyle = S.color;
+  if($('gmShadow').checked){ ctx.shadowColor = light ? 'rgba(0,0,0,.6)' : 'rgba(255,255,255,.6)'; ctx.shadowBlur = fs * .22; ctx.shadowOffsetY = fs * .04; }
+  drawLines(B, fontB, margin, maxW, y, lh, S.align);
+  if(showL){ ctx.globalAlpha = .9; drawLines(Lt, fontL, margin, maxW, y + B.lines.length * lh + gap, lhL, S.align); ctx.globalAlpha = 1; }
+  ctx.shadowColor = 'transparent';
+  if($('gmMark').checked){
+    const f = Math.max(14, Math.round(Math.min(W, H) * .02));
+    ctx.font = '600 ' + f + 'px "Alegreya Sans", sans-serif'; ctx.textAlign = 'right'; ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = light ? 'rgba(255,255,255,.78)' : 'rgba(20,16,16,.7)';
+    ctx.fillText(location.host || 'Surat Batak', W - margin * .6, H - oh - f * .9);
+  }
+  ctx.restore();
+}
+
+/* ---------- unduh dan bagikan ---------- */
+function fileName(ext){
+  const s = $('gmText').value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'gambar';
+  return 'aksara-batak-' + s + '.' + ext;
+}
+const blob = type => new Promise(r => cv.toBlob(r, type, .92));
+async function download(type, ext){
+  draw(); const b = await blob(type); if(!b){ $('gmMsg').textContent = 'Gambar gagal dibuat. Coba lagi.'; return; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = fileName(ext);
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  $('gmMsg').textContent = 'Gambar ' + ext.toUpperCase() + ' tersimpan di folder unduhan.';
+}
+$('gmPng').onclick = () => download('image/png', 'png');
+$('gmJpg').onclick = () => download('image/jpeg', 'jpg');
+if(navigator.canShare && navigator.canShare({files:[new File([''], 'a.png', {type:'image/png'})]})){
+  $('gmShare').hidden = false;
+  $('gmShare').onclick = async () => {
+    draw(); const b = await blob('image/png');
+    try{ await navigator.share({files:[new File([b], fileName('png'), {type:'image/png'})], title:'Aksara Batak'}); }catch(e){}
+  };
+}
+
+/* ---------- mulai ---------- */
+let started = false;
+async function start(){
+  if(started){ redraw(); return; } started = true;
+  try{ await Promise.all(['40px "Surat Batak Toba"', 'italic 20px "Fraunces"', '600 20px "Alegreya Sans"'].map(f => document.fonts.load(f, 'ᯀ a'))); }catch(e){}
+  await loadList();
+}
+document.querySelector('nav.tabs button[data-tab="gambar"]').addEventListener('click', () => requestAnimationFrame(start));
+if(document.fonts) document.fonts.addEventListener && document.fonts.addEventListener('loadingdone', () => { if(started) redraw(); });
+// dipanggil dari tab lain: "Jadikan gambar"
+window.SB_toImage = text => {
+  if(text && text.trim()) $('gmText').value = text.trim();
+  document.querySelector('nav.tabs button[data-tab="gambar"]').click();
+};
 })();
 </script>
 <script>

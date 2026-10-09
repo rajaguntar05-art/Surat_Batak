@@ -1,0 +1,58 @@
+[
+ {
+  "id": "danau-toba-senja",
+  "nama": "Danau Toba senja",
+  "nada": "gelap",
+  "gambar": "/img/latar/danau-toba-senja.jpg",
+  "kecil": "/img/latar/danau-toba-senja-kecil.jpg"
+ },
+ {
+  "id": "danau-toba-pagi",
+  "nama": "Danau Toba pagi",
+  "nada": "terang",
+  "gambar": "/img/latar/danau-toba-pagi.jpg",
+  "kecil": "/img/latar/danau-toba-pagi-kecil.jpg"
+ },
+ {
+  "id": "rumah-bolon",
+  "nama": "Rumah Bolon",
+  "nada": "gelap",
+  "gambar": "/img/latar/rumah-bolon.jpg",
+  "kecil": "/img/latar/rumah-bolon-kecil.jpg"
+ },
+ {
+  "id": "ulos",
+  "nama": "Ulos",
+  "nada": "gelap",
+  "gambar": "/img/latar/ulos.jpg",
+  "kecil": "/img/latar/ulos-kecil.jpg"
+ },
+ {
+  "id": "gorga",
+  "nama": "Gorga",
+  "nada": "gelap",
+  "gambar": "/img/latar/gorga.jpg",
+  "kecil": "/img/latar/gorga-kecil.jpg"
+ },
+ {
+  "id": "kertas-lama",
+  "nama": "Kertas lama",
+  "nada": "terang",
+  "gambar": "/img/latar/kertas-lama.jpg",
+  "kecil": "/img/latar/kertas-lama-kecil.jpg"
+ },
+ {
+  "id": "langit-malam",
+  "nama": "Langit malam",
+  "nada": "gelap",
+  "gambar": "/img/latar/langit-malam.jpg",
+  "kecil": "/img/latar/langit-malam-kecil.jpg"
+ },
+ {
+  "id": "bukit-hijau",
+  "nama": "Bukit hijau",
+  "nada": "terang",
+  "gambar": "/img/latar/bukit-hijau.jpg",
+  "kecil": "/img/latar/bukit-hijau-kecil.jpg"
+ }
+]

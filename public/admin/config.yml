@@ -64,3 +64,17 @@ collections:
             fields:
               - {label: Nama tautan, name: label, widget: string, hint: "Misalnya Instagram, Facebook, YouTube, Email"}
               - {label: Alamat, name: url, widget: string, hint: "Contoh: https://instagram.com/akunanda atau mailto:nama@email.com"}
+      - name: latar
+        label: Latar gambar
+        file: content/latar.json
+        fields:
+          - label: Foto latar
+            name: daftar
+            widget: list
+            required: false
+            summary: "{{fields.nama}}"
+            hint: "Foto yang muncul sebagai pilihan latar di tab Buat gambar, di depan latar bawaan."
+            fields:
+              - {label: Nama, name: nama, widget: string}
+              - {label: Foto, name: gambar, widget: image}
+              - {label: Kecerahan foto, name: nada, widget: select, default: gelap, options: [{label: "Gelap (aksara putih)", value: gelap}, {label: "Terang (aksara hitam)", value: terang}]}

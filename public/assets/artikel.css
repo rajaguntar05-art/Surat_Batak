@@ -1,4 +1,4 @@
-@font-face{font-family:"Noto Sans Batak";src:url("/fonts/NotoSansBatak-Regular.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Surat Batak Toba";src:url("/fonts/SuratBatakToba-Regular.ttf") format("truetype");font-display:swap}
 :root{
   --merah:#A3171C; --hitam:#141010; --putih:#F5F0E6;
   --page:#F3EDE2; --paper:#FFFBF4; --paper-2:#EFE6D6; --ink:#141010; --muted:#655548;
@@ -6,7 +6,7 @@
   --shadow:0 1px 0 rgba(20,16,16,.06),0 10px 30px -18px rgba(20,16,16,.45);
   --serif:"Fraunces", Georgia, "Times New Roman", serif;
   --sans:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
-  --batak:"Noto Sans Batak", "Batak-Unicode", sans-serif;
+  --batak:"Surat Batak Toba", "Batak-Unicode", sans-serif;
   --ipon:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2248%22%20height%3D%2222%22%20viewBox%3D%220%200%2048%2022%22%3E%3Crect%20width%3D%2248%22%20height%3D%2222%22%20fill%3D%22%23141010%22/%3E%3Cpath%20d%3D%22M0%2022%20L12%204%20L24%2022%20Z%20M24%2022%20L36%204%20L48%2022%20Z%22%20fill%3D%22%23A3171C%22/%3E%3Cpath%20d%3D%22M6%2022%20L12%2013%20L18%2022%20Z%20M30%2022%20L36%2013%20L42%2022%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M24%200%20L30%208%20L24%2016%20L18%208%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3Cpath%20d%3D%22M0%200%20L6%208%20L0%2016%20Z%20M48%200%20L42%208%20L48%2016%20Z%22%20fill%3D%22%23F5F0E6%22/%3E%3C/svg%3E"); --eol:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23F5F0E6%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M10%2060%20C10%2030%2040%2020%2055%2035%20C68%2048%2050%2066%2038%2056%20C30%2049%2038%2040%2045%2044%22/%3E%3Cpath%20d%3D%22M110%2060%20C110%2090%2080%20100%2065%2085%20C52%2072%2070%2054%2082%2064%20C90%2071%2082%2080%2075%2076%22/%3E%3Cpath%20d%3D%22M60%2010%20C90%2010%20100%2040%2085%2055%22/%3E%3Cpath%20d%3D%22M60%20110%20C30%20110%2020%2080%2035%2065%22/%3E%3C/g%3E%3Cg%20fill%3D%22%23A3171C%22%3E%3Cpath%20d%3D%22M60%2052%20L68%2060%20L60%2068%20L52%2060%20Z%22/%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%2210%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22110%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%2210%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%22110%22%20r%3D%223%22/%3E%3C/g%3E%3C/svg%3E"); --bindu:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2228%22%20height%3D%2228%22%20viewBox%3D%220%200%2028%2028%22%3E%3Cpath%20d%3D%22M14%202%20L26%2014%20L14%2026%20L2%2014%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23A3171C%22%20stroke-width%3D%222.5%22/%3E%3Cpath%20d%3D%22M14%209%20L19%2014%20L14%2019%20L9%2014%20Z%22%20fill%3D%22%23141010%22/%3E%3C/svg%3E");
 }
 @media (prefers-color-scheme: dark){

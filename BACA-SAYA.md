@@ -53,6 +53,12 @@ Artikel contoh "Selamat datang di Surat Batak" boleh diubah atau dihapus lewat a
 
 Buka `/admin/` → **Profil penulis**. Isi nama, peran, foto, biografi (pisahkan paragraf dengan baris kosong), dan tautan media sosial. Profil tampil di tab Profil aplikasi dan di bawah setiap artikel.
 
+## Latar untuk tab Buat gambar
+
+Tab **Buat gambar** sudah berisi 8 latar bawaan (ilustrasi Danau Toba, Rumah Bolon, ulos, gorga, dan lainnya) di `public/img/latar/`. Untuk menambahkan foto Anda sendiri sebagai pilihan latar bagi semua pengunjung, buka `/admin/` → **Profil penulis** → **Latar gambar**, tambahkan foto, beri nama, pilih kecerahannya, lalu Publish. Pakai foto milik sendiri atau yang memang boleh dipakai ulang.
+
+Foto yang diunggah pengunjung di tab Buat gambar hanya diolah di perangkat mereka sendiri dan tidak dikirim ke server.
+
 ## Domain sendiri (pilihan)
 
 Bila membeli domain, misalnya `suratbatak.id`, pasang di Netlify lewat **Domain management → Add a domain**. Setelah itu ubah juga *Homepage URL* di aplikasi OAuth GitHub ke alamat baru.

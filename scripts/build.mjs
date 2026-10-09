@@ -33,6 +33,11 @@ write('data/profil.json', JSON.stringify(profil));
 const inisial = n => (n || NAMA_SITUS).split(/\s+/).map(s => s[0]).slice(0, 2).join('').toUpperCase();
 const avatar = () => profil.foto ? `<span class="ava"><img src="${esc(profil.foto)}" alt=""></span>` : `<span class="ava" aria-hidden="true">${esc(inisial(profil.nama))}</span>`;
 
+// ---------- latar gambar dari admin ----------
+let latar = [];
+try { const j = JSON.parse(fs.readFileSync(path.join(CONTENT, 'latar.json'), 'utf8')); latar = (j.daftar || []).filter(x => x && x.gambar).map(x => ({ nama: x.nama || 'Foto', gambar: x.gambar, nada: x.nada || 'gelap' })); } catch (e) { latar = []; }
+write('data/latar.json', JSON.stringify(latar));
+
 // ---------- artikel ----------
 function renderMd(md) {
   const blok = t => `\n\n<figure class="aksara"><span class="bt" lang="bbc">${esc(uni(t))}</span><figcaption>${esc(t)}</figcaption></figure>\n\n`;
@@ -85,9 +90,9 @@ function page({ title, desc, url, image, type = 'website', current, body, extraH
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${esc(abs(url))}">
-<meta property="og:image" content="${esc(abs(image || '/icons/icon-512.png'))}">
+<meta property="og:image" content="${esc(abs(image || '/icons/og-image.png'))}">
 <meta name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}">
-<link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
 <link rel="alternate" type="application/rss+xml" title="Artikel ${NAMA_SITUS}" href="/artikel/feed.xml">
@@ -98,7 +103,7 @@ ${extraHead}
 <body>
 <header class="top">
   <div class="wrap top-in">
-    <a class="brand" href="/"><b>Surat <em>Batak</em></b><span lang="bbc" aria-hidden="true">${esc(uni('surat batak'))}</span></a>
+    <a class="brand" href="/"><img src="/icons/logo-tanda.png" width="40" height="40" alt="" style="align-self:center;border-radius:8px"><b>Surat <em>Batak</em></b><span lang="bbc" aria-hidden="true">${esc(uni('surat batak'))}</span></a>
     <nav aria-label="Menu utama">
       <a href="/">Alih aksara</a>
       <a href="/#bibel">Bibel</a>
