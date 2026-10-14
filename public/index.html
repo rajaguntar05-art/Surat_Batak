@@ -315,6 +315,11 @@ body.rd-lock{overflow:hidden}
 
 /* ===== Artikel (ringkas di aplikasi) ===== */
 .btn{text-decoration:none;display:inline-block}
+.tr-no{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--merah);color:#FFF8EE;font-size:13px;font-weight:700;margin-right:4px;vertical-align:1px}
+.tr-read{margin-top:12px}
+.tr-note{margin-top:20px;border-left:3px solid var(--ulos);padding-left:12px}
+#arCats{margin-top:14px}
+#arCats .n{opacity:.7;font-size:.85em;margin-left:4px}
 .ar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px;margin-top:16px}
 .ar-card{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,border-color .2s}
 .ar-card:hover{transform:translateY(-3px);border-color:var(--ulos)}
@@ -384,6 +389,7 @@ body.rd-lock{overflow:hidden}
   <div class="wrap">
     <nav class="tabs" role="tablist" aria-label="Bagian aplikasi">
       <button role="tab" aria-selected="true" data-tab="convert">Alih aksara</button>
+      <button role="tab" aria-selected="false" data-tab="terjemah">Terjemahan</button>
       <button role="tab" aria-selected="false" data-tab="gambar">Buat gambar</button>
       <button role="tab" aria-selected="false" data-tab="bibel">Bibel</button>
       <button role="tab" aria-selected="false" data-tab="artikel">Artikel</button>
@@ -443,6 +449,45 @@ body.rd-lock{overflow:hidden}
       <div class="card scroll"><table id="breakdown"><thead><tr><th>Suku kata</th><th>Aksara</th><th>Kode Toba</th><th>Cara menulis</th></tr></thead><tbody></tbody></table></div>
       <p class="hint" id="bdNote"></p>
     </div>
+  </section>
+
+  <!-- TERJEMAHAN -->
+  <section class="panel" id="p-terjemah" role="tabpanel">
+    <h2>Terjemahan</h2>
+    <p class="hint">Terjemahkan bahasa Indonesia ke bahasa Batak Toba atau sebaliknya dengan Google Translate. Hasil bahasa Batak Toba bisa langsung dijadikan aksara Batak di sini.</p>
+    <div class="dir" role="group" aria-label="Arah terjemahan">
+      <button id="trIdBt" aria-pressed="true">Indonesia ke Batak Toba</button>
+      <button id="trBtId" aria-pressed="false">Batak Toba ke Indonesia</button>
+    </div>
+    <div class="row">
+      <div>
+        <label class="lbl" for="trSrc"><span class="tr-no">1</span> <span id="trSrcLbl">Teks bahasa Indonesia</span></label>
+        <textarea id="trSrc" placeholder="Contoh: Selamat pagi, semoga sehat selalu."></textarea>
+        <div class="tools">
+          <button class="btn" id="trGo">Terjemahkan di Google Translate</button>
+          <button class="btn ghost" id="trSrcClear">Kosongkan</button>
+        </div>
+        <p class="hint" id="trSrcHint">Google Translate terbuka di tab baru. Salin hasilnya, lalu kembali ke sini.</p>
+        <div class="card tr-read" id="trReadWrap" hidden>
+          <label class="lbl">Bacaan Latin dari aksara</label>
+          <div class="out-latin" id="trRead"></div>
+          <p class="hint">Teks aksara Batak dialihkan dulu ke huruf Latin sebelum dikirim ke Google Translate.</p>
+        </div>
+      </div>
+      <div id="trStep2">
+        <label class="lbl" for="trRes"><span class="tr-no">2</span> Tempel hasil terjemahan bahasa Batak Toba</label>
+        <textarea id="trRes" placeholder="Tempel hasil dari Google Translate di sini."></textarea>
+        <div class="tools">
+          <button class="btn ghost" id="trPaste">Tempel dari papan klip</button>
+          <button class="btn ghost" id="trResClear">Kosongkan</button>
+        </div>
+        <div class="card">
+          <div class="out-batak" id="trUni" lang="bbc"><span class="placeholder">Aksara Batak dari hasil terjemahan muncul di sini.</span></div>
+          <div class="tools"><button class="btn" id="trCopy">Salin aksara</button><button class="btn ghost" id="trImg">Jadikan gambar</button><button class="btn ghost" id="trToConv">Buka di Alih aksara</button></div>
+        </div>
+      </div>
+    </div>
+    <p class="hint tr-note">Terjemahan mesin untuk bahasa Batak Toba masih sering keliru, terutama untuk umpasa, ungkapan adat, dan kata sapaan. Periksa dulu ke penutur atau kamus sebelum dipakai untuk keperluan resmi.</p>
   </section>
 
   <!-- DARI BERKAS -->
@@ -545,6 +590,7 @@ body.rd-lock{overflow:hidden}
   <section class="panel" id="p-artikel" role="tabpanel">
     <h2>Artikel</h2>
     <p class="hint">Tulisan tentang aksara, adat, dan budaya Batak Toba.</p>
+    <div class="chips" id="arCats" role="group" aria-label="Kategori artikel" hidden></div>
     <div class="ar-grid" id="arList"></div>
     <p class="status" id="arMsg" role="status"></p>
     <div class="tools"><a class="btn" href="/artikel/">Semua artikel</a></div>
@@ -1872,7 +1918,7 @@ document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('cl
 }));
 
 /* ---------- dasbor ---------- */
-const TABN = {convert:'Alih aksara', gambar:'Buat gambar', bibel:'Bibel', artikel:'Artikel', file:'Dari berkas', learn:'Belajar huruf', say:'Umpasa & poda', quiz:'Latihan', profil:'Profil penulis', stats:'Statistik'};
+const TABN = {convert:'Alih aksara', terjemah:'Terjemahan', gambar:'Buat gambar', bibel:'Bibel', artikel:'Artikel', file:'Dari berkas', learn:'Belajar huruf', say:'Umpasa & poda', quiz:'Latihan', profil:'Profil penulis', stats:'Statistik'};
 const DAYN = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 const MON = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
 const fmt = n => n.toLocaleString('id-ID');
@@ -2163,22 +2209,100 @@ window.SB_toImage = text => {
 })();
 </script>
 <script>
+/* ---------- Terjemahan lewat Google Translate ---------- */
+(function(){
+const $ = id => document.getElementById(id);
+let arah = 'id-bbc';
+const src = $('trSrc'), res = $('trRes');
+function setArah(a){
+  arah = a;
+  $('trIdBt').setAttribute('aria-pressed', a === 'id-bbc');
+  $('trBtId').setAttribute('aria-pressed', a === 'bbc-id');
+  $('trSrcLbl').textContent = a === 'id-bbc' ? 'Teks bahasa Indonesia' : 'Teks bahasa Batak Toba (huruf Latin atau aksara Batak)';
+  src.placeholder = a === 'id-bbc' ? 'Contoh: Selamat pagi, semoga sehat selalu.' : 'Contoh: Horas jala gabe, saur matua bulung.';
+  $('trSrcHint').textContent = a === 'id-bbc'
+    ? 'Google Translate terbuka di tab baru. Salin hasilnya, lalu kembali ke sini.'
+    : 'Google Translate terbuka di tab baru dan menampilkan arti dalam bahasa Indonesia.';
+  $('trStep2').hidden = a !== 'id-bbc';
+  baca();
+}
+function teksKirim(){
+  const t = src.value.trim();
+  return arah === 'bbc-id' && BT.isUnicodeBatak(t) ? BT.batakToLatin(t, 'unicode') : t;
+}
+function baca(){
+  const t = src.value.trim(), aks = arah === 'bbc-id' && t && BT.isUnicodeBatak(t);
+  src.classList.toggle('batak', !!aks);
+  $('trReadWrap').hidden = !aks;
+  if(aks) $('trRead').textContent = BT.batakToLatin(t, 'unicode');
+}
+function hasil(){
+  const t = res.value.trim();
+  $('trUni').innerHTML = t ? '' : '<span class="placeholder">Aksara Batak dari hasil terjemahan muncul di sini.</span>';
+  if(t) $('trUni').textContent = BT.latinToBatak(res.value).uni;
+}
+$('trIdBt').onclick = () => setArah('id-bbc');
+$('trBtId').onclick = () => setArah('bbc-id');
+src.addEventListener('input', baca);
+res.addEventListener('input', hasil);
+$('trGo').onclick = () => {
+  const t = teksKirim();
+  if(!t){ src.focus(); return; }
+  const [sl, tl] = arah === 'id-bbc' ? ['id', 'bbc'] : ['bbc', 'id'];
+  window.open('https://translate.google.com/?sl=' + sl + '&tl=' + tl + '&text=' + encodeURIComponent(t.slice(0, 5000)) + '&op=translate', '_blank', 'noopener');
+};
+$('trSrcClear').onclick = () => { src.value = ''; baca(); src.focus(); };
+$('trResClear').onclick = () => { res.value = ''; hasil(); res.focus(); };
+$('trPaste').onclick = async () => {
+  try{ const t = await navigator.clipboard.readText(); if(t){ res.value = t; hasil(); } }
+  catch(e){ res.focus(); $('trPaste').textContent = 'Tempel manual (tekan lama, lalu Tempel)'; }
+};
+$('trCopy').onclick = async () => {
+  const t = $('trUni').textContent; if(!res.value.trim()) return;
+  try{ await navigator.clipboard.writeText(t); $('trCopy').textContent = 'Tersalin'; setTimeout(() => $('trCopy').textContent = 'Salin aksara', 1500); }catch(e){}
+};
+$('trImg').onclick = () => { if(res.value.trim() && window.SB_toImage) window.SB_toImage(res.value.trim()); };
+$('trToConv').onclick = () => {
+  if(!res.value.trim()) return;
+  $('dirL2B').click();
+  const inp = $('inp'); inp.value = res.value.trim(); inp.dispatchEvent(new Event('input'));
+  document.querySelector('nav.tabs button[data-tab="convert"]').click();
+  scrollTo({top: document.querySelector('.navbar').offsetTop, behavior: 'smooth'});
+};
+})();
+</script>
+<script>
 (function(){
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let loaded = false;
+let loaded = false, all = [];
+function show(k){
+  const list = k ? all.filter(a => a.kategori === k) : all.slice(0, 6);
+  $('arMsg').textContent = all.length ? '' : 'Belum ada artikel. Tulisan pertama segera hadir.';
+  $('arList').innerHTML = list.map(a => '<a class="ar-card" href="/artikel/' + encodeURIComponent(a.slug) + '/">' +
+      '<div class="ar-media">' + (a.gambar ? '<img src="' + esc(a.gambar) + '" alt="" loading="lazy">' : '<span class="gl" lang="bbc" aria-hidden="true">' + esc(BT.latinToBatak(a.judul.split(/\s+/).slice(0, 2).join(' ')).uni) + '</span>') + '</div>' +
+      '<div class="ar-txt"><span class="ar-kat">' + esc(a.kategori) + '</span><h3>' + esc(a.judul) + '</h3><span class="ar-bt" lang="bbc" aria-hidden="true">' + esc(a.aksara) + '</span>' +
+      '<span class="ar-meta">' + esc(a.tanggalTeks) + ' · ' + a.menit + ' menit baca</span></div></a>').join('');
+}
+$('arCats').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  $('arCats').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+  show(b.dataset.k);
+});
 async function load(){
   loaded = true;
   if(!/^https?:$/.test(location.protocol)){ $('arMsg').textContent = 'Artikel tersedia di situs yang sudah dipasang.'; return; }
   $('arMsg').textContent = 'Memuat artikel...';
   try{
     const r = await fetch('/artikel/index.json', {cache:'no-cache'}); if(!r.ok) throw 0;
-    const list = (await r.json()).slice(0, 6);
-    $('arMsg').textContent = list.length ? '' : 'Belum ada artikel. Tulisan pertama segera hadir.';
-    $('arList').innerHTML = list.map(a => '<a class="ar-card" href="/artikel/' + encodeURIComponent(a.slug) + '/">' +
-      '<div class="ar-media">' + (a.gambar ? '<img src="' + esc(a.gambar) + '" alt="" loading="lazy">' : '<span class="gl" lang="bbc" aria-hidden="true">' + esc(BT.latinToBatak(a.judul.split(/\s+/).slice(0, 2).join(' ')).uni) + '</span>') + '</div>' +
-      '<div class="ar-txt"><span class="ar-kat">' + esc(a.kategori) + '</span><h3>' + esc(a.judul) + '</h3><span class="ar-bt" lang="bbc" aria-hidden="true">' + esc(a.aksara) + '</span>' +
-      '<span class="ar-meta">' + esc(a.tanggalTeks) + ' · ' + a.menit + ' menit baca</span></div></a>').join('');
+    all = await r.json();
+    const urut = ['Aksara','Adat & Budaya','Umpasa & Umpama','Bibel','Kabar'];
+    const kats = [...new Set(all.map(a => a.kategori))].sort((a, b) => (urut.indexOf(a) + 1 || 99) - (urut.indexOf(b) + 1 || 99));
+    const hitung = k => all.filter(a => a.kategori === k).length;
+    $('arCats').innerHTML = '<button type="button" data-k="" aria-pressed="true">Semua<span class="n">' + all.length + '</span></button>' +
+      kats.map(k => '<button type="button" data-k="' + esc(k) + '" aria-pressed="false">' + esc(k) + '<span class="n">' + hitung(k) + '</span></button>').join('');
+    $('arCats').hidden = kats.length < 1;
+    show('');
   }catch(e){ loaded = false; $('arMsg').textContent = navigator.onLine ? 'Artikel belum bisa dimuat. Coba lagi nanti.' : 'Sambungkan ke internet untuk membaca artikel.'; }
 }
 const tabs = Array.from(document.querySelectorAll('nav.tabs button'));

@@ -1,4 +1,4 @@
-# Pengaturan halaman admin Surat Batak (Decap CMS)
+# Pengaturan halaman admin Surat sian Toba (Decap CMS)
 backend:
   name: github
   repo: rajaguntar05-art/Surat_Batak
@@ -23,7 +23,7 @@ collections:
   - name: artikel
     label: Artikel
     label_singular: Artikel
-    description: Tulisan untuk bagian Artikel di situs Surat Batak.
+    description: Tulisan untuk bagian Artikel di situs Surat sian Toba.
     folder: content/artikel
     create: true
     slug: "{{slug}}"
@@ -53,7 +53,7 @@ collections:
         file: content/profil.json
         fields:
           - {label: Nama lengkap, name: nama, widget: string}
-          - {label: Peran, name: peran, widget: string, required: false, hint: "Satu baris, misalnya: Penyusun aplikasi Surat Batak"}
+          - {label: Peran, name: peran, widget: string, required: false, hint: "Satu baris, misalnya: Penyusun aplikasi Surat sian Toba"}
           - {label: Foto, name: foto, widget: image, required: false}
           - {label: Biografi, name: bio, widget: text, required: false, hint: "Pisahkan paragraf dengan satu baris kosong."}
           - label: Media sosial

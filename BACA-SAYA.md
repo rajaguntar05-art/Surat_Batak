@@ -1,6 +1,6 @@
-# Surat Batak: panduan memasang dan menulis artikel
+# Surat sian Toba: panduan memasang dan menulis artikel
 
-Situs ini terdiri dari aplikasi Surat Batak, bagian **Artikel** (blog), halaman **admin** untuk menulis, dan fungsi **Statistik**. Karena ada langkah build dan fungsi server, situs dipasang lewat **GitHub + Netlify**, bukan seret-lepas di Netlify Drop.
+Situs ini terdiri dari aplikasi Surat sian Toba, bagian **Artikel** (blog), halaman **admin** untuk menulis, dan fungsi **Statistik**. Karena ada langkah build dan fungsi server, situs dipasang lewat **GitHub + Netlify**, bukan seret-lepas di Netlify Drop.
 
 ## Isi folder
 
@@ -30,7 +30,7 @@ Situs ini terdiri dari aplikasi Surat Batak, bagian **Artikel** (blog), halaman 
 1. Buka `public/admin/config.yml` di GitHub (klik berkasnya, lalu ikon pensil), ganti baris
    `repo:`. Sudah diisi `rajaguntar05-art/Surat_Batak`; ubah hanya bila nama repositori Anda berbeda.
 2. Buat aplikasi OAuth GitHub: buka github.com → **Settings → Developer settings → OAuth Apps → New OAuth App**, lalu isi:
-   - Application name: `Admin Surat Batak`
+   - Application name: `Admin Surat sian Toba`
    - Homepage URL: alamat situs Anda, misalnya `https://suratbatak.netlify.app`
    - Authorization callback URL: `https://api.netlify.com/auth/done`
 

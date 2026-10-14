@@ -1,4 +1,4 @@
-// Membangun situs Surat Batak: menyalin aplikasi (public/) ke dist/,
+// Membangun situs Surat sian Toba: menyalin aplikasi (public/) ke dist/,
 // lalu membuat halaman artikel, RSS, sitemap, dan data profil dari folder content/.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -12,7 +12,7 @@ const BT = require('../lib/batak.cjs');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'public'), OUT = path.join(ROOT, 'dist'), CONTENT = path.join(ROOT, 'content');
 const SITE = (process.env.URL || process.env.SITE_URL || '').replace(/\/$/, '');
-const NAMA_SITUS = 'Surat Batak';
+const NAMA_SITUS = 'Surat sian Toba';
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const uni = t => BT.latinToBatak(String(t || '')).uni;
@@ -103,7 +103,7 @@ ${extraHead}
 <body>
 <header class="top">
   <div class="wrap top-in">
-    <a class="brand" href="/"><img src="/icons/logo-tanda.png" width="40" height="40" alt="" style="align-self:center;border-radius:8px"><b>Surat <em>Batak</em></b><span lang="bbc" aria-hidden="true">${esc(uni('surat batak'))}</span></a>
+    <a class="brand" href="/"><img src="/icons/logo-tanda.png" width="40" height="40" alt="" style="align-self:center;border-radius:8px"><b>Surat sian <em>Toba</em></b><span lang="bbc" aria-hidden="true">${esc(uni('surat sian toba'))}</span></a>
     <nav aria-label="Menu utama">
       <a href="/">Alih aksara</a>
       <a href="/#bibel">Bibel</a>
@@ -182,7 +182,7 @@ q.addEventListener('input',f);document.getElementById('chips').addEventListener(
 write('artikel/index.html', page({ title: `Artikel | ${NAMA_SITUS}`, desc: 'Tulisan tentang aksara, adat, dan budaya Batak Toba.', url: '/artikel/', current: 'artikel', body: daftar }));
 
 // ---------- data untuk tab Artikel di aplikasi ----------
-write('artikel/index.json', JSON.stringify(artikel.slice(0, 12).map(a => ({ slug: a.slug, judul: a.judul, aksara: a.aksara, kategori: a.kategori,
+write('artikel/index.json', JSON.stringify(artikel.map(a => ({ slug: a.slug, judul: a.judul, aksara: a.aksara, kategori: a.kategori,
   tanggal: a.tanggal.toISOString(), tanggalTeks: tglTeks(a.tanggal), menit: a.menit, ringkasan: a.ringkasan, gambar: a.gambar }))));
 
 // ---------- RSS, sitemap, robots, 404 ----------
@@ -195,6 +195,6 @@ const urls = ['/', '/artikel/', ...artikel.map(a => `/artikel/${a.slug}/`)];
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `<url><loc>${esc(abs(u))}</loc></url>`).join('\n')}\n</urlset>`);
 write('robots.txt', `User-agent: *\nDisallow: /admin/\n${SITE ? `Sitemap: ${SITE}/sitemap.xml\n` : ''}`);
 write('404.html', page({ title: `Halaman tidak ditemukan | ${NAMA_SITUS}`, desc: 'Halaman tidak ditemukan.', url: '/404.html',
-  body: `<main class="wrap narrow art"><h1>Halaman tidak ditemukan</h1><p class="sum">Alamat ini tidak ada atau sudah dipindahkan. Buka <a href="/">aplikasi Surat Batak</a> atau <a href="/artikel/">daftar artikel</a>.</p></main>` }));
+  body: `<main class="wrap narrow art"><h1>Halaman tidak ditemukan</h1><p class="sum">Alamat ini tidak ada atau sudah dipindahkan. Buka <a href="/">aplikasi Surat sian Toba</a> atau <a href="/artikel/">daftar artikel</a>.</p></main>` }));
 
 console.log(`Selesai: ${artikel.length} artikel, profil ${profil.nama ? 'terisi' : 'kosong'}.`);
