@@ -259,6 +259,26 @@ footer.wrap{color:var(--muted);font-size:14px;padding:20px 20px 40px}
 .rd-flow .bk svg{display:block;width:88%;max-width:420px;height:auto;margin:.35em auto 0;color:var(--ulos)}
 .rd-flow .end{text-align:center;color:var(--ulos);font-family:var(--batak);font-size:1.5em;letter-spacing:.3em;margin-top:.6em;break-inside:avoid}
 .rd-flow .end small{display:block;font-family:var(--sans);font-size:.4em;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.pt-intro{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+.pt-bt{font-family:var(--batak);font-size:30px;line-height:1.3;color:var(--ulos);flex:0 0 auto}
+.pt-intro .hint{margin:0}
+@media (max-width:620px){.pt-intro{display:block}.pt-bt{display:block;font-size:24px}}
+.rd-flow h3.pg-g{font-family:var(--batak);font-weight:400;font-size:1.3em;text-align:center;margin:.9em 0 .2em;color:var(--ulos);break-after:avoid}
+.rd-flow h3.pg-g::before{display:none}
+.rd-flow.latin h3.pg-g{font-family:var(--serif);font-weight:800}
+.rd-flow h3.pg-g small{display:block;font-family:var(--sans);font-size:.42em;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.rd-flow h5{font-family:var(--batak);font-weight:400;font-size:1em;margin:.6em 0 .2em;color:var(--ulos);break-after:avoid}
+.rd-flow.latin h5{font-family:var(--serif);font-weight:700;font-style:italic}
+.rd-flow h5 small{display:block;font-family:var(--sans);font-size:.5em;color:var(--muted)}
+.rd-flow .hlm{font-family:var(--sans);font-size:.42em;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 .3em;margin:0 .25em;vertical-align:.9em;line-height:1.2;white-space:nowrap}
+.rd-flow figure{margin:.5em 0;break-inside:avoid;text-align:center}
+.rd-flow figure img{max-width:100%;height:auto;max-height:calc(var(--rd-h,600px) - 1.5em);object-fit:contain;border-radius:4px;background:#fff}
+.rd-flow table{width:100%;min-width:0;table-layout:fixed;border-collapse:collapse;font-size:.72em;margin:.4em 0 .7em}
+.rd-flow td{border:1px solid var(--line);padding:.2em .35em;vertical-align:top;text-align:left;overflow-wrap:anywhere}
+.rd-flow.latin table{font-size:.85em}
+.rd-flow td .lt{font-size:.8em}
+.rd-flow .pt-next{text-align:center;font-family:var(--serif);font-style:italic;color:var(--ulos);margin-top:1em;break-inside:avoid}
+.rd-flow .pt-next small{display:block;font-family:var(--sans);font-style:normal;font-size:.5em;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .rd-zone{position:absolute;top:0;bottom:0;width:13%;border:0;background:transparent;cursor:pointer;z-index:2;padding:0}
 .rd-zl{left:0}.rd-zr{right:0}
 .rd-zone:hover{background:linear-gradient(90deg,color-mix(in srgb,var(--ulos) 8%,transparent),transparent)}
@@ -317,6 +337,9 @@ body.rd-lock{overflow:hidden}
 .btn{text-decoration:none;display:inline-block}
 .tr-no{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--merah);color:#FFF8EE;font-size:13px;font-weight:700;margin-right:4px;vertical-align:1px}
 .tr-read{margin-top:12px}
+.tr-count{margin:0 0 0 auto}
+#trRes{margin-bottom:4px}
+#trAksWrap{margin-top:14px}
 .tr-note{margin-top:20px;border-left:3px solid var(--ulos);padding-left:12px}
 #arCats{margin-top:14px}
 #arCats .n{opacity:.7;font-size:.85em;margin-left:4px}
@@ -392,6 +415,7 @@ body.rd-lock{overflow:hidden}
       <button role="tab" aria-selected="false" data-tab="terjemah">Terjemahan</button>
       <button role="tab" aria-selected="false" data-tab="gambar">Buat gambar</button>
       <button role="tab" aria-selected="false" data-tab="bibel">Bibel</button>
+      <button role="tab" aria-selected="false" data-tab="pustaha">Pustaha</button>
       <button role="tab" aria-selected="false" data-tab="artikel">Artikel</button>
       <button role="tab" aria-selected="false" data-tab="file">Dari berkas</button>
       <button role="tab" aria-selected="false" data-tab="learn">Belajar huruf</button>
@@ -454,40 +478,42 @@ body.rd-lock{overflow:hidden}
   <!-- TERJEMAHAN -->
   <section class="panel" id="p-terjemah" role="tabpanel">
     <h2>Terjemahan</h2>
-    <p class="hint">Terjemahkan bahasa Indonesia ke bahasa Batak Toba atau sebaliknya dengan Google Translate. Hasil bahasa Batak Toba bisa langsung dijadikan aksara Batak di sini.</p>
+    <p class="hint">Terjemahkan bahasa Indonesia ke bahasa Batak Toba atau sebaliknya. Hasil bahasa Batak Toba langsung ditampilkan dalam aksara Batak.</p>
     <div class="dir" role="group" aria-label="Arah terjemahan">
       <button id="trIdBt" aria-pressed="true">Indonesia ke Batak Toba</button>
       <button id="trBtId" aria-pressed="false">Batak Toba ke Indonesia</button>
     </div>
     <div class="row">
       <div>
-        <label class="lbl" for="trSrc"><span class="tr-no">1</span> <span id="trSrcLbl">Teks bahasa Indonesia</span></label>
-        <textarea id="trSrc" placeholder="Contoh: Selamat pagi, semoga sehat selalu."></textarea>
+        <label class="lbl" for="trSrc" id="trSrcLbl">Bahasa Indonesia</label>
+        <textarea id="trSrc" maxlength="1000" placeholder="Contoh: Selamat pagi, semoga sehat selalu."></textarea>
         <div class="tools">
-          <button class="btn" id="trGo">Terjemahkan di Google Translate</button>
+          <button class="btn" id="trGo">Terjemahkan</button>
+          <button class="btn ghost" id="trSwap" title="Tukar arah dan pakai hasil sebagai teks asal">Tukar ⇄</button>
           <button class="btn ghost" id="trSrcClear">Kosongkan</button>
+          <span class="hint tr-count" id="trCount">0/1000</span>
         </div>
-        <p class="hint" id="trSrcHint">Google Translate terbuka di tab baru. Salin hasilnya, lalu kembali ke sini.</p>
         <div class="card tr-read" id="trReadWrap" hidden>
           <label class="lbl">Bacaan Latin dari aksara</label>
           <div class="out-latin" id="trRead"></div>
-          <p class="hint">Teks aksara Batak dialihkan dulu ke huruf Latin sebelum dikirim ke Google Translate.</p>
+          <p class="hint">Teks aksara Batak dibaca ke huruf Latin dulu sebelum diterjemahkan.</p>
         </div>
       </div>
-      <div id="trStep2">
-        <label class="lbl" for="trRes"><span class="tr-no">2</span> Tempel hasil terjemahan bahasa Batak Toba</label>
-        <textarea id="trRes" placeholder="Tempel hasil dari Google Translate di sini."></textarea>
+      <div>
+        <label class="lbl" for="trRes" id="trResLbl">Bahasa Batak Toba</label>
+        <textarea id="trRes" placeholder="Hasil terjemahan muncul di sini. Boleh diperbaiki langsung."></textarea>
+        <p class="status" id="trMsg" role="status"></p>
         <div class="tools">
-          <button class="btn ghost" id="trPaste">Tempel dari papan klip</button>
-          <button class="btn ghost" id="trResClear">Kosongkan</button>
+          <button class="btn ghost" id="trCopyTxt">Salin teks</button>
+          <a class="btn ghost" id="trGT" href="https://translate.google.com/" target="_blank" rel="noopener">Buka di Google Translate</a>
         </div>
-        <div class="card">
+        <div class="card" id="trAksWrap">
           <div class="out-batak" id="trUni" lang="bbc"><span class="placeholder">Aksara Batak dari hasil terjemahan muncul di sini.</span></div>
           <div class="tools"><button class="btn" id="trCopy">Salin aksara</button><button class="btn ghost" id="trImg">Jadikan gambar</button><button class="btn ghost" id="trToConv">Buka di Alih aksara</button></div>
         </div>
       </div>
     </div>
-    <p class="hint tr-note">Terjemahan mesin untuk bahasa Batak Toba masih sering keliru, terutama untuk umpasa, ungkapan adat, dan kata sapaan. Periksa dulu ke penutur atau kamus sebelum dipakai untuk keperluan resmi.</p>
+    <p class="hint tr-note">Terjemahan dibuat oleh mesin Google Translate dan untuk bahasa Batak Toba masih sering keliru, terutama untuk umpasa, ungkapan adat, dan kata sapaan. Periksa dulu ke penutur atau kamus sebelum dipakai untuk keperluan resmi.</p>
   </section>
 
   <!-- DARI BERKAS -->
@@ -546,8 +572,8 @@ body.rd-lock{overflow:hidden}
     <div class="rd" id="rd">
       <div class="rd-bar">
         <div class="rd-row">
-          <label class="rd-f"><span>Kitab</span><select id="rdBook" aria-label="Pilih kitab"></select></label>
-          <label class="rd-f"><span>Pasal</span><select id="rdChap" aria-label="Pilih pasal"></select></label>
+          <label class="rd-f"><span id="rdBookLbl">Kitab</span><select id="rdBook" aria-label="Pilih kitab"></select></label>
+          <label class="rd-f"><span id="rdChapLbl">Pasal</span><select id="rdChap" aria-label="Pilih pasal"></select></label>
           <label class="rd-f"><span>Tampilan</span>
             <select id="rdMode" aria-label="Tampilan teks">
               <option value="aksara">Aksara</option>
@@ -586,6 +612,14 @@ body.rd-lock{overflow:hidden}
     </div>
   </section>
 
+  <!-- PUSTAHA TUMBAGA HOLING (memakai pembaca yang sama dengan Bibel) -->
+  <section class="panel" id="p-pustaha" role="tabpanel">
+    <div class="pt-intro">
+      <span class="pt-bt" lang="bbc" aria-hidden="true" id="ptBt"></span>
+      <p class="hint"><b>Pustaha Tumbaga Holing</b> karya Raja Patik Tampubolon (1964): turi-turian, adat, patik dohot uhum, parhalaan, dohot surat Batak, dalam aksara Batak dan huruf Latin. Penanda angka kecil di dalam teks adalah nomor halaman buku asli.</p>
+    </div>
+  </section>
+
   <!-- ARTIKEL -->
   <section class="panel" id="p-artikel" role="tabpanel">
     <h2>Artikel</h2>
@@ -603,7 +637,7 @@ body.rd-lock{overflow:hidden}
     <div class="gm">
       <div class="gm-prev">
         <div class="gm-stage" id="gmStage"><canvas id="gmCanvas" aria-label="Pratinjau gambar"></canvas></div>
-        <p class="hint gm-tip" id="gmTip">Geser foto di pratinjau untuk mengatur posisinya.</p>
+        <p class="hint gm-tip" id="gmTip">Seret aksara di pratinjau untuk memindahkannya.</p>
         <div class="tools gm-dl">
           <button class="btn" id="gmPng">Unduh PNG</button>
           <button class="btn ghost" id="gmJpg">Unduh JPG</button>
@@ -653,6 +687,12 @@ body.rd-lock{overflow:hidden}
             <button data-v="middle" aria-pressed="true">Tengah</button>
             <button data-v="bottom" aria-pressed="false">Bawah</button>
           </div>
+          <span class="gm-l">Atur posisi aksara</span>
+          <p class="hint" style="margin:0">Seret aksara langsung di pratinjau, atau pakai penggeser di bawah ini.</p>
+          <label class="gm-r"><span>Kiri ↔ kanan</span><input type="range" id="gmTx" min="-50" max="50" step="0.5" value="0" aria-label="Geser aksara ke kiri atau kanan"></label>
+          <label class="gm-r"><span>Atas ↕ bawah</span><input type="range" id="gmTy" min="-50" max="50" step="0.5" value="0" aria-label="Geser aksara ke atas atau bawah"></label>
+          <label class="gm-r"><span>Lebar area teks</span><input type="range" id="gmTw" min="30" max="100" step="1" value="100" aria-label="Lebar area teks"></label>
+          <div class="tools" style="margin-top:4px"><button class="btn ghost" id="gmPosReset" type="button">Kembalikan ke tengah</button></div>
         </div>
 
         <div class="gm-g">
@@ -1648,7 +1688,6 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const store = { get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} } };
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const BASE = 'data/';
 const PB = '᯽', METEK = '᯼';
 const GODANG = '<svg viewBox="0 0 420 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">' +
   '<path d="M20 14H178M20 26H178M242 14H400M242 26H400"/><path d="M20 6V34M400 6V34M8 10H20M8 20H20M8 30H20M400 10H412M400 20H412M400 30H412"/>' +
@@ -1659,6 +1698,24 @@ const GODANG = '<svg viewBox="0 0 420 40" aria-hidden="true"><g fill="none" stro
 
 const S = { index:null, book:null, data:null, mode:store.get('sb-bibel-mode') || 'aksara', zoom:+(store.get('sb-bibel-zoom') || 1),
   page:0, pages:1, pageW:0, spread:false, verses:[], heads:[], ready:false, shown:false, full:false, cache:{} };
+// dua koleksi bacaan memakai satu pembaca: Bibel dan Pustaha Tumbaga Holing
+const PT = 'Pustaha Tumbaga Holing';
+const COL = {
+  bibel:   { base:'data/', unit:'kitab', label:'Kitab', chap:'Pasal', pos:'sb-bibel-pos', st:null },
+  pustaha: { base:'pustaha/', unit:'buku', label:'Buku', chap:'Bagian', pos:'sb-pustaha-pos', st:null }
+};
+let colKey = 'bibel', C = COL.bibel;
+const isPt = d => d && !Array.isArray(d.ch[0]);
+const footName = d => isPt(d) ? d.name + (S.parts && S.parts[S.part] && S.parts[S.part].g ? ' · ' + S.parts[S.part].g : '') : d.name;
+// Pustaha dibuka per ponggol (bagian besar) supaya halaman tetap ringan di HP
+function makeParts(d){
+  const parts = [], of = [];
+  d.ch.forEach((c, i) => {
+    if(!parts.length || parts[parts.length - 1].g !== c.g) parts.push({g:c.g, from:i, to:i});
+    parts[parts.length - 1].to = i; of[i] = parts.length - 1;
+  });
+  S.parts = parts; S.partOf = of;
+}
 const flow = $('rdFlow');
 $('rdMode').value = S.mode;
 
@@ -1666,20 +1723,77 @@ const uni = t => BT.latinToBatak(t).uni;
 
 function msg(t){ $('rdMsg').textContent = t || ''; }
 
+function fillBooks(){
+  $('rdBook').innerHTML = (S.index || []).map(b => '<option value="' + b.n + '">' +
+    (colKey === 'bibel' ? b.n + '. ' + esc(b.name) : esc(b.name) + (b.title ? ' – ' + esc(b.title) : '')) + '</option>').join('');
+  if(S.book) $('rdBook').value = S.book;
+}
 async function loadIndex(){
   if(S.index) return S.index;
-  const r = await fetch(BASE + 'index.json'); if(!r.ok) throw new Error('idx');
-  S.index = await r.json();
-  $('rdBook').innerHTML = S.index.map(b => '<option value="' + b.n + '">' + b.n + '. ' + esc(b.name) + '</option>').join('');
+  const r = await fetch(C.base + 'index.json'); if(!r.ok) throw new Error('idx');
+  const j = await r.json();
+  S.index = Array.isArray(j) ? j : j.buku;
+  fillBooks();
   return S.index;
 }
 async function loadBook(n){
   if(S.cache[n]) return S.cache[n];
-  const r = await fetch(BASE + String(n).padStart(2,'0') + '.json'); if(!r.ok) throw new Error('book');
+  const r = await fetch(C.base + String(n).padStart(2,'0') + '.json'); if(!r.ok) throw new Error('book');
   return S.cache[n] = await r.json();
 }
 
+function buildPustaha(){
+  const d = S.data, m = S.mode, parts = [];
+  const HLM = /\[hlm\. ?([0-9ivxlc]+)\]\s*/g;
+  const head = t => m === 'latin' ? esc(t) : esc(uni(t)) + (m === 'paralel' ? '<small>' + esc(t) + '</small>' : '');
+  const plain = t => t.replace(HLM, '');
+  const txt = t => t.split(/(\[hlm\. ?[0-9ivxlc]+\]\s*)/).map(seg => {
+    const h = seg.match(/^\[hlm\. ?([0-9ivxlc]+)\]/);
+    if(h) return '<span class="hlm" title="Halaman ' + h[1] + ' buku asli">' + h[1] + '</span>';
+    return (m === 'latin' ? esc(seg) : esc(uni(seg))).replace(/\n/g, '<br>');
+  }).join('');
+  const lt = t => m === 'paralel' ? '<span class="lt">' + esc(plain(t)).replace(/\n/g, '<br>') + '</span>' : '';
+  if(!S.parts || S.partsOf !== d){ makeParts(d); S.partsOf = d; }
+  const P = S.parts[S.part] || S.parts[0], first = S.part === 0, last = S.part === S.parts.length - 1;
+  if(first) parts.push('<div class="bk">' + (m === 'latin' ? '<span class="nm">' + esc(PT) + '</span>' : '<span class="nm">' + esc(uni(PT)) + '</span>') +
+    '<span class="sub">' + esc(d.name + (d.title ? ' · ' + d.title : '')) + '</span>' + GODANG + '</div>');
+  let g = null;
+  d.ch.forEach((c, ci) => {
+    if(ci < P.from || ci > P.to) return;
+    const n = ci + 1;
+    if(c.g && c.g !== g){ g = c.g; if(c.g !== c.t) parts.push('<h3 class="pg-g">' + head(c.g) + '</h3>'); }
+    parts.push('<h4 id="rc-' + n + '" data-c="' + n + '">' + (c.pg ? '<span class="hlm" title="Halaman ' + c.pg + ' buku asli">' + c.pg + '</span>' : '') + head(c.t) + '</h4>');
+    let k = 0; const lastStr = c.it.map(x => typeof x === 'string').lastIndexOf(true);
+    c.it.forEach((it, ii) => {
+      if(typeof it === 'string'){
+        k++;
+        parts.push('<p data-c="' + n + '" data-v="' + k + '">' + txt(it) + (ii === lastStr ? '<span class="pb">' + PB + '</span>' : '') + lt(it) + '</p>');
+      } else if(it.img){
+        parts.push('<figure>' + (it.pg ? '<span class="hlm">' + it.pg + '</span><br>' : '') + '<img src="' + esc(it.img) + '" width="' + it.w + '" height="' + it.h + '" alt="Gambar dari naskah asli" decoding="async"></figure>');
+      } else if(it.h){
+        parts.push('<h5>' + (it.pg ? '<span class="hlm">' + it.pg + '</span>' : '') + head(it.h) + '</h5>');
+      } else if(it.tb){
+        parts.push((it.pg ? '<span class="hlm">' + it.pg + '</span>' : '') + '<table><tbody>' + it.tb.map((r, _, all) => { const w = Math.max(...all.map(q => q.length));
+          return '<tr>' + r.map((x, ri) => '<td' + (ri === r.length - 1 && r.length < w ? ' colspan="' + (w - r.length + 1) + '"' : '') + '>' + txt(x) + (x && m === 'paralel' ? lt(x) : '') + '</td>').join('') + '</tr>'; }).join('') + '</tbody></table>');
+      }
+    });
+  });
+  if(last) parts.push('<div class="end">' + METEK + METEK + METEK + '<small>' + esc(PT + ' · ' + d.name) + '</small></div><span id="rdEndMark"></span>');
+  else parts.push('<div class="pt-next"><small>Berikutnya</small>' + esc(S.parts[S.part + 1].g || '') + ' ›</div><span id="rdEndMark"></span>');
+  flow.classList.toggle('latin', m === 'latin');
+  flow.innerHTML = parts.join('');
+  S.verses = Array.from(flow.querySelectorAll('p[data-v]'));
+  S.heads = Array.from(flow.querySelectorAll('h4'));
+  let og = null, opts = '';
+  d.ch.forEach((c, i) => {
+    if(c.g !== og){ if(og !== null) opts += '</optgroup>'; og = c.g; opts += '<optgroup label="' + esc(c.g || d.name) + '">'; }
+    const t = c.t.length > 60 ? c.t.slice(0, 58) + '…' : c.t;
+    opts += '<option value="' + (i+1) + '">' + esc(t) + '</option>';
+  });
+  $('rdChap').innerHTML = opts + '</optgroup>';
+}
 function build(){
+  if(isPt(S.data)) return buildPustaha();
   const d = S.data, m = S.mode, parts = [];
   const name = d.name;
   parts.push('<div class="bk">' + (m === 'latin' ? '<span class="nm">' + esc(name) + '</span>' :
@@ -1737,6 +1851,7 @@ function layout(keep){
   const base = (pageW < 420 ? 19 : 22) * S.zoom;
   flow.style.setProperty('--rd-fs', base.toFixed(1) + 'px');
   flow.style.width = cw + 'px'; flow.style.columnWidth = cw + 'px'; flow.style.columnGap = (2 * pad) + 'px';
+  flow.style.setProperty('--rd-h', (pageH - 2 * pad - foot) + 'px');
   flow.classList.add('nojump'); flow.style.transform = 'translateX(0)';
   S.pages = pageOf($('rdEndMark')) + 1;
   S.ready = true;
@@ -1756,30 +1871,43 @@ function go(p, instant){
   if(instant || reduce) requestAnimationFrame(() => flow.classList.remove('nojump'));
   const n1 = p + 1, n2 = p + 2;
   $('rdP1').querySelector('.rd-fn').textContent = n1;
-  $('rdP1').querySelector('.rd-fb').textContent = S.data.name;
+  $('rdP1').querySelector('.rd-fb').textContent = footName(S.data);
   $('rdP2').querySelector('.rd-fn').textContent = n2 <= S.pages ? n2 : '';
-  $('rdP2').querySelector('.rd-fb').textContent = n2 <= S.pages ? S.data.name : '';
+  $('rdP2').querySelector('.rd-fb').textContent = n2 <= S.pages ? footName(S.data) : '';
   $('rdPageIn').value = n1; $('rdPageIn').max = S.pages; $('rdPageTot').textContent = '/ ' + S.pages;
   $('rdScrub').max = S.pages; $('rdScrub').value = n1;
-  $('rdPrev').disabled = p <= 0; $('rdNext').disabled = p + step >= S.pages;
+  $('rdPrev').disabled = p <= 0 && !(ptOn() && S.part > 0); $('rdNext').disabled = p + step >= S.pages && !(ptOn() && S.part < S.parts.length - 1);
   const v = firstVerseOnPage(p);
   const lastVis = p + step - 1, h = S.heads.find(x => { const q = pageOf(x); return q >= p && q <= lastVis; });
-  if(v){ $('rdChap').value = h ? h.dataset.c : v.dataset.c; store.set('sb-bibel-pos', JSON.stringify({b:S.book, c:+v.dataset.c, v:+v.dataset.v})); }
+  if(v){ $('rdChap').value = h ? h.dataset.c : v.dataset.c; store.set(C.pos, JSON.stringify({b:S.book, c:+v.dataset.c, v:+v.dataset.v})); }
 }
-const next = () => go(S.page + (S.spread ? 2 : 1));
-const prev = () => go(S.page - (S.spread ? 2 : 1));
+function setPart(pi, where){
+  S.part = pi; S.page = 0; S.ready = false; build(); layout(false);
+  if(where === 'end') go(S.pages - 1, true);
+}
+const ptOn = () => isPt(S.data) && S.parts;
+const next = () => {
+  const step = S.spread ? 2 : 1;
+  if(ptOn() && S.page + step >= S.pages && S.part < S.parts.length - 1){ setPart(S.part + 1); toReader(); return; }
+  go(S.page + step);
+};
+const prev = () => {
+  if(ptOn() && S.page <= 0 && S.part > 0){ setPart(S.part - 1, 'end'); return; }
+  go(S.page - (S.spread ? 2 : 1));
+};
 function goVerse(c, v){
+  if(ptOn()){ const pi = S.partOf[c - 1]; if(pi !== undefined && pi !== S.part) setPart(pi); }
   const el = flow.querySelector('p[data-c="' + c + '"][data-v="' + v + '"]') || $('rc-' + c);
   if(el) go(pageOf(el));
 }
 
 async function openBook(n, c, v){
   try{
-    msg('Memuat kitab...');
+    msg('Memuat ' + C.unit + '...');
     await loadIndex();
     S.book = +n; $('rdBook').value = n;
     S.data = await loadBook(n);
-    S.page = 0; S.ready = false;
+    S.page = 0; S.ready = false; S.part = 0; S.parts = null; S.partsOf = null;
     build();
     if(document.fonts && document.fonts.ready) await document.fonts.ready;
     msg('');
@@ -1787,7 +1915,7 @@ async function openBook(n, c, v){
     if(c) goVerse(c, v || 1);
     if(!S.full) toReader();
   } catch(e){
-    msg(navigator.onLine ? 'Kitab tidak bisa dimuat. Muat ulang halaman lalu coba lagi.' : 'Kitab ini belum tersimpan di perangkat. Sambungkan ke internet untuk membukanya pertama kali.');
+    msg(navigator.onLine ? 'Bacaan tidak bisa dimuat. Muat ulang halaman lalu coba lagi.' : 'Bacaan ini belum tersimpan di perangkat. Sambungkan ke internet untuk membukanya pertama kali.');
   }
 }
 function rerender(){ if(!S.data) return; const v = S.ready ? firstVerseOnPage(S.page) : null; S.ready = false; build(); layout(false);
@@ -1798,15 +1926,33 @@ function toReader(){
   const nav = document.querySelector('.navbar'), top = $('rd').getBoundingClientRect().top + scrollY - (nav ? nav.offsetHeight : 0) - 8;
   if(Math.abs(scrollY - top) > 4) scrollTo({top, behavior: reduce ? 'auto' : 'smooth'});
 }
-function show(){
+function useCol(key){
+  if(key === colKey) return false;
+  C.st = { index:S.index, cache:S.cache, book:S.book, data:S.data, shown:S.shown, part:S.part, parts:S.parts, partOf:S.partOf, partsOf:S.partsOf };
+  colKey = key; C = COL[key];
+  const st = C.st || { index:null, cache:{}, book:null, data:null, shown:false, part:0, parts:null, partOf:null, partsOf:null };
+  Object.assign(S, st, { page:0, ready:false });
+  $('p-' + key).appendChild($('rd'));
+  $('rdBookLbl').textContent = C.label; $('rdChapLbl').textContent = C.chap;
+  $('rdBook').setAttribute('aria-label', 'Pilih ' + C.unit); $('rdChap').setAttribute('aria-label', 'Pilih ' + C.chap.toLowerCase());
+  $('rdQ').placeholder = 'Cari kata dalam ' + C.unit + ' ini (huruf Latin)'; $('rdQ').value = ''; $('rdRes').innerHTML = '';
+  fillBooks(); flow.innerHTML = ''; msg('');
+  return true;
+}
+function show(key){
+  const changed = useCol(key || 'bibel');
   toReader();
   if(!S.shown){
     S.shown = true;
-    let pos = null; try{ pos = JSON.parse(store.get('sb-bibel-pos') || 'null'); }catch(e){}
+    let pos = null; try{ pos = JSON.parse(store.get(C.pos) || 'null'); }catch(e){}
     openBook(pos ? pos.b : 1, pos && pos.c, pos && pos.v);
+  } else if(changed){
+    let pos = null; try{ pos = JSON.parse(store.get(C.pos) || 'null'); }catch(e){}
+    build(); layout(false); if(pos && pos.b === S.book) goVerse(pos.c, pos.v);
   } else layout(true);
 }
-document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => { if(b.dataset.tab === 'bibel') requestAnimationFrame(show); }));
+document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => { if(COL[b.dataset.tab]) requestAnimationFrame(() => show(b.dataset.tab)); }));
+if($('ptBt')) $('ptBt').textContent = uni(PT);
 
 // kontrol
 $('rdBook').onchange = e => openBook(+e.target.value);
@@ -1830,7 +1976,7 @@ function setFull(on){
 $('rdFull').onclick = () => setFull(!S.full);
 document.addEventListener('fullscreenchange', () => { if(!document.fullscreenElement && S.full) setFull(false); });
 document.addEventListener('keydown', e => {
-  if(!document.getElementById('p-bibel').classList.contains('on')) return;
+  if(!$('rd').closest('.panel').classList.contains('on')) return;
   if(/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) return;
   if(e.key === 'ArrowRight' || e.key === 'PageDown'){ e.preventDefault(); next(); }
   else if(e.key === 'ArrowLeft' || e.key === 'PageUp'){ e.preventDefault(); prev(); }
@@ -1843,7 +1989,7 @@ $('rdStage').addEventListener('touchend', e => {
   if(tx === null) return; const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
   if(Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3){ dx < 0 ? next() : prev(); }
 }, {passive:true});
-let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if(document.getElementById('p-bibel').classList.contains('on')) layout(true); }, 150); });
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if($('rd').closest('.panel').classList.contains('on')) layout(true); }, 150); });
 
 // cari dalam kitab
 $('rdSearchBtn').onclick = () => {
@@ -1855,13 +2001,18 @@ $('rdQ').addEventListener('input', () => { clearTimeout(qt); qt = setTimeout(sea
 function search(){
   const q = $('rdQ').value.trim().toLowerCase(), out = $('rdRes');
   if(q.length < 2 || !S.data){ out.innerHTML = ''; return; }
-  const hits = [];
-  S.data.ch.forEach((vs, ci) => vs.forEach((t, vi) => { if(hits.length < 60 && t.toLowerCase().includes(q)) hits.push([ci+1, vi+1, t]); }));
-  const total = S.data.ch.reduce((n, vs) => n + vs.filter(t => t.toLowerCase().includes(q)).length, 0);
+  const hits = []; let total = 0;
+  const units = isPt(S.data)
+    ? S.data.ch.flatMap((c, ci) => c.it.filter(x => typeof x === 'string').map((t, k) => [ci+1, k+1, t.replace(/\[hlm\. ?[0-9ivxlc]+\]\s*/g, ''), c.t]))
+    : S.data.ch.flatMap((vs, ci) => vs.map((t, vi) => [ci+1, vi+1, t, null]));
+  units.forEach(u => { if(u[2].toLowerCase().includes(q)){ total++; if(hits.length < 60) hits.push(u); } });
   const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
-  out.innerHTML = (hits.length ? '' : '<p class="hint">Tidak ditemukan di kitab ini.</p>') +
-    hits.map(([c, v, t]) => '<button type="button" data-c="' + c + '" data-v="' + v + '"><b>' + c + ':' + v + '</b>' + esc(t).replace(re, '<mark>$1</mark>') + '</button>').join('') +
-    (total > hits.length ? '<p class="hint">Menampilkan 60 dari ' + total + ' ayat.</p>' : '');
+  out.innerHTML = (hits.length ? '' : '<p class="hint">Tidak ditemukan di ' + C.unit + ' ini.</p>') +
+    hits.map(([c, v, t, sec]) => {
+      let tx = t; if(sec && tx.length > 220){ const i = tx.toLowerCase().indexOf(q); const a = Math.max(0, i - 90); tx = (a ? '…' : '') + tx.slice(a, a + 220) + '…'; }
+      return '<button type="button" data-c="' + c + '" data-v="' + v + '"><b>' + (sec ? esc(sec.length > 40 ? sec.slice(0, 38) + '…' : sec) : c + ':' + v) + '</b>' + esc(tx).replace(re, '<mark>$1</mark>') + '</button>';
+    }).join('') +
+    (total > hits.length ? '<p class="hint">Menampilkan 60 dari ' + total + (isPt(S.data) ? ' paragraf.' : ' ayat.') + '</p>' : '');
 }
 $('rdRes').addEventListener('click', e => { const b = e.target.closest('button[data-c]'); if(b) goVerse(+b.dataset.c, +b.dataset.v); });
 })();
@@ -1918,7 +2069,7 @@ document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('cl
 }));
 
 /* ---------- dasbor ---------- */
-const TABN = {convert:'Alih aksara', terjemah:'Terjemahan', gambar:'Buat gambar', bibel:'Bibel', artikel:'Artikel', file:'Dari berkas', learn:'Belajar huruf', say:'Umpasa & poda', quiz:'Latihan', profil:'Profil penulis', stats:'Statistik'};
+const TABN = {convert:'Alih aksara', terjemah:'Terjemahan', gambar:'Buat gambar', bibel:'Bibel', pustaha:'Pustaha', artikel:'Artikel', file:'Dari berkas', learn:'Belajar huruf', say:'Umpasa & poda', quiz:'Latihan', profil:'Profil penulis', stats:'Statistik'};
 const DAYN = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 const MON = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
 const fmt = n => n.toLocaleString('id-ID');
@@ -2001,7 +2152,7 @@ const COLORS = [
   {id:'c-biru', nama:'Biru malam', warna:'#1F2A44', nada:'gelap'},
   {id:'c-krem', nama:'Krem', warna:'#F3E6C8', nada:'terang'}
 ];
-const S = { W:1080, H:1080, bg:null, img:null, zoom:1, ox:0, oy:0, align:'center', vert:'middle', color:'#FFFFFF', colorTouched:false, list:[], uploadUrl:null };
+const S = { W:1080, H:1080, bg:null, img:null, zoom:1, ox:0, oy:0, tx:0, ty:0, tw:100, box:null, align:'center', vert:'middle', color:'#FFFFFF', colorTouched:false, list:[], uploadUrl:null };
 let raf = 0;
 const redraw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
 
@@ -2015,7 +2166,16 @@ function seg(id, key, after){
 }
 seg('gmSize', 'size', () => { const [w, h] = S.size.split('x').map(Number); S.W = w; S.H = h; S.ox = S.oy = 0;
   const b = $('gmSize').querySelector('[aria-pressed="true"]'); $('gmSizeHint').textContent = b.title.replace(', ', ', untuk ') + '.'; });
-seg('gmAlign', 'align'); seg('gmVert', 'vert');
+seg('gmAlign', 'align'); seg('gmVert', 'vert', () => { S.ty = 0; $('gmTy').value = 0; });
+$('gmTx').addEventListener('input', e => { S.tx = +e.target.value / 100; redraw(); });
+$('gmTy').addEventListener('input', e => { S.ty = +e.target.value / 100; redraw(); });
+$('gmTw').addEventListener('input', e => { S.tw = +e.target.value; redraw(); });
+$('gmPosReset').onclick = () => {
+  S.tx = S.ty = 0; S.tw = 100; S.vert = 'middle';
+  $('gmTx').value = 0; $('gmTy').value = 0; $('gmTw').value = 100;
+  $('gmVert').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x.dataset.v === 'middle'));
+  redraw();
+};
 seg('gmColor', 'color', () => { S.colorTouched = true; });
 ['gmText','gmFs','gmDim','gmShadow','gmLatin','gmOrn'].forEach(id => $(id).addEventListener('input', redraw));
 $('gmZoom').addEventListener('input', e => { S.zoom = +e.target.value; redraw(); });
@@ -2030,7 +2190,8 @@ function pick(item){
   S.bg = item; S.ox = S.oy = 0; S.zoom = 1; $('gmZoom').value = 1;
   $('gmBgs').querySelectorAll('button').forEach(x => x.setAttribute('aria-checked', x.dataset.id === item.id));
   const isImg = !!item.gambar;
-  $('gmZoomRow').hidden = !isImg; $('gmTip').hidden = !isImg; cv.classList.toggle('pan', isImg);
+  $('gmZoomRow').hidden = !isImg; cv.classList.toggle('pan', isImg);
+  $('gmTip').textContent = isImg ? 'Seret aksara untuk memindahkannya. Seret bagian foto lainnya untuk mengatur posisi foto.' : 'Seret aksara di pratinjau untuk memindahkannya.';
   if(!isImg){ S.img = null; setColorAuto(item.nada); redraw(); return; }
   if(item.bitmap){ S.img = item.bitmap; setColorAuto(item.nada); redraw(); return; }
   const im = new Image();
@@ -2072,14 +2233,31 @@ $('gmFile').addEventListener('change', async e => {
   }catch(err){ $('gmMsg').textContent = 'Foto tidak bisa dibuka. Coba foto JPG atau PNG lain.'; }
 });
 
-/* ---------- geser foto ---------- */
+/* ---------- geser aksara dan foto ---------- */
 let drag = null;
-cv.addEventListener('pointerdown', e => { if(!S.img) return; drag = {x:e.clientX, y:e.clientY}; cv.setPointerCapture(e.pointerId); });
-cv.addEventListener('pointermove', e => {
-  if(!drag) return; const k = cv.width / cv.clientWidth;
-  S.ox += (e.clientX - drag.x) * k; S.oy += (e.clientY - drag.y) * k; drag = {x:e.clientX, y:e.clientY}; redraw();
+const toCanvas = e => { const r = cv.getBoundingClientRect(), k = cv.width / r.width; return {x:(e.clientX - r.left) * k, y:(e.clientY - r.top) * k, k}; };
+function onText(e){
+  const b = S.box; if(!b) return false; const p = toCanvas(e), pad = Math.min(S.W, S.H) * .03;
+  return p.x >= b.x - pad && p.x <= b.x + b.w + pad && p.y >= b.y - pad && p.y <= b.y + b.h + pad;
+}
+cv.addEventListener('pointerdown', e => {
+  const what = onText(e) ? 'text' : S.img ? 'photo' : null; if(!what) return;
+  drag = {what, x:e.clientX, y:e.clientY}; cv.setPointerCapture(e.pointerId); cv.classList.add('dragging'); e.preventDefault();
 });
-['pointerup','pointercancel'].forEach(t => cv.addEventListener(t, () => { drag = null; }));
+cv.addEventListener('pointermove', e => {
+  if(!drag){ cv.style.cursor = onText(e) ? 'move' : ''; return; }
+  const k = cv.width / cv.getBoundingClientRect().width, dx = (e.clientX - drag.x) * k, dy = (e.clientY - drag.y) * k;
+  drag.x = e.clientX; drag.y = e.clientY;
+  if(drag.what === 'text'){
+    S.tx += dx / S.W; S.ty += dy / S.H;
+    drag.snapX = Math.abs(S.tx) < .015; drag.snapY = Math.abs(S.ty) < .015;
+  } else { S.ox += dx; S.oy += dy; }
+  redraw();
+});
+['pointerup','pointercancel'].forEach(t => cv.addEventListener(t, () => {
+  if(drag && drag.what === 'text'){ if(drag.snapX) S.tx = 0; if(drag.snapY) S.ty = 0; redraw(); }
+  drag = null; cv.classList.remove('dragging');
+}));
 
 /* ---------- menggambar ---------- */
 function lum(hex){ const n = parseInt(hex.slice(1), 16); return .2126*(n>>16 & 255) + .7152*(n>>8 & 255) + .0722*(n & 255); }
@@ -2145,7 +2323,7 @@ function draw(){
   // teks
   const raw = $('gmText').value.replace(/\r/g, '');
   const uni = raw.split('\n').map(p => BT.latinToBatak(p).uni).join('\n');
-  const margin = Math.round(Math.min(W, H) * .08), maxW = W - 2 * margin;
+  const margin = Math.round(Math.min(W, H) * .08), maxW = Math.round((W - 2 * margin) * S.tw / 100);
   const fs = Math.round(Math.min(W, H) * +$('gmFs').value / 100), lh = fs * 1.6;
   const fontB = fs + 'px "Surat Batak Toba", sans-serif';
   const B = layout(uni, fontB, maxW);
@@ -2156,11 +2334,29 @@ function draw(){
   const total = B.lines.length * lh + gap + Lt.lines.length * lhL;
   const top = margin, bottom = H - margin - oh;
   let y = S.vert === 'top' ? top : S.vert === 'bottom' ? bottom - total : top + (bottom - top - total) / 2;
+  // geseran bebas dari pengguna, dijaga supaya aksara tidak keluar dari gambar
+  const snapX = drag && drag.what === 'text' && drag.snapX, snapY = drag && drag.what === 'text' && drag.snapY;
+  let x0 = (W - maxW) / 2 + (snapX ? 0 : S.tx) * W;
+  y += (snapY ? 0 : S.ty) * H;
+  const minX = margin * .25, maxX = W - maxW - margin * .25, minY = margin * .25, maxY = H - oh - total - margin * .25;
+  const cx = Math.max(Math.min(minX, maxX), Math.min(Math.max(minX, maxX), x0)), cy = Math.max(Math.min(minY, maxY), Math.min(Math.max(minY, maxY), y));
+  if(!snapX && cx !== x0){ S.tx += (cx - x0) / W; } if(!snapY && cy !== y){ S.ty += (cy - y) / H; }
+  x0 = cx; y = cy;
+  $('gmTx').value = (S.tx * 100).toFixed(1); $('gmTy').value = (S.ty * 100).toFixed(1);
+  S.box = {x:x0, y, w:maxW, h:total};
   ctx.fillStyle = S.color;
   if($('gmShadow').checked){ ctx.shadowColor = light ? 'rgba(0,0,0,.6)' : 'rgba(255,255,255,.6)'; ctx.shadowBlur = fs * .22; ctx.shadowOffsetY = fs * .04; }
-  drawLines(B, fontB, margin, maxW, y, lh, S.align);
-  if(showL){ ctx.globalAlpha = .9; drawLines(Lt, fontL, margin, maxW, y + B.lines.length * lh + gap, lhL, S.align); ctx.globalAlpha = 1; }
+  drawLines(B, fontB, x0, maxW, y, lh, S.align);
+  if(showL){ ctx.globalAlpha = .9; drawLines(Lt, fontL, x0, maxW, y + B.lines.length * lh + gap, lhL, S.align); ctx.globalAlpha = 1; }
   ctx.shadowColor = 'transparent';
+  // garis bantu saat aksara diseret (hanya di pratinjau, tidak ikut terunduh)
+  if(drag && drag.what === 'text'){
+    ctx.save(); ctx.strokeStyle = 'rgba(200,38,31,.9)'; ctx.lineWidth = Math.max(2, W / 540); ctx.setLineDash([W / 90, W / 120]);
+    ctx.strokeRect(x0, y, maxW, total);
+    if(snapX){ ctx.beginPath(); ctx.moveTo(W / 2, 0); ctx.lineTo(W / 2, H); ctx.stroke(); }
+    if(snapY){ ctx.beginPath(); ctx.moveTo(0, y + total / 2); ctx.lineTo(W, y + total / 2); ctx.stroke(); }
+    ctx.restore();
+  }
   {
     const f = Math.max(14, Math.round(Math.min(W, H) * .02));
     ctx.font = '600 ' + f + 'px "Alegreya Sans", sans-serif'; ctx.textAlign = 'right'; ctx.textBaseline = 'alphabetic';
@@ -2209,58 +2405,81 @@ window.SB_toImage = text => {
 })();
 </script>
 <script>
-/* ---------- Terjemahan lewat Google Translate ---------- */
+/* ---------- Terjemahan (Google Cloud Translation lewat /api/terjemah) ---------- */
 (function(){
 const $ = id => document.getElementById(id);
-let arah = 'id-bbc';
-const src = $('trSrc'), res = $('trRes');
+let arah = 'id-bbc', sibuk = false;
+const src = $('trSrc'), res = $('trRes'), msg = $('trMsg');
+const keBatak = () => arah === 'id-bbc';
 function setArah(a){
   arah = a;
   $('trIdBt').setAttribute('aria-pressed', a === 'id-bbc');
   $('trBtId').setAttribute('aria-pressed', a === 'bbc-id');
-  $('trSrcLbl').textContent = a === 'id-bbc' ? 'Teks bahasa Indonesia' : 'Teks bahasa Batak Toba (huruf Latin atau aksara Batak)';
-  src.placeholder = a === 'id-bbc' ? 'Contoh: Selamat pagi, semoga sehat selalu.' : 'Contoh: Horas jala gabe, saur matua bulung.';
-  $('trSrcHint').textContent = a === 'id-bbc'
-    ? 'Google Translate terbuka di tab baru. Salin hasilnya, lalu kembali ke sini.'
-    : 'Google Translate terbuka di tab baru dan menampilkan arti dalam bahasa Indonesia.';
-  $('trStep2').hidden = a !== 'id-bbc';
-  baca();
+  $('trSrcLbl').textContent = keBatak() ? 'Bahasa Indonesia' : 'Bahasa Batak Toba (huruf Latin atau aksara Batak)';
+  $('trResLbl').textContent = keBatak() ? 'Bahasa Batak Toba' : 'Bahasa Indonesia';
+  src.placeholder = keBatak() ? 'Contoh: Selamat pagi, semoga sehat selalu.' : 'Contoh: Horas jala gabe, saur matua bulung.';
+  $('trAksWrap').hidden = !keBatak();
+  res.value = ''; msg.textContent = '';
+  baca(); hasil();
 }
 function teksKirim(){
   const t = src.value.trim();
-  return arah === 'bbc-id' && BT.isUnicodeBatak(t) ? BT.batakToLatin(t, 'unicode') : t;
+  return !keBatak() && BT.isUnicodeBatak(t) ? BT.batakToLatin(t, 'unicode') : t;
+}
+function linkGT(){
+  const [sl, tl] = keBatak() ? ['id', 'bbc'] : ['bbc', 'id'];
+  $('trGT').href = 'https://translate.google.com/?sl=' + sl + '&tl=' + tl + '&text=' + encodeURIComponent(teksKirim().slice(0, 5000)) + '&op=translate';
 }
 function baca(){
-  const t = src.value.trim(), aks = arah === 'bbc-id' && t && BT.isUnicodeBatak(t);
+  const t = src.value.trim(), aks = !keBatak() && t && BT.isUnicodeBatak(t);
   src.classList.toggle('batak', !!aks);
   $('trReadWrap').hidden = !aks;
   if(aks) $('trRead').textContent = BT.batakToLatin(t, 'unicode');
+  $('trCount').textContent = src.value.length + '/1000';
+  linkGT();
 }
 function hasil(){
   const t = res.value.trim();
+  if(!keBatak()) return;
   $('trUni').innerHTML = t ? '' : '<span class="placeholder">Aksara Batak dari hasil terjemahan muncul di sini.</span>';
   if(t) $('trUni').textContent = BT.latinToBatak(res.value).uni;
 }
-$('trIdBt').onclick = () => setArah('id-bbc');
-$('trBtId').onclick = () => setArah('bbc-id');
-src.addEventListener('input', baca);
-res.addEventListener('input', hasil);
-$('trGo').onclick = () => {
+async function terjemahkan(){
   const t = teksKirim();
   if(!t){ src.focus(); return; }
-  const [sl, tl] = arah === 'id-bbc' ? ['id', 'bbc'] : ['bbc', 'id'];
-  window.open('https://translate.google.com/?sl=' + sl + '&tl=' + tl + '&text=' + encodeURIComponent(t.slice(0, 5000)) + '&op=translate', '_blank', 'noopener');
+  if(sibuk) return;
+  if(!/^https?:$/.test(location.protocol)){ msg.textContent = 'Terjemahan hanya bisa dipakai di situs yang sudah dipasang.'; return; }
+  if(!navigator.onLine){ msg.textContent = 'Sambungkan ke internet untuk menerjemahkan.'; return; }
+  sibuk = true; $('trGo').disabled = true; $('trGo').textContent = 'Menerjemahkan...'; msg.textContent = '';
+  try{
+    const r = await fetch('/api/terjemah', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({teks: t, dari: keBatak() ? 'id' : 'bbc'})});
+    const d = await r.json().catch(() => ({}));
+    if(!r.ok || !d.hasil){
+      msg.textContent = (d.galat || 'Terjemahan gagal. Coba lagi.') + ' Anda juga bisa memakai tombol Buka di Google Translate.';
+    }else{
+      res.value = d.hasil; hasil();
+    }
+  }catch(e){ msg.textContent = 'Terjemahan gagal. Periksa sambungan internet, atau pakai tombol Buka di Google Translate.'; }
+  sibuk = false; $('trGo').disabled = false; $('trGo').textContent = 'Terjemahkan';
+}
+const salin = async (teks, btn, label) => {
+  try{ await navigator.clipboard.writeText(teks); btn.textContent = 'Tersalin'; setTimeout(() => btn.textContent = label, 1500); }catch(e){}
 };
-$('trSrcClear').onclick = () => { src.value = ''; baca(); src.focus(); };
-$('trResClear').onclick = () => { res.value = ''; hasil(); res.focus(); };
-$('trPaste').onclick = async () => {
-  try{ const t = await navigator.clipboard.readText(); if(t){ res.value = t; hasil(); } }
-  catch(e){ res.focus(); $('trPaste').textContent = 'Tempel manual (tekan lama, lalu Tempel)'; }
+$('trIdBt').onclick = () => setArah('id-bbc');
+$('trBtId').onclick = () => setArah('bbc-id');
+$('trGo').onclick = terjemahkan;
+src.addEventListener('keydown', e => { if(e.key === 'Enter' && (e.ctrlKey || e.metaKey)){ e.preventDefault(); terjemahkan(); } });
+src.addEventListener('input', baca);
+res.addEventListener('input', hasil);
+$('trSwap').onclick = () => {
+  const h = res.value.trim();
+  setArah(keBatak() ? 'bbc-id' : 'id-bbc');
+  src.value = h; baca();
+  if(h) terjemahkan();
 };
-$('trCopy').onclick = async () => {
-  const t = $('trUni').textContent; if(!res.value.trim()) return;
-  try{ await navigator.clipboard.writeText(t); $('trCopy').textContent = 'Tersalin'; setTimeout(() => $('trCopy').textContent = 'Salin aksara', 1500); }catch(e){}
-};
+$('trSrcClear').onclick = () => { src.value = ''; res.value = ''; msg.textContent = ''; baca(); hasil(); src.focus(); };
+$('trCopyTxt').onclick = () => { if(res.value.trim()) salin(res.value.trim(), $('trCopyTxt'), 'Salin teks'); };
+$('trCopy').onclick = () => { if(res.value.trim()) salin($('trUni').textContent, $('trCopy'), 'Salin aksara'); };
 $('trImg').onclick = () => { if(res.value.trim() && window.SB_toImage) window.SB_toImage(res.value.trim()); };
 $('trToConv').onclick = () => {
   if(!res.value.trim()) return;
@@ -2269,6 +2488,7 @@ $('trToConv').onclick = () => {
   document.querySelector('nav.tabs button[data-tab="convert"]').click();
   scrollTo({top: document.querySelector('.navbar').offsetTop, behavior: 'smooth'});
 };
+baca();
 })();
 </script>
 <script>
