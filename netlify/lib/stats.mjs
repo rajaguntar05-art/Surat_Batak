@@ -23,7 +23,7 @@ export async function update(store, key, init, fn, tries = 6){
   return null;
 }
 
-const TABS = new Set(['convert','terjemah','gambar','bibel','artikel','file','learn','say','quiz','profil','stats']);
+const TABS = new Set(['convert','terjemah','gambar','bibel','pustaha','artikel','file','learn','say','quiz','profil','stats']);
 export async function recordHit(store, body, now = Date.now()){
   const { day, hour } = jakartaParts(now);
   const newToday = !!body.newToday, newDevice = !!body.newDevice;

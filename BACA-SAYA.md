@@ -7,6 +7,7 @@ Situs ini terdiri dari aplikasi Surat sian Toba, bagian **Artikel** (blog), hala
 | Berkas | Fungsi |
 |---|---|
 | public/ | Aplikasi: index.html, data kitab, font, ikon, service worker, gaya artikel |
+| public/pustaha/ | Naskah Pustaha Tumbaga Holing (Buku 1–5 dan ringkasan) beserta gambar halamannya, dibaca di tab Pustaha |
 | public/admin/ | Halaman admin untuk menulis artikel dan mengubah profil |
 | content/artikel/ | Artikel (satu berkas .md per artikel). Diisi otomatis oleh halaman admin |
 | content/profil.json | Profil penulis. Diisi lewat halaman admin |
@@ -58,6 +59,19 @@ Buka `/admin/` → **Profil penulis**. Isi nama, peran, foto, biografi (pisahkan
 Tab **Buat gambar** sudah berisi 8 latar bawaan (ilustrasi Danau Toba, Rumah Bolon, ulos, gorga, dan lainnya) di `public/img/latar/`. Untuk menambahkan foto Anda sendiri sebagai pilihan latar bagi semua pengunjung, buka `/admin/` → **Profil penulis** → **Latar gambar**, tambahkan foto, beri nama, pilih kecerahannya, lalu Publish. Pakai foto milik sendiri atau yang memang boleh dipakai ulang.
 
 Foto yang diunggah pengunjung di tab Buat gambar hanya diolah di perangkat mereka sendiri dan tidak dikirim ke server.
+
+## Terjemahan (Google Translate API)
+
+Tab **Terjemahan** memakai Google Cloud Translation lewat fungsi `/api/terjemah`. Kunci API hanya disimpan di Netlify, tidak terlihat oleh pengunjung.
+
+1. Buka console.cloud.google.com, masuk dengan akun Google, lalu buat proyek baru, misalnya `surat-sian-toba`.
+2. Pasang akun penagihan (Billing) pada proyek itu. Google mewajibkannya, tetapi 500.000 huruf pertama setiap bulan gratis.
+3. Buka **APIs & Services → Library**, cari **Cloud Translation API**, lalu klik **Enable**.
+4. Buka **APIs & Services → Credentials → Create credentials → API key**. Klik kunci yang baru dibuat, pada **API restrictions** pilih **Restrict key** dan centang hanya **Cloud Translation API**, lalu Save.
+5. Di Netlify buka **Project configuration → Environment variables → Add a variable**. Isi Key `GOOGLE_TRANSLATE_KEY` dan Value kunci API tadi, lalu Save.
+6. Buka **Deploys → Trigger deploy → Deploy project** supaya kunci terbaca.
+
+Batas pemakaian supaya tetap di kuota gratis: 1.000 huruf sekali terjemah, 30.000 huruf per hari, 450.000 huruf per bulan. Angka harian dan bulanan bisa diubah lewat variabel `TERJEMAH_BATAS_HARIAN` dan `TERJEMAH_BATAS_BULANAN`. Terjemahan yang sama disimpan, jadi tidak menghabiskan kuota dua kali. Sebaiknya pasang juga **Budget alert** di Google Cloud (Billing → Budgets & alerts) agar Anda diberi tahu bila ada biaya.
 
 ## Domain sendiri (pilihan)
 
