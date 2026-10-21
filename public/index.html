@@ -708,6 +708,17 @@ body.rd-lock{overflow:hidden}
           <label class="gm-c"><input type="checkbox" id="gmLatin" checked> Tampilkan huruf Latin di bawah aksara</label>
           <label class="gm-c"><input type="checkbox" id="gmOrn" checked> Hiasan gorga di tepi bawah</label>
         </div>
+
+        <div class="gm-g">
+          <label class="gm-c"><input type="checkbox" id="gmLogo" checked> Tampilkan logo Surat sian Toba</label>
+          <div id="gmLogoCtl">
+            <p class="hint" style="margin:0">Logo awalnya di kiri bawah. Seret logo di pratinjau untuk memindahkannya.</p>
+            <label class="gm-r"><span>Ukuran logo</span><input type="range" id="gmLs" min="6" max="35" step="0.5" value="13" aria-label="Ukuran logo"></label>
+            <label class="gm-r"><span>Kiri ↔ kanan</span><input type="range" id="gmLx" min="0" max="100" step="0.5" value="0" aria-label="Geser logo ke kiri atau kanan"></label>
+            <label class="gm-r"><span>Atas ↕ bawah</span><input type="range" id="gmLy" min="0" max="100" step="0.5" value="100" aria-label="Geser logo ke atas atau bawah"></label>
+            <div class="tools" style="margin-top:4px"><button class="btn ghost" id="gmLogoReset" type="button">Kembalikan logo ke kiri bawah</button></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2152,7 +2163,7 @@ const COLORS = [
   {id:'c-biru', nama:'Biru malam', warna:'#1F2A44', nada:'gelap'},
   {id:'c-krem', nama:'Krem', warna:'#F3E6C8', nada:'terang'}
 ];
-const S = { W:1080, H:1080, bg:null, img:null, zoom:1, ox:0, oy:0, tx:0, ty:0, tw:100, box:null, align:'center', vert:'middle', color:'#FFFFFF', colorTouched:false, list:[], uploadUrl:null };
+const S = { W:1080, H:1080, bg:null, img:null, zoom:1, ox:0, oy:0, tx:0, ty:0, tw:100, box:null, logo:true, ls:13, lx:0, ly:1, lbox:null, align:'center', vert:'middle', color:'#FFFFFF', colorTouched:false, list:[], uploadUrl:null };
 let raf = 0;
 const redraw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
 
@@ -2168,6 +2179,13 @@ seg('gmSize', 'size', () => { const [w, h] = S.size.split('x').map(Number); S.W 
   const b = $('gmSize').querySelector('[aria-pressed="true"]'); $('gmSizeHint').textContent = b.title.replace(', ', ', untuk ') + '.'; });
 seg('gmAlign', 'align'); seg('gmVert', 'vert', () => { S.ty = 0; $('gmTy').value = 0; });
 $('gmTx').addEventListener('input', e => { S.tx = +e.target.value / 100; redraw(); });
+// logo situs (hanya logo Surat sian Toba, tidak bisa diganti)
+const LOGO = new Image(); LOGO.onload = () => redraw(); LOGO.src = 'icons/logo-halak-toba.png';
+$('gmLogo').addEventListener('change', e => { S.logo = e.target.checked; $('gmLogoCtl').hidden = !S.logo; redraw(); });
+$('gmLs').addEventListener('input', e => { S.ls = +e.target.value; redraw(); });
+$('gmLx').addEventListener('input', e => { S.lx = +e.target.value / 100; redraw(); });
+$('gmLy').addEventListener('input', e => { S.ly = +e.target.value / 100; redraw(); });
+$('gmLogoReset').onclick = () => { S.ls = 13; S.lx = 0; S.ly = 1; $('gmLs').value = 13; $('gmLx').value = 0; $('gmLy').value = 100; redraw(); };
 $('gmTy').addEventListener('input', e => { S.ty = +e.target.value / 100; redraw(); });
 $('gmTw').addEventListener('input', e => { S.tw = +e.target.value; redraw(); });
 $('gmPosReset').onclick = () => {
@@ -2240,17 +2258,26 @@ function onText(e){
   const b = S.box; if(!b) return false; const p = toCanvas(e), pad = Math.min(S.W, S.H) * .03;
   return p.x >= b.x - pad && p.x <= b.x + b.w + pad && p.y >= b.y - pad && p.y <= b.y + b.h + pad;
 }
+function onLogo(e){
+  const b = S.lbox; if(!S.logo || !b) return false; const p = toCanvas(e);
+  return p.x >= b.x && p.x <= b.x + b.w && p.y >= b.y && p.y <= b.y + b.h;
+}
 cv.addEventListener('pointerdown', e => {
-  const what = onText(e) ? 'text' : S.img ? 'photo' : null; if(!what) return;
+  const what = onLogo(e) ? 'logo' : onText(e) ? 'text' : S.img ? 'photo' : null; if(!what) return;
   drag = {what, x:e.clientX, y:e.clientY}; cv.setPointerCapture(e.pointerId); cv.classList.add('dragging'); e.preventDefault();
 });
 cv.addEventListener('pointermove', e => {
-  if(!drag){ cv.style.cursor = onText(e) ? 'move' : ''; return; }
+  if(!drag){ cv.style.cursor = onLogo(e) || onText(e) ? 'move' : ''; return; }
   const k = cv.width / cv.getBoundingClientRect().width, dx = (e.clientX - drag.x) * k, dy = (e.clientY - drag.y) * k;
   drag.x = e.clientX; drag.y = e.clientY;
   if(drag.what === 'text'){
     S.tx += dx / S.W; S.ty += dy / S.H;
     drag.snapX = Math.abs(S.tx) < .015; drag.snapY = Math.abs(S.ty) < .015;
+  } else if(drag.what === 'logo'){
+    const b = S.lbox, fx = S.W - b.w - b.m * 2, fy = S.H - b.oh - b.h - b.m * 2;
+    if(fx > 0) S.lx = Math.max(0, Math.min(1, S.lx + dx / fx));
+    if(fy > 0) S.ly = Math.max(0, Math.min(1, S.ly + dy / fy));
+    $('gmLx').value = (S.lx * 100).toFixed(1); $('gmLy').value = (S.ly * 100).toFixed(1);
   } else { S.ox += dx; S.oy += dy; }
   redraw();
 });
@@ -2349,6 +2376,18 @@ function draw(){
   drawLines(B, fontB, x0, maxW, y, lh, S.align);
   if(showL){ ctx.globalAlpha = .9; drawLines(Lt, fontL, x0, maxW, y + B.lines.length * lh + gap, lhL, S.align); ctx.globalAlpha = 1; }
   ctx.shadowColor = 'transparent';
+  // logo situs
+  S.lbox = null;
+  if(S.logo && LOGO.complete && LOGO.naturalWidth){
+    const lw = Math.round(Math.min(W, H) * S.ls / 100), lhh = Math.round(lw * LOGO.naturalHeight / LOGO.naturalWidth), m = Math.round(margin * .45);
+    const lx = m + S.lx * (W - lw - 2 * m), ly = m + S.ly * (H - oh - lhh - 2 * m);
+    const r = lw * .08;
+    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.35)'; ctx.shadowBlur = lw * .06;
+    ctx.beginPath(); ctx.roundRect ? ctx.roundRect(lx, ly, lw, lhh, r) : ctx.rect(lx, ly, lw, lhh); ctx.fillStyle = '#141010'; ctx.fill();
+    ctx.shadowColor = 'transparent'; ctx.clip(); ctx.drawImage(LOGO, lx, ly, lw, lhh); ctx.restore();
+    S.lbox = {x:lx, y:ly, w:lw, h:lhh, m, oh};
+    if(drag && drag.what === 'logo'){ ctx.save(); ctx.strokeStyle = 'rgba(200,38,31,.9)'; ctx.lineWidth = Math.max(2, W / 540); ctx.setLineDash([W / 90, W / 120]); ctx.strokeRect(lx, ly, lw, lhh); ctx.restore(); }
+  }
   // garis bantu saat aksara diseret (hanya di pratinjau, tidak ikut terunduh)
   if(drag && drag.what === 'text'){
     ctx.save(); ctx.strokeStyle = 'rgba(200,38,31,.9)'; ctx.lineWidth = Math.max(2, W / 540); ctx.setLineDash([W / 90, W / 120]);
