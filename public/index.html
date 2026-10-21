@@ -1702,7 +1702,7 @@ const S = { index:null, book:null, data:null, mode:store.get('sb-bibel-mode') ||
 const PT = 'Pustaha Tumbaga Holing';
 const COL = {
   bibel:   { base:'data/', unit:'kitab', label:'Kitab', chap:'Pasal', pos:'sb-bibel-pos', st:null },
-  pustaha: { base:'pustaha/', unit:'buku', label:'Buku', chap:'Bagian', pos:'sb-pustaha-pos', st:null }
+  pustaha: { base:'data/pustaha-', unit:'buku', label:'Buku', chap:'Bagian', pos:'sb-pustaha-pos', st:null }
 };
 let colKey = 'bibel', C = COL.bibel;
 const isPt = d => d && !Array.isArray(d.ch[0]);
